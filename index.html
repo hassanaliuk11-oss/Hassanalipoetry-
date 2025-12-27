@@ -15,6 +15,7 @@
             --border: #ececec;
             --glass: rgba(255, 255, 255, 0.85);
             --shadow: 0 20px 50px rgba(0,0,0,0.04);
+            --accent-transition: color 1.5s ease, border-color 1.5s ease, background-color 1.5s ease;
         }
 
         * {
@@ -140,7 +141,11 @@
             margin-bottom: 20px;
         }
 
-        .hero-text span { color: var(--accent); font-style: italic; }
+        .hero-text span { 
+            color: var(--accent); 
+            font-style: italic;
+            transition: var(--accent-transition);
+        }
 
         .grid-layout {
             display: grid;
@@ -169,17 +174,32 @@
             height: 220px;
             overflow: hidden;
             background: #eee;
+            position: relative;
         }
 
         .img-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: 0.6s;
+            transition: opacity 1.5s ease-in-out, transform 6s ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .img-box img.fade-out {
+            opacity: 0;
         }
 
         .card-info { padding: 25px; }
-        .card-info span { font-size: 0.7rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
+        .card-info span { 
+            font-size: 0.7rem; 
+            color: var(--accent); 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px;
+            transition: var(--accent-transition);
+        }
         .card-info h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; margin: 8px 0; }
         .card-info p { font-size: 0.9rem; color: #666; }
 
@@ -210,7 +230,12 @@
             transform: scale(1.05);
         }
 
-        .pill-highlight { background: var(--text); color: #fff; }
+        .pill-highlight { 
+            background: var(--accent); 
+            color: #fff; 
+            border-color: var(--accent);
+            transition: var(--accent-transition);
+        }
 
         /* Footer */
         footer {
@@ -242,7 +267,7 @@
 
 <div class="header-profile-box">
     <div class="passport-photo">
-        <img src="https://i.ibb.co/JR2045kd/profile.jpg" alt="Hassan Jatoi" onerror="this.src='https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400'">
+        <img src="https://i.ibb.co/JR2045kd/profile.jpg" alt="Hassan Jatoi" id="main-profile-img">
     </div>
     <form action="https://www.google.com/search" method="GET" class="search-wrapper" target="_blank">
         <i data-lucide="search" size="18" style="color: #ccc; margin-left: 10px;"></i>
@@ -259,10 +284,8 @@
 <div class="main-container">
     <div class="grid-layout">
         <!-- Project Alpha -->
-        <a href="https://blue-horizons-greyheart-hassanjatoi.netlify.app/" class="work-card" target="_blank">
-            <div class="img-box">
-                <img src="https://images.pexels.com/photos/1535288/pexels-photo-1535288.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Blue Horizons">
-            </div>
+        <a href="https://blue-horizons-greyheart-hassanjatoi.netlify.app/" class="work-card" data-project="alpha">
+            <div class="img-box"><img src="" alt="Blue Horizons"></div>
             <div class="card-info">
                 <span>Project Alpha</span>
                 <h3>Blue Horizons</h3>
@@ -271,10 +294,8 @@
         </a>
 
         <!-- Project Beta -->
-        <a href="https://stranger-city-hassanjatoi.netlify.app/" class="work-card" target="_blank">
-            <div class="img-box">
-                <img src="https://images.pexels.com/photos/2526025/pexels-photo-2526025.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Stranger City">
-            </div>
+        <a href="https://stranger-city-hassanjatoi.netlify.app/" class="work-card" data-project="beta">
+            <div class="img-box"><img src="" alt="Stranger City"></div>
             <div class="card-info">
                 <span>Project Beta</span>
                 <h3>Stranger City</h3>
@@ -283,10 +304,8 @@
         </a>
 
         <!-- Project Gamma -->
-        <a href="https://griefof2025hassanjatoi.netlify.app/" class="work-card" target="_blank">
-            <div class="img-box">
-                <img src="https://images.pexels.com/photos/731192/pexels-photo-731192.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Grief of 2025">
-            </div>
+        <a href="https://griefof2025hassanjatoi.netlify.app/" class="work-card" data-project="gamma">
+            <div class="img-box"><img src="" alt="Grief of 2025"></div>
             <div class="card-info">
                 <span>Project Gamma</span>
                 <h3>Grief of 2025</h3>
@@ -294,11 +313,9 @@
             </div>
         </a>
 
-        <!-- Project Delta - Lonely Path (Updated with thematic Pexels image) -->
-        <a href="https://lonelypathhassanjatoi.netlify.app/" class="work-card" target="_blank">
-            <div class="img-box">
-                <img src="https://images.pexels.com/photos/458491/pexels-photo-458491.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Lonely Path">
-            </div>
+        <!-- Project Delta -->
+        <a href="https://lonelypathhassanjatoi.netlify.app/" class="work-card" data-project="delta">
+            <div class="img-box"><img src="" alt="Lonely Path"></div>
             <div class="card-info">
                 <span>Project Delta</span>
                 <h3>Lonely Path</h3>
@@ -306,11 +323,9 @@
             </div>
         </a>
 
-        <!-- Project Epsilon - Broken Soul -->
-        <a href="https://brokensoulhassanjatoi.netlify.app/" class="work-card" target="_blank">
-            <div class="img-box">
-                <img src="https://images.pexels.com/photos/2613461/pexels-photo-2613461.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Broken Soul">
-            </div>
+        <!-- Project Epsilon -->
+        <a href="https://brokensoulhassanjatoi.netlify.app/" class="work-card" data-project="epsilon">
+            <div class="img-box"><img src="" alt="Broken Soul"></div>
             <div class="card-info">
                 <span>Project Epsilon</span>
                 <h3>Broken Soul</h3>
@@ -318,11 +333,9 @@
             </div>
         </a>
 
-        <!-- Main Portal -->
-        <a href="https://poetrybyhassanjatoi.netlify.app/" class="work-card" target="_blank">
-            <div class="img-box">
-                <img src="https://images.pexels.com/photos/1765033/pexels-photo-1765033.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Poetry Archive">
-            </div>
+        <!-- Project Archive -->
+        <a href="https://poetrybyhassanjatoi.netlify.app/" class="work-card" data-project="archive">
+            <div class="img-box"><img src="" alt="Poetry Archive"></div>
             <div class="card-info">
                 <span>Main Portal</span>
                 <h3>Poetry Archive</h3>
@@ -361,6 +374,86 @@
 
 <script>
     lucide.createIcons();
+
+    // 1. Automatic Color Change System
+    const colors = ['#b18e1d', '#7c3aed', '#db2777', '#2563eb', '#059669', '#ea580c'];
+    let colorIndex = 0;
+
+    function rotateColors() {
+        colorIndex = (colorIndex + 1) % colors.length;
+        document.documentElement.style.setProperty('--accent', colors[colorIndex]);
+    }
+
+    // 2. Automatic Image Gallery System
+    const galleries = {
+        alpha: [
+            "https://images.pexels.com/photos/1535288/pexels-photo-1535288.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&w=800"
+        ],
+        beta: [
+            "https://images.pexels.com/photos/2526025/pexels-photo-2526025.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "https://images.pexels.com/photos/33109/fall-autumn-red-season.jpg?auto=compress&cs=tinysrgb&w=800"
+        ],
+        gamma: [
+            "https://images.pexels.com/photos/731192/pexels-photo-731192.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "https://images.pexels.com/photos/1518111/pexels-photo-1518111.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "https://images.pexels.com/photos/568027/pexels-photo-568027.jpeg?auto=compress&cs=tinysrgb&w=800"
+        ],
+        delta: [
+            "https://images.pexels.com/photos/458491/pexels-photo-458491.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "https://images.pexels.com/photos/670061/pexels-photo-670061.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&w=800"
+        ],
+        epsilon: [
+            "https://images.pexels.com/photos/2613461/pexels-photo-2613461.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "https://images.pexels.com/photos/544542/pexels-photo-544542.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=800"
+        ],
+        archive: [
+            "https://images.pexels.com/photos/1765033/pexels-photo-1765033.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "https://images.pexels.com/photos/267586/pexels-photo-267586.jpeg?auto=compress&cs=tinysrgb&w=800"
+        ]
+    };
+
+    let galleryIndices = { alpha: 0, beta: 0, gamma: 0, delta: 0, epsilon: 0, archive: 0 };
+
+    function rotateImages() {
+        Object.keys(galleries).forEach(key => {
+            const card = document.querySelector(`[data-project="${key}"]`);
+            const img = card.querySelector('img');
+            
+            // Increment index
+            galleryIndices[key] = (galleryIndices[key] + 1) % galleries[key].length;
+            
+            // Fade out current
+            img.style.opacity = '0';
+            
+            // Change source after fade
+            setTimeout(() => {
+                img.src = galleries[key][galleryIndices[key]];
+                img.style.opacity = '1';
+                img.style.transform = `scale(${1 + Math.random() * 0.1})`; // Gentle zoom effect
+            }, 750);
+        });
+    }
+
+    // Initial setup
+    function init() {
+        Object.keys(galleries).forEach(key => {
+            const card = document.querySelector(`[data-project="${key}"]`);
+            const img = card.querySelector('img');
+            img.src = galleries[key][0];
+        });
+        
+        // Start timers
+        setInterval(rotateColors, 5000);
+        setInterval(rotateImages, 5000);
+    }
+
+    init();
 
     // Cursor Logic
     const cursor = document.getElementById('cursor');
