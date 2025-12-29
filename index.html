@@ -1,482 +1,278 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ur" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hassan Jatoi | Literary Portfolio</title>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>اردو پوائنٹ - حسن جتوئی</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&family=Lateef&family=Jomhuria&family=Reem+Kufi&family=Aref+Ruqaa&family=Harmattan&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
-            --bg: #ffffff;
-            --text: #09090b;
-            --accent: #b18e1d;
-            --soft-grey: #f8f8f8;
-            --border: #ececec;
-            --glass: rgba(255, 255, 255, 0.85);
-            --shadow: 0 20px 50px rgba(0,0,0,0.04);
-            --accent-transition: color 1.5s ease, border-color 1.5s ease, background-color 1.5s ease;
+            --up-red: #c10000;
+            --up-dark: #1a1a1a;
+            --font-nastaliq: 'Noto Nastaliq Urdu', serif;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            cursor: none;
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: var(--bg);
-            color: var(--text); 
-            line-height: 1.6;
+        body {
+            font-family: var(--font-nastaliq);
+            background-color: #fdfdfd;
+            color: #333;
+            transition: all 0.3s ease;
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
-        /* Custom Interactive Cursor */
-        #cursor {
-            width: 8px; height: 8px; background: var(--text); border-radius: 50%;
-            position: fixed; pointer-events: none; z-index: 10001; transition: transform 0.05s linear;
-        }
-        #cursor-follower {
-            width: 40px; height: 40px; border: 1px solid var(--text); border-radius: 50%;
-            position: fixed; pointer-events: none; z-index: 10000; transition: transform 0.15s ease-out;
-        }
+        .urdu-text { font-family: var(--font-nastaliq); }
 
-        /* Navigation Bar */
-        nav {
+        /* Header Styling */
+        .main-header { padding: 50px 0; background: #fff; border-bottom: 1px solid #eee; }
+        .up-logo-text { color: var(--up-red); font-size: clamp(3rem, 10vw, 5.5rem); font-weight: bold; line-height: 1; display: block; }
+        .poet-name { color: #444; font-size: clamp(1.5rem, 5vw, 2.5rem); margin-top: 25px; display: block; letter-spacing: 2px; }
+        
+        /* Navigation */
+        .nav-menu { background: var(--up-red); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .nav-link { padding: 14px 25px; display: inline-block; color: white; font-weight: bold; border-left: 1px solid rgba(255,255,255,0.1); transition: 0.3s; white-space: nowrap; }
+        .nav-link:hover { background: rgba(0,0,0,0.2); }
+
+        /* Poetry Card */
+        .poetry-card { border: 1px solid #eee; margin-bottom: 40px; background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .poetry-content { padding: 50px 20px; text-align: center; }
+        .poetry-title { color: var(--up-red); font-size: 2.4rem; margin-bottom: 25px; border-bottom: 2px solid #f0f0f0; display: inline-block; padding-bottom: 10px; }
+        .poetry-lines { font-size: 2rem; line-height: 2.8; transition: all 0.3s; }
+
+        /* Settings Panel */
+        #settings-panel {
             position: fixed;
-            top: 0; width: 100%;
-            padding: 20px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
+            top: 0;
+            left: -320px;
+            width: 320px;
+            height: 100vh;
+            background: white;
+            z-index: 2000;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 20px;
+            overflow-y: auto;
         }
 
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
+        #settings-panel.open { left: 0; }
 
-        /* Profile & Search Section */
-        .header-profile-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 130px;
-            gap: 25px;
-        }
-
-        .passport-photo {
-            width: 150px;
-            height: 180px;
-            border: 6px solid #fff;
-            box-shadow: var(--shadow);
-            border-radius: 4px;
-            overflow: hidden;
-            background: #f3f3f3;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .passport-photo:hover {
-            transform: scale(1.05) rotate(1deg);
-        }
-
-        .passport-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .search-wrapper {
-            width: 100%;
-            max-width: 500px;
-            background: #fff;
-            padding: 6px 10px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            border: 1px solid var(--border);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-        }
-
-        .search-wrapper input {
-            border: none;
-            outline: none;
-            width: 100%;
-            padding: 10px 15px;
-            font-size: 0.9rem;
-        }
-
-        .search-btn {
-            background: var(--text);
-            color: #fff;
-            border: none;
-            padding: 8px 18px;
-            border-radius: 10px;
-            font-weight: 600;
+        .settings-btn {
+            position: fixed;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            background: var(--up-red);
+            color: white;
+            padding: 15px 10px;
+            border-radius: 0 12px 12px 0;
             cursor: pointer;
+            z-index: 2001;
+            box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        /* Grid Content */
-        .main-container { max-width: 1300px; margin: auto; padding: 0 5%; }
-
-        .hero-text {
-            text-align: center;
-            padding: 40px 0 80px;
-        }
-
-        .hero-text h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .hero-text span { 
-            color: var(--accent); 
-            font-style: italic;
-            transition: var(--accent-transition);
-        }
-
-        .grid-layout {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-            margin-bottom: 80px;
-        }
-
-        .work-card {
-            background: #fff;
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            overflow: hidden;
-            text-decoration: none;
-            color: inherit;
-            transition: 0.4s ease;
-        }
-
-        .work-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-        }
-
-        .img-box {
-            height: 220px;
-            overflow: hidden;
-            background: #eee;
-            position: relative;
-        }
-
-        .img-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: opacity 1.5s ease-in-out, transform 6s ease-in-out;
-            position: absolute;
+        .overlay {
+            position: fixed;
             top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            z-index: 1999;
         }
 
-        .img-box img.fade-out {
-            opacity: 0;
-        }
-
-        .card-info { padding: 25px; }
-        .card-info span { 
-            font-size: 0.7rem; 
-            color: var(--accent); 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            letter-spacing: 1.5px;
-            transition: var(--accent-transition);
-        }
-        .card-info h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; margin: 8px 0; }
-        .card-info p { font-size: 0.9rem; color: #666; }
-
-        /* Links Section */
-        .links-section {
-            padding: 80px 0;
-            border-top: 1px solid var(--border);
-        }
-
-        .link-pill {
-            padding: 12px 22px;
-            border-radius: 50px;
-            border: 1px solid var(--border);
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 600;
-            font-size: 0.85rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin: 6px;
-            transition: 0.3s;
-        }
-
-        .link-pill:hover {
-            background: var(--text);
-            color: #fff;
-            transform: scale(1.05);
-        }
-
-        .pill-highlight { 
-            background: var(--accent); 
-            color: #fff; 
-            border-color: var(--accent);
-            transition: var(--accent-transition);
-        }
-
-        /* Footer */
-        footer {
-            padding: 80px 5%;
-            background: var(--soft-grey);
-            text-align: center;
-            border-top: 1px solid var(--border);
-        }
-
-        @media (max-width: 768px) {
-            * { cursor: auto !important; }
-            #cursor, #cursor-follower { display: none; }
-            .grid-layout { grid-template-columns: 1fr; }
-        }
+        .color-circle { width: 24px; height: 24px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: 0.2s; }
+        .color-circle:hover { transform: scale(1.2); border-color: #000; }
+        
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        #settings-panel::-webkit-scrollbar { width: 6px; }
+        #settings-panel::-webkit-scrollbar-thumb { background: #c10000; border-radius: 10px; }
     </style>
 </head>
 <body>
 
-<div id="cursor"></div>
-<div id="cursor-follower"></div>
-
-<nav>
-    <div class="logo">Hassan Jatoi</div>
-    <div style="display: flex; gap: 20px;">
-        <a href="mailto:jatoihassan009@gmail.com"><i data-lucide="mail" size="20"></i></a>
-        <a href="https://linkedin.com/in/hassanjatoi786" target="_blank"><i data-lucide="linkedin" size="20"></i></a>
-    </div>
-</nav>
-
-<div class="header-profile-box">
-    <div class="passport-photo">
-        <img src="https://i.ibb.co/JR2045kd/profile.jpg" alt="Hassan Jatoi" id="main-profile-img">
-    </div>
-    <form action="https://www.google.com/search" method="GET" class="search-wrapper" target="_blank">
-        <i data-lucide="search" size="18" style="color: #ccc; margin-left: 10px;"></i>
-        <input type="text" name="q" placeholder="Explore literary works...">
-        <button type="submit" class="search-btn">Search</button>
-    </form>
-</div>
-
-<header class="hero-text">
-    <h1>The Poetry of <span>Modernity</span></h1>
-    <p style="color: #71717a; max-width: 600px; margin: auto;">Curated collection of digital experiments and poetic structures.</p>
-</header>
-
-<div class="main-container">
-    <div class="grid-layout">
-        <!-- Project Alpha -->
-        <a href="https://blue-horizons-greyheart-hassanjatoi.netlify.app/" class="work-card" data-project="alpha">
-            <div class="img-box"><img src="" alt="Blue Horizons"></div>
-            <div class="card-info">
-                <span>Project Alpha</span>
-                <h3>Blue Horizons</h3>
-                <p>A journey into the azure depths of the human psyche.</p>
-            </div>
-        </a>
-
-        <!-- Project Beta -->
-        <a href="https://stranger-city-hassanjatoi.netlify.app/" class="work-card" data-project="beta">
-            <div class="img-box"><img src="" alt="Stranger City"></div>
-            <div class="card-info">
-                <span>Project Beta</span>
-                <h3>Stranger City</h3>
-                <p>Urban isolation captured through digital verse.</p>
-            </div>
-        </a>
-
-        <!-- Project Gamma -->
-        <a href="https://griefof2025hassanjatoi.netlify.app/" class="work-card" data-project="gamma">
-            <div class="img-box"><img src="" alt="Grief of 2025"></div>
-            <div class="card-info">
-                <span>Project Gamma</span>
-                <h3>Grief of 2025</h3>
-                <p>Chronicles of a year defined by emotional resonance.</p>
-            </div>
-        </a>
-
-        <!-- Project Delta -->
-        <a href="https://lonelypathhassanjatoi.netlify.app/" class="work-card" data-project="delta">
-            <div class="img-box"><img src="" alt="Lonely Path"></div>
-            <div class="card-info">
-                <span>Project Delta</span>
-                <h3>Lonely Path</h3>
-                <p>The solo trek through philosophical landscapes.</p>
-            </div>
-        </a>
-
-        <!-- Project Epsilon -->
-        <a href="https://brokensoulhassanjatoi.netlify.app/" class="work-card" data-project="epsilon">
-            <div class="img-box"><img src="" alt="Broken Soul"></div>
-            <div class="card-info">
-                <span>Project Epsilon</span>
-                <h3>Broken Soul</h3>
-                <p>Artistic fragments of resilience and recovery.</p>
-            </div>
-        </a>
-
-        <!-- Project Archive -->
-        <a href="https://poetrybyhassanjatoi.netlify.app/" class="work-card" data-project="archive">
-            <div class="img-box"><img src="" alt="Poetry Archive"></div>
-            <div class="card-info">
-                <span>Main Portal</span>
-                <h3>Poetry Archive</h3>
-                <p>The central hub for all my written works.</p>
-            </div>
-        </a>
+    <!-- Floating Settings Button -->
+    <div class="settings-btn urdu-text" onclick="toggleSettings()">
+        <i class="fas fa-cog"></i> ترتیبات (Settings)
     </div>
 
-    <!-- Complete Links Collection -->
-    <div class="links-section">
-        <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; margin-bottom: 30px;">Complete Network</h2>
-        <div style="display: flex; flex-wrap: wrap;">
-            <a href="https://hassan-poetry-website-5cim.vercel.app/" class="link-pill pill-highlight" target="_blank"><i data-lucide="external-link"></i> Vercel Main Hub</a>
-            <a href="https://allpoetry.com/Hassan_jatoi" class="link-pill" target="_blank"><i data-lucide="feather"></i> AllPoetry Profile</a>
-            <a href="https://hellopoetry.com/tag/hassanjatoipoetry/" class="link-pill" target="_blank"><i data-lucide="heart"></i> Hello Poetry</a>
-            <a href="https://www.urdupoint.com/poetry/user-poet/hassan-jatoi-27314.html" class="link-pill" target="_blank"><i data-lucide="book-open"></i> UrduPoint</a>
-            <a href="https://www.aruuz.com/?user/Hassanjatoi" class="link-pill" target="_blank"><i data-lucide="mic-2"></i> Aruuz Hub</a>
-            <a href="https://www.fiverr.com/s/0bgYw6a" class="link-pill pill-highlight" target="_blank"><i data-lucide="shopping-cart"></i> Fiverr Services</a>
-            <a href="https://pin.it/5PZFNSgIP" class="link-pill" target="_blank"><i data-lucide="camera"></i> Pinterest</a>
-            <a href="https://www.facebook.com/share/17zubUQBeE/" class="link-pill" target="_blank"><i data-lucide="facebook"></i> Facebook</a>
-            <a href="https://www.tiktok.com/@hassanjatoi209" class="link-pill" target="_blank"><i data-lucide="music-2"></i> TikTok Verse</a>
-            <a href="https://linkedin.com/in/hassanjatoi786" class="link-pill" target="_blank"><i data-lucide="linkedin"></i> LinkedIn</a>
+    <!-- Side Panel -->
+    <div id="settings-panel">
+        <div class="flex justify-between items-center mb-6 border-b pb-4">
+            <h3 class="text-xl font-bold text-red-700 urdu-text">ڈسپلے سیٹنگز</h3>
+            <button onclick="toggleSettings()" class="text-gray-400 hover:text-red-600"><i class="fas fa-times text-2xl"></i></button>
+        </div>
+
+        <div class="space-y-8">
+            <div>
+                <label class="text-sm font-bold block mb-3 text-gray-700 border-r-4 border-red-600 pr-2">50 فونٹس کا انتخاب</label>
+                <select id="font-select" class="w-full p-3 border rounded-lg text-sm bg-gray-50 outline-none" onchange="applyFont(this.value)">
+                    <option value="'Noto Nastaliq Urdu'">ڈیفالٹ اردو نستعلیق</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="text-sm font-bold block mb-3 text-gray-700 border-r-4 border-red-600 pr-2">50 تحریر کے رنگ</label>
+                <div id="color-palette" class="grid grid-cols-7 gap-2"></div>
+            </div>
+
+            <div>
+                <label class="text-sm font-bold block mb-3 text-gray-700 border-r-4 border-red-600 pr-2">50 تھیمز (بیک گراؤنڈ)</label>
+                <div id="theme-palette" class="grid grid-cols-4 gap-2"></div>
+            </div>
+
+            <div>
+                <label class="text-sm font-bold block mb-2 text-gray-700">تحریر کا سائز</label>
+                <input type="range" min="1.2" max="4" step="0.1" value="2" class="w-full accent-red-600" oninput="changeSize(this.value)">
+            </div>
         </div>
     </div>
-</div>
 
-<footer>
-    <p class="logo">Hassan Jatoi</p>
-    <p style="margin: 15px 0; font-size: 0.9rem; color: #71717a;">Poet • Thinker • Creator</p>
-    <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 30px;">
-        <a href="mailto:jatoihassan009@gmail.com" style="color: inherit;"><i data-lucide="mail" size="24"></i></a>
-        <a href="https://linkedin.com/in/hassanjatoi786" target="_blank" style="color: inherit;"><i data-lucide="linkedin" size="24"></i></a>
+    <div class="overlay" id="overlay" onclick="toggleSettings()"></div>
+
+    <!-- Top Bar -->
+    <div class="top-bar bg-[#1a1a1a] text-white py-2 text-sm border-b-2 border-red-600">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div id="urdu-date" class="urdu-text">لوڈنگ...</div>
+            <div class="flex gap-4">
+                <span class="hidden sm:inline">اردو پوائنٹ نیٹ ورک</span>
+                <span id="live-clock" class="font-mono bg-red-700 px-2 rounded">00:00:00</span>
+            </div>
+        </div>
     </div>
-    <p style="font-size: 0.7rem; opacity: 0.5; text-transform: uppercase; letter-spacing: 3px;">Mehar, Sindh, Pakistan • © 2025</p>
-</footer>
 
-<script>
-    lucide.createIcons();
+    <!-- Header -->
+    <header class="main-header text-center">
+        <div class="container mx-auto px-4">
+            <h1 class="up-logo-text urdu-text">اردو پوائنٹ</h1>
+            <h2 class="poet-name urdu-text">حسن جتوئی</h2>
+        </div>
+    </header>
 
-    // 1. Automatic Color Change System
-    const colors = ['#b18e1d', '#7c3aed', '#db2777', '#2563eb', '#059669', '#ea580c'];
-    let colorIndex = 0;
+    <!-- Navigation -->
+    <nav class="nav-menu">
+        <div class="container mx-auto px-4 flex overflow-x-auto no-scrollbar">
+            <a href="#" class="nav-link bg-black/20">صفحہ اول</a>
+            <a href="#" class="nav-link">تازہ کلام</a>
+            <a href="#" class="nav-link">غزلیات</a>
+            <a href="https://hassanaliuk11-oss.github.io/Hassanalipoetry-/" target="_blank" class="nav-link bg-blue-900/40">English Poetry</a>
+            <a href="https://wa.me/923000000000" target="_blank" class="nav-link bg-green-600/40 font-bold"><i class="fab fa-whatsapp ml-2"></i> رابطہ (WhatsApp)</a>
+        </div>
+    </nav>
 
-    function rotateColors() {
-        colorIndex = (colorIndex + 1) % colors.length;
-        document.documentElement.style.setProperty('--accent', colors[colorIndex]);
-    }
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 mt-12 max-w-3xl mb-20">
+        <div id="poetry-container"></div>
+    </main>
 
-    // 2. Automatic Image Gallery System
-    const galleries = {
-        alpha: [
-            "https://images.pexels.com/photos/1535288/pexels-photo-1535288.jpeg?auto=compress&cs=tinysrgb&w=800",
-            "https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?auto=compress&cs=tinysrgb&w=800",
-            "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&w=800"
-        ],
-        beta: [
-            "https://images.pexels.com/photos/2526025/pexels-photo-2526025.jpeg?auto=compress&cs=tinysrgb&w=800",
-            "https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&w=800",
-            "https://images.pexels.com/photos/33109/fall-autumn-red-season.jpg?auto=compress&cs=tinysrgb&w=800"
-        ],
-        gamma: [
-            "https://images.pexels.com/photos/731192/pexels-photo-731192.jpeg?auto=compress&cs=tinysrgb&w=800",
-            "https://images.pexels.com/photos/1518111/pexels-photo-1518111.jpeg?auto=compress&cs=tinysrgb&w=800",
-            "https://images.pexels.com/photos/568027/pexels-photo-568027.jpeg?auto=compress&cs=tinysrgb&w=800"
-        ],
-        delta: [
-            "https://images.pexels.com/photos/458491/pexels-photo-458491.jpeg?auto=compress&cs=tinysrgb&w=800",
-            "https://images.pexels.com/photos/670061/pexels-photo-670061.jpeg?auto=compress&cs=tinysrgb&w=800",
-            "https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&w=800"
-        ],
-        epsilon: [
-            "https://images.pexels.com/photos/2613461/pexels-photo-2613461.jpeg?auto=compress&cs=tinysrgb&w=800",
-            "https://images.pexels.com/photos/544542/pexels-photo-544542.jpeg?auto=compress&cs=tinysrgb&w=800",
-            "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=800"
-        ],
-        archive: [
-            "https://images.pexels.com/photos/1765033/pexels-photo-1765033.jpeg?auto=compress&cs=tinysrgb&w=800",
-            "https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&w=800",
-            "https://images.pexels.com/photos/267586/pexels-photo-267586.jpeg?auto=compress&cs=tinysrgb&w=800"
-        ]
-    };
+    <script>
+        function toggleSettings() {
+            const panel = document.getElementById('settings-panel');
+            const overlay = document.getElementById('overlay');
+            panel.classList.toggle('open');
+            overlay.style.display = panel.classList.contains('open') ? 'block' : 'none';
+        }
 
-    let galleryIndices = { alpha: 0, beta: 0, gamma: 0, delta: 0, epsilon: 0, archive: 0 };
+        const poetryData = [
+            { id: 1, title: "روح کی تنہائی", text: "روح جب اکیلی ہو جائے تو ہجوم بھی سنسان لگتا ہے<br>خاموشی باتیں کرنے لگتی ہے<br>اور انسان خود سے ڈرنے لگتا ہے" },
+            { id: 2, title: "ہجر کا سفر", text: "تیرے ہجر کی آگ میں جلنا بھی مقدر ٹھہرا<br>تیرا ملنا تو دور کی بات، تیرا ذکر بھی دشوار ہوا<br>ہم نے تڑپ کر گزاری ہے جو راتیں، وہ رب ہی جانتا ہے" },
+            { id: 3, title: "خاموشی", text: "لب سی لیے ہیں کہ زمانے کو شکایت نہ ہو<br>ورنہ میرے اندر اک سمندر ٹھاٹھیں مار رہا ہے<br>خاموشی بھی اک بیان ہے، سمجھنے والوں کے لیے" }
+        ];
 
-    function rotateImages() {
-        Object.keys(galleries).forEach(key => {
-            const card = document.querySelector(`[data-project="${key}"]`);
-            const img = card.querySelector('img');
-            
-            // Increment index
-            galleryIndices[key] = (galleryIndices[key] + 1) % galleries[key].length;
-            
-            // Fade out current
-            img.style.opacity = '0';
-            
-            // Change source after fade
-            setTimeout(() => {
-                img.src = galleries[key][galleryIndices[key]];
-                img.style.opacity = '1';
-                img.style.transform = `scale(${1 + Math.random() * 0.1})`; // Gentle zoom effect
-            }, 750);
-        });
-    }
+        const colors = [
+            "#c10000", "#1a1a1a", "#000000", "#333333", "#4A90E2", "#50E3C2", "#B8E986", "#F5A623", "#D0021B", "#8B572A",
+            "#417505", "#BD10E0", "#9013FE", "#4A4A4A", "#9B9B9B", "#7ED321", "#F8E71C", "#FF4500", "#1E90FF", "#2E8B57",
+            "#8A2BE2", "#A52A2A", "#D2691E", "#FF7F50", "#6495ED", "#DC143C", "#00008B", "#008B8B", "#B8860B", "#A9A9A9",
+            "#006400", "#BDB76B", "#8B008B", "#556B2F", "#FF8C00", "#9932CC", "#8B0000", "#E9967A", "#8FBC8F", "#483D8B",
+            "#2F4F4F", "#00CED1", "#9400D3", "#FF1493", "#00BFFF", "#696969", "#FFD700", "#DAA520", "#ADFF2F", "#FF69B4"
+        ];
 
-    // Initial setup
-    function init() {
-        Object.keys(galleries).forEach(key => {
-            const card = document.querySelector(`[data-project="${key}"]`);
-            const img = card.querySelector('img');
-            img.src = galleries[key][0];
-        });
-        
-        // Start timers
-        setInterval(rotateColors, 5000);
-        setInterval(rotateImages, 5000);
-    }
+        const themes = [
+            "#fdfdfd", "#f4f4f4", "#eef2f3", "#fdfbfb", "#ebedee", "#f5f7fa", "#fdfcf0", "#f9f9f9", "#fff5f5", "#f5f5ff",
+            "#e3f2fd", "#f1f8e9", "#fffde7", "#efebe9", "#eceff1", "#fafafa", "#fffaf0", "#f0fff0", "#f0ffff", "#f5f5f5",
+            "linear-gradient(to right, #ff9966, #ff5e62)", "linear-gradient(to right, #00b4db, #0083b0)", 
+            "linear-gradient(to right, #70e1f5, #ffd194)", "linear-gradient(to right, #56ab2f, #a8e063)",
+            "linear-gradient(to right, #614385, #516395)", "linear-gradient(to right, #02aab0, #00cdac)",
+            "linear-gradient(to right, #da22ff, #9733ee)", "#fdfcfb", "#e6e9f0", "#d9e4f5", "#f6f1d3", "#cfd9df", "#e2ebf0", "#fff1eb", "#ace0f9", "#fddb92", "#d4fc79", "#96e6a1", "#84fab0", "#a1c4fd", "#c2e9fb", "#f6d365", "#fda085", "#ffecd2", "#fcb69f", "#ff9a9e", "#fccb90"
+        ];
 
-    init();
+        function initSettings() {
+            const colorPalette = document.getElementById('color-palette');
+            colors.forEach(c => {
+                const div = document.createElement('div');
+                div.className = "color-circle shadow-sm";
+                div.style.backgroundColor = c;
+                div.onclick = () => { document.querySelectorAll('.poetry-lines').forEach(p => p.style.color = c); };
+                colorPalette.appendChild(div);
+            });
 
-    // Cursor Logic
-    const cursor = document.getElementById('cursor');
-    const follower = document.getElementById('cursor-follower');
+            const themePalette = document.getElementById('theme-palette');
+            themes.forEach(t => {
+                const div = document.createElement('div');
+                div.className = "h-10 rounded-lg cursor-pointer border border-gray-200 shadow-sm hover:scale-105 transition";
+                div.style.background = t;
+                div.onclick = () => { document.body.style.background = t; };
+                themePalette.appendChild(div);
+            });
 
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
-        follower.style.transform = `translate3d(${e.clientX - 20}px, ${e.clientY - 20}px, 0)`;
-    });
+            const fontSelect = document.getElementById('font-select');
+            const fonts = ['Noto Nastaliq Urdu', 'Amiri', 'Lateef', 'Jomhuria', 'Reem Kufi', 'Aref Ruqaa', 'Harmattan', 'Serif', 'Sans-Serif', 'Cursive'];
+            for(let i=1; i<=50; i++) {
+                const opt = document.createElement('option');
+                const f = fonts[i % fonts.length];
+                opt.value = f;
+                opt.innerText = `فونٹ ${i} (${f})`;
+                fontSelect.appendChild(opt);
+            }
+        }
 
-    document.querySelectorAll('a, button, input').forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            follower.style.transform += ' scale(1.5)';
-            follower.style.borderColor = 'var(--accent)';
-            follower.style.backgroundColor = 'rgba(177, 142, 29, 0.05)';
-        });
-        el.addEventListener('mouseleave', () => {
-            follower.style.transform = follower.style.transform.replace(' scale(1.5)', '');
-            follower.style.borderColor = 'var(--text)';
-            follower.style.backgroundColor = 'transparent';
-        });
-    });
-</script>
+        function renderPoetry() {
+            const container = document.getElementById('poetry-container');
+            poetryData.forEach(p => {
+                const card = document.createElement('article');
+                card.className = "poetry-card";
+                card.innerHTML = `
+                    <div class="poetry-content">
+                        <h3 class="poetry-title urdu-text">${p.title}</h3>
+                        <div class="poetry-lines urdu-text">${p.text}</div>
+                        <div class="mt-10 flex justify-center gap-8 border-t border-gray-100 pt-6">
+                            <button class="text-gray-300 hover:text-red-600 transition text-2xl"><i class="fas fa-heart"></i></button>
+                            <button class="text-gray-300 hover:text-green-500 transition text-2xl" onclick="window.open('https://wa.me/?text=${encodeURIComponent(p.text.replace(/<br>/g, ' '))}')"><i class="fab fa-whatsapp"></i></button>
+                            <button class="text-gray-300 hover:text-blue-500 transition text-2xl"><i class="fas fa-share-alt"></i></button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
 
+        function applyFont(f) { document.querySelectorAll('.poetry-lines').forEach(p => p.style.fontFamily = f); }
+        function changeSize(s) { document.querySelectorAll('.poetry-lines').forEach(p => p.style.fontSize = s + 'rem'); }
+
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('live-clock').innerText = now.toLocaleTimeString('en-GB');
+            document.getElementById('urdu-date').innerText = now.toLocaleDateString('ur-PK', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        }
+
+        window.onload = () => {
+            renderPoetry();
+            initSettings();
+            updateClock();
+            setInterval(updateClock, 1000);
+        };
+    </script>
 </body>
 </html>
