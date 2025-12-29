@@ -1,674 +1,652 @@
 <!DOCTYPE html>
-<html lang="ur" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اردو پوائنٹ - حسن جتوئی</title>
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&family=Lateef&family=Jomhuria&family=Reem+Kufi&family=Aref+Ruqaa&family=Harmattan&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <title>Hassan Jatoi | Literary Portfolio</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --up-red: #c10000;
-            --up-dark: #1a1a1a;
-            --font-nastaliq: 'Noto Nastaliq Urdu', serif;
+            --bg: #ffffff;
+            --text: #09090b;
+            --accent: #b18e1d;
+            --soft-grey: #f8f8f8;
+            --border: #ececec;
+            --glass: rgba(255, 255, 255, 0.85);
+            --shadow: 0 20px 50px rgba(0,0,0,0.04);
+            --transition-slow: 1.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        body {
-            font-family: var(--font-nastaliq);
-            background-color: #fdfdfd;
-            color: #333;
-            transition: all 0.3s ease;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            cursor: none;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg);
+            color: var(--text); 
+            line-height: 1.6;
             overflow-x: hidden;
-            min-height: 100vh;
         }
 
-        .urdu-text { font-family: var(--font-nastaliq); }
-
-        /* Header Styling */
-        .main-header { padding: 50px 0; background: #fff; border-bottom: 1px solid #eee; }
-        .up-logo-text { color: var(--up-red); font-size: clamp(3rem, 10vw, 5.5rem); font-weight: bold; line-height: 1; display: block; }
-        .poet-name { color: #444; font-size: clamp(1.5rem, 5vw, 2.5rem); margin-top: 25px; display: block; letter-spacing: 2px; }
-        
-        /* Navigation */
-        .nav-menu { background: var(--up-red); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .nav-link { padding: 14px 25px; display: inline-block; color: white; font-weight: bold; border-left: 1px solid rgba(255,255,255,0.1); transition: 0.3s; white-space: nowrap; }
-        .nav-link:hover { background: rgba(0,0,0,0.2); }
-
-        /* Poetry Card */
-        .poetry-card { border: 1px solid #eee; margin-bottom: 40px; background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .poetry-content { padding: 50px 20px; text-align: center; }
-        .poetry-title { color: var(--up-red); font-size: 2.4rem; margin-bottom: 25px; border-bottom: 2px solid #f0f0f0; display: inline-block; padding-bottom: 10px; }
-        .poetry-lines { font-size: 2rem; line-height: 2.8; transition: all 0.3s; }
-
-        /* Settings Panel */
-        #settings-panel {
-            position: fixed;
-            top: 0;
-            left: -320px;
-            width: 320px;
-            height: 100vh;
-            background: white;
-            z-index: 2000;
-            box-shadow: 5px 0 15px rgba(0,0,0,0.1);
-            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            padding: 20px;
-            overflow-y: auto;
+        /* Custom Cursor */
+        #cursor {
+            width: 8px; height: 8px; background: var(--text); border-radius: 50%;
+            position: fixed; pointer-events: none; z-index: 10001; transition: transform 0.05s linear;
+        }
+        #cursor-follower {
+            width: 40px; height: 40px; border: 1px solid var(--text); border-radius: 50%;
+            position: fixed; pointer-events: none; z-index: 10000; transition: transform 0.15s ease-out;
         }
 
-        #settings-panel.open { left: 0; }
-
-        .settings-btn {
+        nav {
             position: fixed;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-            background: var(--up-red);
-            color: white;
-            padding: 15px 10px;
-            border-radius: 0 12px 12px 0;
-            cursor: pointer;
-            z-index: 2001;
-            box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            font-weight: bold;
-            font-size: 0.9rem;
+            top: 0; width: 100%;
+            padding: 15px 8%;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 10px;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
         }
 
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
+        .logo-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .live-clock {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color var(--transition-slow);
+        }
+
+        .header-profile-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 130px;
+            gap: 25px;
+        }
+
+        .passport-photo {
+            width: 150px;
+            height: 180px;
+            border: 6px solid #fff;
+            box-shadow: var(--shadow);
+            border-radius: 4px;
+            overflow: hidden;
+            background: #f3f3f3;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .passport-photo img {
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
-            display: none;
-            z-index: 1999;
+            object-fit: cover;
         }
 
-        .color-circle { width: 24px; height: 24px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: 0.2s; }
-        .color-circle:hover { transform: scale(1.2); border-color: #000; }
-        
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        #settings-panel::-webkit-scrollbar { width: 6px; }
-        #settings-panel::-webkit-scrollbar-thumb { background: #c10000; border-radius: 10px; }
+        .search-wrapper {
+            width: 100%;
+            max-width: 500px;
+            background: #fff;
+            padding: 6px 10px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+
+        .search-wrapper input {
+            border: none;
+            outline: none;
+            width: 100%;
+            padding: 10px 15px;
+            font-size: 0.9rem;
+        }
+
+        .search-btn {
+            background: var(--text);
+            color: #fff;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-btn:hover { background-color: var(--accent); }
+
+        .main-container { max-width: 1300px; margin: auto; padding: 0 5%; }
+
+        .hero-text {
+            text-align: center;
+            padding: 40px 0 30px;
+        }
+
+        .hero-text h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        #dynamic-word { 
+            color: var(--accent); 
+            font-style: italic;
+            transition: color var(--transition-slow), opacity 0.5s ease;
+            display: inline-block;
+            min-width: 200px;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin: 60px 0 40px;
+            text-align: left;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
+            transition: background-color var(--transition-slow);
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .work-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            transition: 0.4s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .work-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        .img-box {
+            height: 220px;
+            overflow: hidden;
+            background: #f0f0f0;
+            position: relative;
+        }
+
+        .img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 1s ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .card-info { padding: 25px; flex-grow: 1; }
+        .card-info span { 
+            font-size: 0.7rem; 
+            color: var(--accent); 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px;
+            transition: color var(--transition-slow);
+        }
+        .card-info h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; margin: 8px 0; }
+        .card-info p { font-size: 0.9rem; color: #666; }
+
+        .share-container {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px dashed var(--border);
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .share-btn-circle {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            color: var(--text);
+            text-decoration: none;
+            transition: 0.3s;
+            background: #fff;
+        }
+
+        .share-btn-circle:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        footer {
+            padding: 80px 5%;
+            background: var(--soft-grey);
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 768px) {
+            * { cursor: auto !important; }
+            #cursor, #cursor-follower { display: none; }
+            .grid-layout { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Floating Settings Button -->
-    <div class="settings-btn urdu-text" onclick="toggleSettings()">
-        <i class="fas fa-cog"></i> ترتیبات (Settings)
+<div id="cursor"></div>
+<div id="cursor-follower"></div>
+
+<nav>
+    <div class="logo-group">
+        <div class="logo">Hassan Jatoi</div>
+        <div class="live-clock" id="clock-display">Loading...</div>
+    </div>
+    <div style="display: flex; gap: 20px; align-items: center;">
+        <a href="mailto:jatoihassan009@gmail.com" title="Email Me"><i data-lucide="mail" size="20"></i></a>
+        <a href="https://wa.me/923083500829" target="_blank" title="WhatsApp Me"><i data-lucide="message-circle" size="20"></i></a>
+        <a href="https://linkedin.com/in/hassanjatoi786" target="_blank" title="LinkedIn"><i data-lucide="linkedin" size="20"></i></a>
+    </div>
+</nav>
+
+<div class="header-profile-box">
+    <div class="passport-photo">
+        <img src="https://i.ibb.co/JR2045kd/profile.jpg" alt="Hassan Jatoi" id="main-profile-img">
+    </div>
+    <form action="https://www.google.com/search" method="GET" class="search-wrapper" target="_blank">
+        <i data-lucide="search" size="18" style="color: #ccc; margin-left: 10px;"></i>
+        <input type="text" name="q" placeholder="Explore literary works...">
+        <button type="submit" class="search-btn">Search</button>
+    </form>
+</div>
+
+<header class="hero-text">
+    <h1>The Poetry of <span id="dynamic-word">Modernity</span></h1>
+    <p style="color: #71717a; max-width: 600px; margin: auto; margin-bottom: 25px;">A curated collection of digital experiments and poetic structures by Hassan Jatoi.</p>
+</header>
+
+<div class="main-container">
+    <h2 class="section-title">Featured Highlights</h2>
+    <div class="grid-layout">
+        <a href="https://share.google/pmLPDkOHYUzyTx9Lx" class="work-card" data-project="google" target="_blank">
+            <div class="img-box"><img src="" alt="Google Poetry"></div>
+            <div class="card-info">
+                <span>Primary Network</span>
+                <h3>Google Poetry</h3>
+                <p>A dedicated space for digital poetry hosted on the Google network.</p>
+            </div>
+        </a>
+
+        <a href="https://hassanaliuk11-oss.github.io/hassanjatoiurdu-/" class="work-card" data-project="rooh" target="_blank">
+            <div class="img-box"><img src="" alt="Spirit's Journey"></div>
+            <div class="card-info">
+                <span>Urdu Literature</span>
+                <h3>Journey of the Soul</h3>
+                <p>A spiritual and intellectual voyage expressed through Urdu poetry and prose.</p>
+            </div>
+        </a>
     </div>
 
-    <!-- Side Panel -->
-    <div id="settings-panel">
-        <div class="flex justify-between items-center mb-6 border-b pb-4">
-            <h3 class="text-xl font-bold text-red-700 urdu-text">ڈسپلے سیٹنگز</h3>
-            <button onclick="toggleSettings()" class="text-gray-400 hover:text-red-600"><i class="fas fa-times text-2xl"></i></button>
-        </div>
-
-        <div class="space-y-8">
-            <div>
-                <label class="text-sm font-bold block mb-3 text-gray-700 border-r-4 border-red-600 pr-2">50 فونٹس کا انتخاب</label>
-                <select id="font-select" class="w-full p-3 border rounded-lg text-sm bg-gray-50 outline-none" onchange="applyFont(this.value)">
-                    <option value="'Noto Nastaliq Urdu'">ڈیفالٹ اردو نستعلیق</option>
-                </select>
+    <h2 class="section-title">Selected Works</h2>
+    <div class="grid-layout">
+        <a href="https://hassanaliuk11-oss.github.io/Heart-Touching/" class="work-card" data-project="alpha" target="_blank">
+            <div class="img-box"><img src="" alt="Separation & Love"></div>
+            <div class="card-info">
+                <span>Soulful Echoes</span>
+                <h3>Separation & Love</h3>
+                <p>Heart-touching verses exploring the deep pain of longing and romance.</p>
             </div>
+        </a>
 
-            <div>
-                <label class="text-sm font-bold block mb-3 text-gray-700 border-r-4 border-red-600 pr-2">50 تحریر کے رنگ</label>
-                <div id="color-palette" class="grid grid-cols-7 gap-2"></div>
+        <a href="https://hassanaliuk11-oss.github.io/my-colourful-words/" class="work-card" data-project="beta" target="_blank">
+            <div class="img-box"><img src="" alt="Tears in Eyes"></div>
+            <div class="card-info">
+                <span>Deep Sorrow</span>
+                <h3>Tears in Eyes</h3>
+                <p>A unique blend of vibrant vocabulary and the moistness of emotional grief.</p>
             </div>
+        </a>
 
-            <div>
-                <label class="text-sm font-bold block mb-3 text-gray-700 border-r-4 border-red-600 pr-2">50 تھیمز (بیک گراؤنڈ)</label>
-                <div id="theme-palette" class="grid grid-cols-4 gap-2"></div>
+        <a href="https://hassanaliuk11-oss.github.io/The-grief-of-2025/" class="work-card" data-project="gamma" target="_blank">
+            <div class="img-box"><img src="" alt="Grief of 2025"></div>
+            <div class="card-info">
+                <span>Modern Elegy</span>
+                <h3>The Grief of 2025</h3>
+                <p>A chronicle of modern struggles and the universal human condition.</p>
             </div>
+        </a>
 
-            <div>
-                <label class="text-sm font-bold block mb-2 text-gray-700">تحریر کا سائز</label>
-                <input type="range" min="1.2" max="4" step="0.1" value="2" class="w-full accent-red-600" oninput="changeSize(this.value)">
+        <a href="https://hassanaliuk11-oss.github.io/The-Lonely-Path/" class="work-card" data-project="delta" target="_blank">
+            <div class="img-box"><img src="" alt="Lonely Path"></div>
+            <div class="card-info">
+                <span>Solitude</span>
+                <h3>The Lonely Path</h3>
+                <p>Philosophy of silent roads and the wisdom found in traveling alone.</p>
             </div>
-        </div>
+        </a>
+
+        <a href="https://hassanaliuk11-oss.github.io/the-death-of-soul/" class="work-card" data-project="epsilon" target="_blank">
+            <div class="img-box"><img src="" alt="Death Of Spirits"></div>
+            <div class="card-info">
+                <span>Internal Voyage</span>
+                <h3>Death of Spirits</h3>
+                <p>The echoes of existence and the silence of a soul in transition.</p>
+            </div>
+        </a>
+
+        <a href="https://hassanaliuk11-oss.github.io/silent-people/" class="work-card" data-project="archive" target="_blank">
+            <div class="img-box"><img src="" alt="Silent People"></div>
+            <div class="card-info">
+                <span>Urban Silence</span>
+                <h3>Silent Peoples</h3>
+                <p>Untold urban stories hidden behind the masks of quiet faces.</p>
+            </div>
+        </a>
     </div>
 
-    <div class="overlay" id="overlay" onclick="toggleSettings()"></div>
-
-    <!-- Top Bar -->
-    <div class="top-bar bg-[#1a1a1a] text-white py-2 text-sm border-b-2 border-red-600">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <div id="urdu-date" class="urdu-text">لوڈنگ...</div>
-            <div class="flex gap-4">
-                <span class="hidden sm:inline">اردو پوائنٹ نیٹ ورک</span>
-                <span id="live-clock" class="font-mono bg-red-700 px-2 rounded">00:00:00</span>
+    <h2 class="section-title">Archive & Collections</h2>
+    <div class="grid-layout">
+        <a href="https://hassanaliuk11-oss.github.io/poetry-book1/" class="work-card" data-project="book1" target="_blank">
+            <div class="img-box"><img src="" alt="Broken Soul"></div>
+            <div class="card-info">
+                <span>Anthology</span>
+                <h3>Broken Soul</h3>
+                <p>A deep analytical dive into the fragmented pieces of human emotion.</p>
             </div>
-        </div>
+        </a>
+
+        <a href="https://hassanaliuk11-oss.github.io/silent-people/" class="work-card" data-project="stranger" target="_blank">
+            <div class="img-box"><img src="" alt="City of Stranger"></div>
+            <div class="card-info">
+                <span>Geography</span>
+                <h3>City Of Stranger</h3>
+                <p>A narrative wandering through the unknown corridors of the human mind.</p>
+            </div>
+        </a>
+
+        <a href="https://www.urdupoint.com/poetry/user-poet/hassan-jatoi-27314.html" class="work-card" data-project="urdupoint" target="_blank">
+            <div class="img-box"><img src="" alt="Urdu Point"></div>
+            <div class="card-info">
+                <span>Publication</span>
+                <h3>Urdu Point Profile</h3>
+                <p>Official literary contributions on Pakistan's leading digital portal.</p>
+            </div>
+        </a>
+
+        <a href="https://allpoetry.com/Hassan_jatoi" class="work-card" data-project="allpoetry" target="_blank">
+            <div class="img-box"><img src="" alt="AllPoetry"></div>
+            <div class="card-info">
+                <span>International</span>
+                <h3>AllPoetry Archive</h3>
+                <p>Global portfolio within the world's most prestigious poetry community.</p>
+            </div>
+        </a>
+
+        <a href="https://linkedin.com/in/hassanjatoi786" class="work-card" data-project="linkedin" target="_blank">
+            <div class="img-box"><img src="" alt="LinkedIn"></div>
+            <div class="card-info">
+                <span>Professional</span>
+                <h3>LinkedIn Network</h3>
+                <p>Connect with me for professional literary and creative collaborations.</p>
+            </div>
+        </a>
     </div>
-
-    <!-- Header -->
-    <header class="main-header text-center">
-        <div class="container mx-auto px-4">
-            <h1 class="up-logo-text urdu-text">اردو پوائنٹ</h1>
-            <h2 class="poet-name urdu-text">حسن جتوئی</h2>
-        </div>
-    </header>
-
-    <!-- Navigation -->
-    <nav class="nav-menu">
-        <div class="container mx-auto px-4 flex overflow-x-auto no-scrollbar">
-            <a href="#" class="nav-link bg-black/20">صفحہ اول</a>
-            <a href="#" class="nav-link">تازہ کلام</a>
-            <a href="#" class="nav-link">غزلیات</a>
-            <a href="https://hassanaliuk11-oss.github.io/Hassanalipoetry-/" target="_blank" class="nav-link bg-blue-900/40">English Poetry</a>
-            <a href="https://wa.me/923000000000" target="_blank" class="nav-link bg-green-600/40 font-bold"><i class="fab fa-whatsapp ml-2"></i> رابطہ (WhatsApp)</a>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 mt-12 max-w-3xl mb-20">
-        <div id="poetry-container"></div>
-    </main>
-
-    <script>
-        function toggleSettings() {
-            const panel = document.getElementById('settings-panel');
-            const overlay = document.getElementById('overlay');
-            panel.classList.toggle('open');
-            overlay.style.display = panel.classList.contains('open') ? 'block' : 'none';
-        }
-
-      const poetryData = [
-{ id: 1, title: "روح کی تنہائی", text: "روح جب اکیلی ہو جائے تو ہجوم بھی سنسان لگتا ہے<br>خاموشی باتیں کرنے لگتی ہے<br>اور انسان خود سے ڈرنے لگتا ہے" },
-
-{ id: 2, title: "ہجر کا سفر", text: "تیرے ہجر کی آگ میں جلنا بھی مقدر ٹھہرا<br>ملنا تو دور، تیرا ذکر بھی بھاری لگا<br>راتیں گواہ ہیں اس درد کی" },
-
-{ id: 3, title: "خاموشی", text: "لب سیے ہیں کہ شور نہ ہو<br>ورنہ اندر سمندر بپھرا پڑا ہے<br>خاموشی بھی ایک زبان ہے" },
-
-{ id: 4, title: "دل کی آواز", text: "دل جو کہتا ہے وہ لفظ نہیں بنتا<br>سانسوں میں بکھر جاتا ہے<br>اور آنکھوں سے ٹپک پڑتا ہے" },
-
-{ id: 5, title: "خاموش روح", text: "خاموش روح سب کچھ سہہ لیتی ہے<br>شکایت نہیں کرتی<br>بس راتوں کو جاگتی ہے" },
-
-{ id: 6, title: "روح کا سفر", text: "روح کا سفر قدموں سے نہیں ہوتا<br>یہ درد سے ہو کر گزرتا ہے<br>اور شعور میں ٹھہرتا ہے" },
-
-{ id: 7, title: "اندرونی روشنی", text: "جب سب چراغ بجھ جائیں<br>تو اندر کی روشنی راستہ دکھاتی ہے<br>یہ شور نہیں کرتی" },
-
-{ id: 8, title: "دل اور روح کا رقص", text: "دل رونا چاہتا ہے<br>روح صبر سکھاتی ہے<br>زندگی ان دونوں کے بیچ چلتی ہے" },
-
-{ id: 9, title: "احساس کی گہرائیاں", text: "جتنا گہرا احساس ہو<br>اتنے ہی کم لفظ ملتے ہیں<br>خاموشی بڑھ جاتی ہے" },
-
-{ id: 10, title: "روح کا بوجھ", text: "جسم تھک جائے تو آرام ملتا ہے<br>روح تھک جائے تو مسکراہٹ اوڑھنی پڑتی ہے<br>یہ بوجھ نظر نہیں آتا" },
-
-{ id: 11, title: "یادوں کی پرچھائیاں", text: "یادیں ساتھ نہیں چلتیں<br>پرچھائیں بن کر پیچھا کرتی ہیں<br>روشنی میں بھی اندھیرا گھول دیتی ہیں" },
-
-{ id: 12, title: "سکون کی تلاش", text: "سکون باہر نہیں ملتا<br>وہ اندر کہیں رو رہا ہوتا ہے<br>بس سننے والا دل چاہیے" },
-
-{ id: 13, title: "روحانی درد", text: "یہ درد شور نہیں مچاتا<br>انسان کو نرم بنا دیتا ہے<br>اور دعا کے قریب لے آتا ہے" },
-
-{ id: 14, title: "دل کی گمشدگی", text: "دل کہیں پیچھے رہ جاتا ہے<br>اور انسان آگے بڑھتا رہتا ہے<br>خود سے بچھڑ کر" },
-
-{ id: 15, title: "اندر کی چیخ", text: "کچھ چیخیں آواز نہیں بنتیں<br>سانسوں میں دب جاتی ہیں<br>اور آنکھوں سے بولتی ہیں" },
-
-{ id: 16, title: "روح کی تھکن", text: "روح تھک جائے تو نیند بھی بوجھ لگتی ہے<br>خاموشی لمبی ہو جاتی ہے<br>اور باتیں کم" },
-
-{ id: 17, title: "دل کا سکوت", text: "دل جب خاموش ہوتا ہے<br>تو شور بھی اجازت مانگتا ہے<br>یہ سکوت بولتا ہے" },
-
-{ id: 18, title: "روح کی پیاس", text: "یہ پیاس پانی سے نہیں بجھتی<br>محبت اور توجہ مانگتی ہے<br>ذرا سا احساس کافی ہوتا ہے" },
-
-{ id: 19, title: "اندر کا اندھیرا", text: "اندھیرا باہر نہیں ہوتا<br>یہ اندر اتر آتا ہے<br>جب امید ٹوٹتی ہے" },
-
-{ id: 20, title: "روح کی شکست", text: "شکست شور نہیں کرتی<br>انسان کو بدل دیتی ہے<br>اور خاموش بنا دیتی ہے" },
-
-{ id: 21, title: "خاموش دعا", text: "کچھ دعائیں لبوں تک نہیں آتیں<br>دل سے نکل کر رب تک جاتی ہیں<br>بغیر آواز کے" },
-
-{ id: 22, title: "دل کا بوجھ", text: "دل بوجھل ہو تو لفظ ہلکے پڑ جاتے ہیں<br>خاموشی سب کچھ کہہ دیتی ہے<br>بغیر بولے" },
-
-{ id: 23, title: "روح کی گہرائی", text: "جو جتنا گہرا ہوتا ہے<br>اتنا ہی کم بولتا ہے<br>شور سطح پر ہوتا ہے" },
-
-{ id: 24, title: "احساس کی تنہائی", text: "احساس اکیلا ہو جائے<br>تو مجمع بھی اجنبی لگتا ہے<br>مسکراہٹ تھک جاتی ہے" },
-
-{ id: 25, title: "روح کی چیخ", text: "کچھ چیخیں سنائی نہیں دیتیں<br>وہ اندر گونجتی رہتی ہیں<br>اور انسان کو توڑتی ہیں" },
-
-{ id: 26, title: "دل کا خلا", text: "دل کا خلا کسی سے نہیں بھرتا<br>یہ وقت کے ساتھ خاموش ہوتا ہے<br>مگر ختم نہیں ہوتا" },
-
-{ id: 27, title: "سکون کا فاصلہ", text: "سکون پاس ہو کر بھی دور لگتا ہے<br>جب دل خود سے ناراض ہو<br>خاموش جنگ چل رہی ہو" },
-
-{ id: 28, title: "روح کا سوال", text: "روح پوچھتی ہے اکثر<br>ہم اتنے تھک کیوں گئے<br>جب خواب اب بھی زندہ ہیں" },
-
-{ id: 29, title: "خاموش محبت", text: "کچھ محبتیں آواز نہیں کرتیں<br>دل میں رہ کر انسان کو نرم بناتی ہیں<br>اور صبر سکھاتی ہیں" },
-
-{ id: 30, title: "احساس کی شکستگی", text: "جب احساس ٹوٹتا ہے<br>لفظ بے معنی ہو جاتے ہیں<br>آنکھیں سچ بولتی ہیں" },
-
-{ id: 31, title: "روح کا زخم", text: "یہ زخم دکھائی نہیں دیتا<br>مگر ہر دعا میں شامل ہوتا ہے<br>خاموشی بن کر" },
-
-{ id: 32, title: "دل کی ہجرت", text: "کبھی دل خود سے ہجرت کر جاتا ہے<br>واپسی کا راستہ بھول کر<br>یادوں میں بس جاتا ہے" },
-
-{ id: 33, title: "خاموش امید", text: "امید شور نہیں مچاتی<br>اندھیرے میں ہلکی سی روشنی رکھ دیتی ہے<br>بس اتنا کافی ہوتا ہے" },
-
-{ id: 34, title: "روح کا بکھراؤ", text: "روح بکھرتی ہے تو آواز نہیں آتی<br>انسان ہنستا رہتا ہے<br>اور اندر ٹوٹتا رہتا ہے" },
-
-{ id: 35, title: "دل کی گہرائی", text: "دل جتنا گہرا ہو<br>اتنا ہی کم سمجھا جاتا ہے<br>یہی اس کا دکھ ہے" },
-
-{ id: 36, title: "اندرونی خاموشی", text: "خاموشی جب اندر اترے<br>تو شور بے معنی ہو جاتا ہے<br>سانس بھی آہستہ ہو جاتی ہے" },
-
-{ id: 37, title: "روح کی پرچھائیں", text: "روح کی پرچھائیاں ساتھ چلتی ہیں<br>دکھ میں لمبی ہو جاتی ہیں<br>خوشی میں چھپ جاتی ہیں" },
-
-{ id: 38, title: "دل کی تھکن", text: "دل تھک جائے تو بات کرنا مشکل ہو جاتا ہے<br>خاموشی آسان لگتی ہے<br>لوگ بوجھ لگتے ہیں" },
-
-{ id: 39, title: "احساس کی آگ", text: "یہ آگ جلتی نہیں دکھتی<br>پر اندر سب راکھ کر دیتی ہے<br>خاموشی کے ساتھ" },
-
-{ id: 40, title: "روح کی تنہا راہ", text: "روح کا سفر اکیلا ہوتا ہے<br>ساتھ صرف دعا چلتی ہے<br>اور تھوڑا سا یقین" },
-
-{ id: 41, title: "دل کا اندھیرا", text: "دل اندھیرا ہو جائے تو<br>روشنی بھی چبھنے لگتی ہے<br>آنکھیں جھک جاتی ہیں" },
-
-{ id: 42, title: "خاموش زخم", text: "کچھ زخم بولتے نہیں<br>بس وقت کے ساتھ گہرے ہوتے جاتے ہیں<br>اور عادت بن جاتے ہیں" },
-
-{ id: 43, title: "روح کی صدا", text: "روح کی صدا آہستہ ہوتی ہے<br>شور اسے دبا دیتا ہے<br>سکوت اسے سن لیتا ہے" },
-
-{ id: 44, title: "دل کا وزن", text: "دل کا وزن آنسوؤں سے نہیں ناپا جاتا<br>یہ یادوں سے بھرا ہوتا ہے<br>جو نظر نہیں آتیں" },
-
-{ id: 45, title: "خاموش جدائی", text: "کچھ جدائیاں اعلان نہیں کرتیں<br>بس آہستہ آہستہ دور کر دیتی ہیں<br>ہمیشہ کے لیے" },
-
-{ id: 46, title: "روح کی ویرانی", text: "ویرانی باہر نہیں ہوتی<br>یہ اندر بس جاتی ہے<br>اور آواز چھین لیتی ہے" },
-
-{ id: 47, title: "دل کی پکار", text: "دل پکارتا ہے مگر آواز نہیں بنتی<br>یہی اس کی سب سے بڑی تھکن ہے<br>خاموش رہ جانا" },
-
-{ id: 48, title: "اندرونی درد", text: "یہ درد بیان نہیں مانگتا<br>بس سمجھنے والا چاہتا ہے<br>جو کم ہی ملتا ہے" },
-
-{ id: 49, title: "روح کی خاموشی", text: "خاموش روح سب دیکھ لیتی ہے<br>کچھ کہتی نہیں<br>بس سہہ جاتی ہے" },
-
-{ id: 50, title: "دل کی اداسی", text: "اداسی شور نہیں مچاتی<br>دل میں بیٹھ جاتی ہے<br>اور رنگ چرا لیتی ہے" },
-
-{ id: 51, title: "یادوں کا بوجھ", text: "یادیں ہلکی لگتی ہیں<br>مگر دل پر وزن بن جاتی ہیں<br>چپ چاپ" },
-
-{ id: 52, title: "روح کی تھرتھراہٹ", text: "کبھی روح ہلکی سی کانپتی ہے<br>بغیر کسی وجہ کے<br>یہ احساس کا موسم ہوتا ہے" },
-
-{ id: 53, title: "خاموش سوال", text: "کچھ سوال زبان تک نہیں آتے<br>دل میں رہ کر بوجھ بن جاتے ہیں<br>اور نیند چرا لیتے ہیں" },
-
-{ id: 54, title: "دل کا خالی پن", text: "دل خالی ہو تو سب کچھ بھرا لگتا ہے<br>آوازیں، لوگ، لمحے<br>سب تھکا دیتے ہیں" },
-
-{ id: 55, title: "روح کی نمی", text: "روح بھیگ جائے تو آنکھیں بھیگتی ہیں<br>بارش باہر ہو یا اندر<br>فرق نہیں پڑتا" },
-
-{ id: 56, title: "خاموش تھکن", text: "یہ تھکن جسم کی نہیں ہوتی<br>یہ جینے سے آتی ہے<br>اور دیر سے جاتی ہے" },
-
-{ id: 57, title: "دل کی شکست", text: "دل ٹوٹتا نہیں<br>بس خاموش ہو جاتا ہے<br>اور بدلا بدلا رہتا ہے" },
-
-{ id: 58, title: "روح کا بوجھل پن", text: "جب روح بوجھل ہو<br>مسکراہٹ بھی اداکاری لگتی ہے<br>سانس بوجھ بن جاتی ہے" },
-
-{ id: 59, title: "احساس کا زوال", text: "احساس کم نہیں ہوتا<br>بس تھک کر چھپ جاتا ہے<br>خاموشی میں" },
-
-{ id: 60, title: "دل کی دھند", text: "دل پر دھند چھا جائے تو<br>راستے بھی اجنبی لگتے ہیں<br>اپنے بھی" },
-
-{ id: 61, title: "روح کی ٹوٹن", text: "ٹوٹنا آواز نہیں کرتا<br>بس انسان بدل جاتا ہے<br>اور کوئی سمجھ نہیں پاتا" },
-
-{ id: 62, title: "خاموش فاصلہ", text: "فاصلہ لفظوں سے نہیں بنتا<br>خاموشی سے پیدا ہوتا ہے<br>آہستہ آہستہ" },
-
-{ id: 63, title: "دل کی سنسناہٹ", text: "دل کبھی یوں کانپتا ہے<br>جیسے کچھ ٹوٹ رہا ہو<br>بغیر آواز کے" },
-
-{ id: 64, title: "روح کی اداسی", text: "اداسی روح میں اتر جائے<br>تو ہنسی بھی ادھوری لگتی ہے<br>اور دن بھاری" },
-
-{ id: 65, title: "اندر کی جنگ", text: "اندر کی جنگ خاموش ہوتی ہے<br>کوئی تالی نہیں بجاتا<br>بس انسان تھک جاتا ہے" },
-
-{ id: 66, title: "دل کی سرگوشی", text: "دل آہستہ بات کرتا ہے<br>شور اسے ڈرا دیتا ہے<br>خاموشی اس کی زبان ہے" },
-
-{ id: 67, title: "روح کی تنہائی", text: "اکیلی روح سب سمجھتی ہے<br>مگر کچھ کہتی نہیں<br>بس سہتی رہتی ہے" },
-
-{ id: 68, title: "خاموش بکھراؤ", text: "بکھرنا شور نہیں کرتا<br>یہ آہستہ آہستہ ہوتا ہے<br>اور گہرا ہوتا ہے" },
-
-{ id: 69, title: "دل کا اندیشہ", text: "دل کو ہمیشہ ڈر رہتا ہے<br>کہ جو اپنا ہے<br>وہ بھی چھن نہ جائے" },
-
-{ id: 70, title: "روح کی پیاس", text: "یہ پیاس لفظوں سے نہیں بجھتی<br>یہ تو توجہ مانگتی ہے<br>اور سچائی" },
-
-{ id: 71, title: "خاموش وجود", text: "وجود خاموش ہو جائے تو<br>آوازیں بے معنی لگتی ہیں<br>دل الگ تھلگ ہو جاتا ہے" },
-
-{ id: 72, title: "دل کی لرزش", text: "دل کبھی بے وجہ لرزتا ہے<br>شاید کچھ یاد آ جاتا ہے<br>یا کچھ ٹوٹ جاتا ہے" },
-
-{ id: 73, title: "روح کی دھند", text: "روح پر دھند چھا جائے تو<br>راستے دکھائی نہیں دیتے<br>بس احساس رہ جاتا ہے" },
-
-{ id: 74, title: "خاموش زخم", text: "یہ زخم بولتے نہیں<br>بس اندر ہی اندر<br>انسان کو بدل دیتے ہیں" },
-
-{ id: 75, title: "دل کی ویرانی", text: "ویرانی شور نہیں کرتی<br>دل میں بیٹھ جاتی ہے<br>اور موسم بدل دیتی ہے" },
-
-{ id: 76, title: "روح کا درد", text: "یہ درد چیخ نہیں بنتا<br>بس دعا میں ڈھل جاتا ہے<br>اور آنکھ نم کر دیتا ہے" },
-
-{ id: 77, title: "اندر کا خلا", text: "خلا بھرنے سے نہیں بھرتا<br>یہ بس قبول کیا جاتا ہے<br>خاموشی سے" },
-
-{ id: 78, title: "دل کی شکستگی", text: "دل جب ٹوٹتا ہے<br>تو الفاظ ڈر جاتے ہیں<br>خاموشی بولتی ہے" },
-
-{ id: 79, title: "روح کا سکوت", text: "سکوت روح کا لباس ہے<br>یہ اسے بچاتا بھی ہے<br>اور چھپا بھی دیتا ہے" },
-
-{ id: 80, title: "احساس کی پرچھائیں", text: "احساس ساتھ چلتا ہے<br>سائے کی طرح<br>چھوڑتا نہیں" },
-
-{ id: 81, title: "خاموش تھرتھراہٹ", text: "کچھ لمحے اندر لرز جاتے ہیں<br>بغیر آواز کے<br>بس محسوس ہوتے ہیں" },
-
-{ id: 82, title: "دل کی نرمی", text: "دل نرم ہو تو زخم گہرے لگتے ہیں<br>مگر انسان بہتر ہو جاتا ہے<br>خاموشی سے" },
-
-{ id: 83, title: "روح کی تھکن", text: "تھکی روح مسکرانا بھول جاتی ہے<br>اور دعا میں پناہ ڈھونڈتی ہے<br>خاموشی سے" },
-
-{ id: 84, title: "اندرونی چیخ", text: "یہ چیخ سنائی نہیں دیتی<br>بس نیند چرا لیتی ہے<br>اور آنکھیں بھگو دیتی ہے" },
-
-{ id: 85, title: "دل کا بکھراؤ", text: "دل بکھرتا ہے تو آواز نہیں آتی<br>بس زندگی ہلکی ہو جاتی ہے<br>خاموشی میں" },
-
-{ id: 86, title: "روح کا زخم", text: "یہ زخم وقت نہیں بھرتا<br>بس انسان کو گہرا بنا دیتا ہے<br>اور کم بولنے والا" },
-
-{ id: 87, title: "خاموش دعا", text: "دعا جب خاموش ہو جائے<br>تو سیدھی دل سے نکلتی ہے<br>اور اثر رکھتی ہے" },
-
-{ id: 88, title: "دل کی پرچھائیں", text: "دل کی پرچھائیں لمبی ہوتی ہیں<br>خاص کر شاموں میں<br>اور تنہائی میں" },
-
-{ id: 89, title: "روح کا بوجھ", text: "یہ بوجھ کندھوں پر نہیں ہوتا<br>سانسوں میں چھپا ہوتا ہے<br>اور تھکا دیتا ہے" },
-
-{ id: 90, title: "خاموش سفر", text: "زندگی کا اصل سفر خاموش ہوتا ہے<br>بغیر تماشے کے<br>بس اندر اندر" },
-
-{ id: 91, title: "دل کی سرشاری", text: "کبھی دل خاموش خوش ہوتا ہے<br>بغیر وجہ کے<br>بس شکر میں" },
-
-{ id: 92, title: "روح کی نرمی", text: "نرم روحیں جلد ٹوٹتی ہیں<br>مگر دوسروں کو سہارا دیتی ہیں<br>خاموشی سے" },
-
-{ id: 93, title: "احساس کی لرزش", text: "احساس جب جاگے<br>تو دل کانپ جاتا ہے<br>خاموشی چھا جاتی ہے" },
-
-{ id: 94, title: "دل کا سکون", text: "سکون شور میں نہیں ملتا<br>یہ خاموش قبولیت میں ملتا ہے<br>دل کے اندر" },
-
-{ id: 95, title: "روح کی گہرائی", text: "گہری روحیں کم بولتی ہیں<br>زیادہ سمجھتی ہیں<br>اور زیادہ سہتی ہیں" },
-
-{ id: 96, title: "خاموش وجود", text: "وجود جب خاموش ہو جائے<br>تو آواز بے معنی لگتی ہے<br>سب کچھ مدھم" },
-
-{ id: 97, title: "دل کی شکست", text: "دل ہارتا نہیں<br>بس تھک کر رک جاتا ہے<br>خاموشی میں" },
-
-{ id: 98, title: "روح کی روشنی", text: "روشنی باہر نہیں ہوتی<br>یہ اندر جلتی ہے<br>اندھیروں کے بیچ" },
-
-{ id: 99, title: "احساس کی خاموشی", text: "خاموشی بھی احساس رکھتی ہے<br>یہ چیختی نہیں<br>بس ٹھہر جاتی ہے" },
-
-{ id: 100, title: "روح کا سکون", text: "آخرکار روح سکون مانگتی ہے<br>نہ شور، نہ ہجوم<br>بس قبولیت" },
-
-{ id: 101, title: "روح کی تھکن کا شور", text: "کبھی تھکن شور مچاتی نہیں<br>بس دل کو آہستہ آہستہ خالی کر دیتی ہے<br>اور مسکراہٹ چرا لیتی ہے" },
-
-{ id: 102, title: "خاموش احساس", text: "کچھ احساس بولنے کے محتاج نہیں ہوتے<br>وہ بس دل میں ٹھہر جاتے ہیں<br>اور وزن بن جاتے ہیں" },
-
-{ id: 103, title: "دل کی پرانی تھکن", text: "یہ تھکن آج کی نہیں ہوتی<br>برسوں سے جمع ہوتی ہے<br>اور اچانک آنکھوں میں اتر آتی ہے" },
-
-{ id: 104, title: "روح کا بکھرا پن", text: "روح جب بکھرتی ہے<br>تو سمیٹنے والا کوئی نہیں ہوتا<br>بس وقت گزر جاتا ہے" },
-
-{ id: 105, title: "خاموش لمس", text: "کچھ لمس آواز کے بغیر ہوتے ہیں<br>وہ سیدھا دل کو چھوتے ہیں<br>اور دیر تک رہتے ہیں" },
-
-{ id: 106, title: "دل کی ادھوری سانس", text: "کبھی سانس پوری نہیں آتی<br>شاید دل کچھ کہنا چاہتا ہے<br>مگر ہمت نہیں پڑتی" },
-
-{ id: 107, title: "روح کا اندھیر", text: "یہ اندھیرا رات کا نہیں<br>یہ اندر اترنے والا سناٹا ہے<br>جو روشنی سے بھی نہیں ڈرتا" },
-
-{ id: 108, title: "خاموش بےچینی", text: "بےچینی شور نہیں کرتی<br>بس دل کو بے ترتیب کر دیتی ہے<br>اور نیند چرا لیتی ہے" },
-
-{ id: 109, title: "دل کی خالی جگہ", text: "دل میں کچھ جگہیں ہمیشہ خالی رہتی ہیں<br>نہ وقت بھرتا ہے<br>نہ لوگ" },
-
-{ id: 110, title: "روح کی ٹھنڈک", text: "کبھی روح ٹھنڈی پڑ جاتی ہے<br>جذبات جم جاتے ہیں<br>اور احساس سست ہو جاتے ہیں" },
-
-{ id: 111, title: "خاموش یاد", text: "یادیں شور نہیں کرتیں<br>بس اچانک آ کر بیٹھ جاتی ہیں<br>اور دل بھاری کر دیتی ہیں" },
-
-{ id: 112, title: "دل کی کمزوری", text: "دل کی کمزوری آنسو نہیں ہوتی<br>یہ زیادہ محسوس کرنے کی سزا ہے<br>جو سب کو نہیں ملتی" },
-
-{ id: 113, title: "روح کی تھرتھراہٹ", text: "کبھی روح کانپتی ہے<br>بغیر سردی کے<br>یہ احساس کی شدت ہوتی ہے" },
-
-{ id: 114, title: "خاموش راستے", text: "کچھ راستے آواز نہیں کرتے<br>بس انسان کو بدل دیتے ہیں<br>چلتے چلتے" },
-
-{ id: 115, title: "دل کی اجنبیت", text: "دل کبھی خود سے اجنبی ہو جاتا ہے<br>آئینے میں بھی پہچان نہیں بنتی<br>خاموشی بڑھ جاتی ہے" },
-
-{ id: 116, title: "روح کا بوجھل لمحہ", text: "یہ لمحہ رکتا نہیں<br>بس دل پر بیٹھ جاتا ہے<br>اور سانس بھاری ہو جاتی ہے" },
-
-{ id: 117, title: "خاموش ٹوٹن", text: "ٹوٹنا ہمیشہ آواز نہیں کرتا<br>کبھی بس انسان بدل جاتا ہے<br>آہستہ آہستہ" },
-
-{ id: 118, title: "دل کا سناٹا", text: "جب دل خاموش ہو جائے<br>تو دنیا کی آوازیں بے معنی لگتی ہیں<br>سب کچھ دور ہو جاتا ہے" },
-
-{ id: 119, title: "روح کی پرانی چوٹ", text: "کچھ چوٹیں وقت کے ساتھ نہیں بھرتیں<br>بس عادت بن جاتی ہیں<br>خاموش رہنے کی" },
-
-{ id: 120, title: "خاموش وجود کی پیاس", text: "وجود کو لفظ نہیں چاہیے<br>بس سمجھنے والی نگاہ چاہیے<br>جو خاموشی پڑھ لے" },
-
-{ id: 121, title: "دل کا وزن", text: "دل کا وزن نظر نہیں آتا<br>مگر سانسوں سے محسوس ہوتا ہے<br>ہر لمحہ" },
-
-{ id: 122, title: "روح کی کمزوری", text: "کمزور روح رویا نہیں کرتی<br>بس خود سے پیچھے ہٹ جاتی ہے<br>اور خاموش ہو جاتی ہے" },
-
-{ id: 123, title: "خاموش انتظار", text: "انتظار بولتا نہیں<br>بس وقت کو لمبا کر دیتا ہے<br>اور دل کو تھکا دیتا ہے" },
-
-{ id: 124, title: "دل کی سرد مہری", text: "سرد مہری لفظوں میں نہیں ہوتی<br>یہ لہجوں میں اتر آتی ہے<br>آہستہ آہستہ" },
-
-{ id: 125, title: "روح کا بھاری پن", text: "روح جب بھاری ہو جائے<br>تو خوشی بھی بوجھ لگتی ہے<br>اور ہنسی اجنبی" },
-
-{ id: 126, title: "خاموش شکوہ", text: "کچھ شکوے کہے نہیں جاتے<br>بس دل میں بیٹھ کر<br>سانس گنتے رہتے ہیں" },
-
-{ id: 127, title: "دل کی کم ہوتی آواز", text: "دل آہستہ بولنا سیکھ لیتا ہے<br>جب بار بار نہ سنا جائے<br>تو خاموش ہو جاتا ہے" },
-
-{ id: 128, title: "روح کی بےقراری", text: "یہ بےقراری چیختی نہیں<br>بس چین چرا لیتی ہے<br>اور راتیں لمبی کر دیتی ہے" },
-
-{ id: 129, title: "خاموش سچ", text: "سچ ہمیشہ بلند آواز میں نہیں ہوتا<br>اکثر خاموشی میں چھپا ہوتا ہے<br>اور چبھتا رہتا ہے" },
-
-{ id: 130, title: "دل کی ادھوری بات", text: "کچھ باتیں کہی نہیں جاتیں<br>وہ دل میں ہی بوڑھی ہو جاتی ہیں<br>اور مر جاتی ہیں" },
-
-{ id: 131, title: "روح کا لرزنا", text: "روح کبھی ہلکی سی لرزتی ہے<br>بغیر وجہ کے<br>یہ یادوں کا اثر ہوتا ہے" },
-
-{ id: 132, title: "خاموش ٹوٹ پھوٹ", text: "ٹوٹ پھوٹ کا شور نہیں ہوتا<br>بس انسان بدل جاتا ہے<br>اور کوئی نوٹس نہیں لیتا" },
-
-{ id: 133, title: "دل کا بوجھل موسم", text: "کبھی دل پر موسم اتر آتا ہے<br>بارش نہیں ہوتی<br>مگر بھیگ جاتے ہیں" },
-
-{ id: 134, title: "روح کی ادھوری مسکراہٹ", text: "کچھ مسکراہٹیں پوری نہیں ہوتیں<br>وہ درد چھپانے آتی ہیں<br>اور تھک جاتی ہیں" },
-
-{ id: 135, title: "خاموش ٹوٹا پن", text: "ٹوٹا پن شور نہیں کرتا<br>یہ اندر اندر پھیلتا ہے<br>اور سب بدل دیتا ہے" },
-
-{ id: 136, title: "دل کا سنّاٹا", text: "سنّاٹا شور سے زیادہ بھاری ہوتا ہے<br>یہ دل میں بیٹھ جاتا ہے<br>اور ہلنے نہیں دیتا" },
-
-{ id: 137, title: "روح کی پرانی تھکن", text: "یہ تھکن وقت کی نہیں ہوتی<br>یہ یادوں سے آتی ہے<br>اور دیر تک رہتی ہے" },
-
-{ id: 138, title: "خاموش آنچ", text: "کچھ آگ جلتی نہیں دکھتی<br>بس اندر سب جلا دیتی ہے<br>خاموشی سے" },
-
-{ id: 139, title: "دل کی اجڑی فضا", text: "دل کی فضا اجڑ جائے تو<br>لفظ بے گھر ہو جاتے ہیں<br>اور خاموشی بس جاتی ہے" },
-
-{ id: 140, title: "روح کا بکھرا احساس", text: "احساس بکھر جائے تو<br>سمیٹنا مشکل ہو جاتا ہے<br>اور دل تھک جاتا ہے" },
-
-{ id: 141, title: "خاموش درد کی عادت", text: "درد جب عادت بن جائے<br>تو انسان مسکرا کر بھی ٹوٹتا رہتا ہے<br>کوئی پوچھتا نہیں" },
-
-{ id: 142, title: "دل کی تھکی سانس", text: "سانس بھی تھک جاتی ہے کبھی<br>جب دل زیادہ بوجھ اٹھا لے<br>اور کچھ کہہ نہ پائے" },
-
-{ id: 143, title: "روح کی خاموش لڑائی", text: "یہ لڑائی نظر نہیں آتی<br>بس اندر چلتی رہتی ہے<br>اور انسان بدل جاتا ہے" },
-
-{ id: 144, title: "خاموش اندیشہ", text: "اندیشہ شور نہیں مچاتا<br>دل میں بیٹھ جاتا ہے<br>اور نیند چرا لیتا ہے" },
-
-{ id: 145, title: "دل کا بوجھل سکوت", text: "یہ سکوت چیخ سے زیادہ وزنی ہوتا ہے<br>سانس تک کو تھکا دیتا ہے<br>اور آنکھیں جھکا دیتا ہے" },
-
-{ id: 146, title: "روح کی دھیمی آنچ", text: "یہ آنچ دکھائی نہیں دیتی<br>مگر دل کو مسلسل جلاتی رہتی ہے<br>خاموشی کے ساتھ" },
-
-{ id: 147, title: "خاموش شکستگی", text: "شکست اعلان نہیں کرتی<br>بس انسان کا انداز بدل دیتی ہے<br>ہمیشہ کے لیے" },
-
-{ id: 148, title: "دل کی مدھم صدا", text: "دل اب زور سے نہیں بولتا<br>بس آہستہ آہستہ سمجھاتا ہے<br>خود کو" },
-
-{ id: 149, title: "روح کی تھمی سانس", text: "کبھی سانس رک سی جاتی ہے<br>جیسے روح رک کر سوچ رہی ہو<br>کیا آگے چلنا ہے" },
-
-{ id: 150, title: "خاموش وجود", text: "وجود جب خاموش ہو جائے<br>تو الفاظ بیکار لگتے ہیں<br>صرف احساس باقی رہتا ہے" },
-
-{ id: 151, title: "دل کا اندھا گوشہ", text: "دل میں ایک گوشہ ایسا بھی ہوتا ہے<br>جہاں روشنی نہیں جاتی<br>صرف یادیں رہتی ہیں" },
-
-{ id: 152, title: "روح کی بوجھل رات", text: "کچھ راتیں سونے نہیں دیتیں<br>بس سوچنے پر مجبور کرتی ہیں<br>خاموشی میں" },
-
-{ id: 153, title: "خاموش دراڑ", text: "دراڑ دکھائی نہیں دیتی<br>مگر مضبوط چیز کو بھی توڑ دیتی ہے<br>آہستہ آہستہ" },
-
-{ id: 154, title: "دل کا خالی پن", text: "دل خالی ہو تو شور بھی بے معنی لگتا ہے<br>آوازیں تھکا دیتی ہیں<br>اور تنہائی بھلی لگتی ہے" },
-
-{ id: 155, title: "روح کی نمی", text: "یہ نمی آنکھوں میں نہیں ہوتی<br>یہ دل کے اندر بس جاتی ہے<br>اور نرم بنا دیتی ہے" },
-
-{ id: 156, title: "خاموش سسکی", text: "سسکی سنائی نہیں دیتی<br>بس سانس بدل دیتی ہے<br>اور دل بھاری کر دیتی ہے" },
-
-{ id: 157, title: "دل کی مدھم روشنی", text: "دل کی روشنی تیز نہیں ہوتی<br>بس راستہ دکھا دیتی ہے<br>اندھیرے میں" },
-
-{ id: 158, title: "روح کا بوجھل لمحہ", text: "یہ لمحہ رک جاتا ہے<br>وقت چلتا رہتا ہے<br>اور دل پیچھے رہ جاتا ہے" },
-
-{ id: 159, title: "خاموش ٹوٹن", text: "ٹوٹنا اکثر خاموش ہوتا ہے<br>کوئی آواز نہیں آتی<br>بس آدمی بدل جاتا ہے" },
-
-{ id: 160, title: "دل کی اداس روشنی", text: "روشنی بھی اداس ہو سکتی ہے<br>جب دل بجھنے لگے<br>اور امید دھندلا جائے" },
-
-{ id: 161, title: "روح کی کمزور سانس", text: "سانس چلتی رہتی ہے<br>مگر اندر کچھ تھکا ہوتا ہے<br>جو نظر نہیں آتا" },
-
-{ id: 162, title: "خاموش فاصلہ", text: "فاصلہ باتوں سے نہیں بنتا<br>خاموشی سے جنم لیتا ہے<br>اور گہرا ہو جاتا ہے" },
-
-{ id: 163, title: "دل کی سنسانی", text: "سنسانی شور نہیں کرتی<br>دل میں بیٹھ جاتی ہے<br>اور موسم بدل دیتی ہے" },
-
-{ id: 164, title: "روح کا مدھم درد", text: "یہ درد چیختا نہیں<br>بس اندر رسنے لگتا ہے<br>اور خاموش رہتا ہے" },
-
-{ id: 165, title: "خاموش ٹھنڈک", text: "کبھی دل ٹھنڈا پڑ جاتا ہے<br>جذبات جم جاتے ہیں<br>اور لفظ مر جاتے ہیں" },
-
-{ id: 166, title: "دل کا بھاری پن", text: "بھاری پن آنسو سے نہیں آتا<br>یہ جمع شدہ خاموشیوں سے بنتا ہے<br>وقت کے ساتھ" },
-
-{ id: 167, title: "روح کی ادھوری دعا", text: "کچھ دعائیں مکمل نہیں ہوتیں<br>وہ دل میں ہی رہ جاتی ہیں<br>آہستہ آہستہ" },
-
-{ id: 168, title: "خاموش بےرخی", text: "بےرخی آواز نہیں اٹھاتی<br>بس فاصلے بڑھا دیتی ہے<br>دلوں کے بیچ" },
-
-{ id: 169, title: "دل کا بکھرا لمحہ", text: "کچھ لمحے جڑ نہیں پاتے<br>وہ بکھر کر رہ جاتے ہیں<br>یاد بن کر" },
-
-{ id: 170, title: "روح کی تھکی ہوئی دعا", text: "دعا بھی تھک جاتی ہے کبھی<br>جب جواب دیر سے آئے<br>اور دل کمزور ہو" },
-
-{ id: 171, title: "خاموش ٹوٹن کی عادت", text: "بار بار ٹوٹنے سے<br>انسان خاموش ہونا سیکھ لیتا ہے<br>شور چھوڑ دیتا ہے" },
-
-{ id: 172, title: "دل کی مدھم چیخ", text: "یہ چیخ سنائی نہیں دیتی<br>بس اندر گونجتی رہتی ہے<br>اور نیند اڑا دیتی ہے" },
-
-{ id: 173, title: "روح کا سناٹا", text: "سناٹا باہر نہیں ہوتا<br>یہ اندر بس جاتا ہے<br>اور سب بدل دیتا ہے" },
-
-{ id: 174, title: "خاموش اذیت", text: "اذیت شور نہیں مچاتی<br>یہ آہستہ آہستہ انسان بناتی ہے<br>اور توڑتی بھی" },
-
-{ id: 175, title: "دل کی ہلکی کپکپاہٹ", text: "کبھی دل بے وجہ کانپتا ہے<br>شاید پرانی یاد جاگتی ہے<br>یا کوئی کمی" },
-
-{ id: 176, title: "روح کا اندھیرا", text: "یہ اندھیرا روشنی سے نہیں ڈرتا<br>یہ اندر بسی عادت ہے<br>خاموش رہنے کی" },
-
-{ id: 177, title: "خاموش آنکھیں", text: "آنکھیں سب کہہ دیتی ہیں<br>جب لفظ تھک جائیں<br>اور دل خاموش ہو" },
-
-{ id: 178, title: "دل کی کمزور دھڑکن", text: "دھڑکن کمزور ہو تو آواز نہیں بنتی<br>بس احساس رہ جاتا ہے<br>مدھم سا" },
-
-{ id: 179, title: "روح کی سرد رات", text: "کچھ راتیں ٹھنڈی نہیں ہوتیں<br>بس خالی ہوتی ہیں<br>اور لمبی" },
-
-{ id: 180, title: "خاموش ادھورا پن", text: "ادھورا پن بولتا نہیں<br>بس دل میں بیٹھ جاتا ہے<br>ہمیشہ کے لیے" },
-
-{ id: 181, title: "دل کی بےآواز پکار", text: "کچھ پکاریں سنی نہیں جاتیں<br>وہ دل میں ہی رہ جاتی ہیں<br>خاموش ہو کر" },
-
-{ id: 182, title: "روح کی لرزتی خاموشی", text: "خاموشی بھی کانپتی ہے کبھی<br>جب درد حد سے بڑھ جائے<br>اور لفظ ہار جائیں" },
-
-{ id: 183, title: "خاموش بوجھ", text: "یہ بوجھ دکھائی نہیں دیتا<br>مگر کندھوں سے زیادہ دل کو دباتا ہے<br>ہر لمحہ" },
-
-{ id: 184, title: "دل کا مدھم احساس", text: "احساس مدھم ہو جائے تو<br>زندگی ہلکی لگتی ہے<br>مگر خالی" },
-
-{ id: 185, title: "روح کی اداس سانس", text: "سانس چلتی رہتی ہے<br>مگر خوشی اس میں شامل نہیں ہوتی<br>بس عادت بن جاتی ہے" },
-
-{ id: 186, title: "خاموش تھکن کی رات", text: "یہ راتیں شور نہیں کرتیں<br>بس سوچوں میں گزر جاتی ہیں<br>آنکھوں کے ساتھ" },
-
-{ id: 187, title: "دل کی ٹوٹی امید", text: "امید ٹوٹتی نہیں<br>بس دھیرے دھیرے خاموش ہو جاتی ہے<br>اور یاد بن جاتی ہے" },
-
-{ id: 188, title: "روح کی سرد آہ", text: "آہ جب سرد ہو جائے<br>تو آواز نہیں بنتی<br>بس اندر اتر جاتی ہے" },
-
-{ id: 189, title: "خاموش کمزوری", text: "کمزوری رو نہیں دیتی<br>یہ مسکرانے پر مجبور کرتی ہے<br>اور اندر توڑتی ہے" },
-
-{ id: 190, title: "دل کی تھمی صدا", text: "صدا رک جائے تو<br>خاموشی بولنے لگتی ہے<br>اور دل سننے لگتا ہے" },
-
-{ id: 191, title: "روح کا بوجھل سکوت", text: "سکوت جب بھاری ہو جائے<br>تو سانسیں بھی تھک جاتی ہیں<br>اور آنکھیں جھک جاتی ہیں" },
-
-{ id: 192, title: "خاموش جدوجہد", text: "یہ جدوجہد نظر نہیں آتی<br>بس انسان کو بدل دیتی ہے<br>ہر دن تھوڑا سا" },
-
-{ id: 193, title: "دل کی دھندلی راہ", text: "راہ دھندلی ہو تو<br>قدم ڈرتے ہیں<br>اور دل خاموش رہتا ہے" },
-
-{ id: 194, title: "روح کی نرم شکست", text: "شکست نرم ہو تو چیختی نہیں<br>بس انسان کو گہرا بنا دیتی ہے<br>خاموش سا" },
-
-{ id: 195, title: "خاموش تھکن کا لمس", text: "تھکن چھوتی نہیں<br>محسوس ہوتی ہے<br>ہر سانس میں" },
-
-{ id: 196, title: "دل کا مدھم شور", text: "یہ شور چیختا نہیں<br>بس اندر بجتا رہتا ہے<br>خاموش سا" },
-
-{ id: 197, title: "روح کی ادھوری روشنی", text: "روشنی پوری نہ ہو تو<br>اندھیرا بڑھ جاتا ہے<br>اور دل تھک جاتا ہے" },
-
-{ id: 198, title: "خاموش قبولیت", text: "قبولیت آواز نہیں مانگتی<br>بس دل کو تھام لیتی ہے<br>آہستہ سے" },
-
-{ id: 199, title: "دل کی آخری نرمی", text: "نرمی جب آخری رہ جائے<br>تو انسان ٹوٹ کر بھی<br>تلخ نہیں ہوتا" },
-
-{ id: 200, title: "روح کا آخری سکون", text: "آخر میں روح یہی چاہتی ہے<br>نہ شور، نہ سوال<br>بس سکون" }
-];
+</div>
+
+<footer>
+    <p class="logo">Hassan Jatoi</p>
+    <p style="margin: 15px 0; font-size: 0.9rem; color: #71717a;">Poet • Thinker • Creator</p>
     
-     const colors = [
-            "#c10000", "#1a1a1a", "#000000", "#333333", "#4A90E2", "#50E3C2", "#B8E986", "#F5A623", "#D0021B", "#8B572A",
-            "#417505", "#BD10E0", "#9013FE", "#4A4A4A", "#9B9B9B", "#7ED321", "#F8E71C", "#FF4500", "#1E90FF", "#2E8B57",
-            "#8A2BE2", "#A52A2A", "#D2691E", "#FF7F50", "#6495ED", "#DC143C", "#00008B", "#008B8B", "#B8860B", "#A9A9A9",
-            "#006400", "#BDB76B", "#8B008B", "#556B2F", "#FF8C00", "#9932CC", "#8B0000", "#E9967A", "#8FBC8F", "#483D8B",
-            "#2F4F4F", "#00CED1", "#9400D3", "#FF1493", "#00BFFF", "#696969", "#FFD700", "#DAA520", "#ADFF2F", "#FF69B4"
-        ];
+    <div style="margin: 20px 0; font-size: 0.9rem; color: var(--accent); font-weight: 500;">
+        <p><i data-lucide="mail" size="14" style="vertical-align: middle; margin-right: 5px;"></i> Jatoihassan009@gmail.com</p>
+        <p><i data-lucide="message-circle" size="14" style="vertical-align: middle; margin-right: 5px;"></i> +923083500829</p>
+    </div>
 
-        const themes = [
-            "#fdfdfd", "#f4f4f4", "#eef2f3", "#fdfbfb", "#ebedee", "#f5f7fa", "#fdfcf0", "#f9f9f9", "#fff5f5", "#f5f5ff",
-            "#e3f2fd", "#f1f8e9", "#fffde7", "#efebe9", "#eceff1", "#fafafa", "#fffaf0", "#f0fff0", "#f0ffff", "#f5f5f5",
-            "linear-gradient(to right, #ff9966, #ff5e62)", "linear-gradient(to right, #00b4db, #0083b0)", 
-            "linear-gradient(to right, #70e1f5, #ffd194)", "linear-gradient(to right, #56ab2f, #a8e063)",
-            "linear-gradient(to right, #614385, #516395)", "linear-gradient(to right, #02aab0, #00cdac)",
-            "linear-gradient(to right, #da22ff, #9733ee)", "#fdfcfb", "#e6e9f0", "#d9e4f5", "#f6f1d3", "#cfd9df", "#e2ebf0", "#fff1eb", "#ace0f9", "#fddb92", "#d4fc79", "#96e6a1", "#84fab0", "#a1c4fd", "#c2e9fb", "#f6d365", "#fda085", "#ffecd2", "#fcb69f", "#ff9a9e", "#fccb90"
-        ];
+    <div class="share-container">
+        <p style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--accent);">Share Portfolio</p>
+        <div class="share-buttons">
+            <a href="#" onclick="sharePortfolio('whatsapp')" class="share-btn-circle" title="Share on WhatsApp"><i data-lucide="message-circle"></i></a>
+            <a href="#" onclick="sharePortfolio('facebook')" class="share-btn-circle" title="Share on Facebook"><i data-lucide="facebook"></i></a>
+            <a href="#" onclick="sharePortfolio('twitter')" class="share-btn-circle" title="Share on X"><i data-lucide="twitter"></i></a>
+            <a href="#" onclick="sharePortfolio('linkedin')" class="share-btn-circle" title="Share on LinkedIn"><i data-lucide="linkedin"></i></a>
+            <a href="#" onclick="copyPortfolioLink()" class="share-btn-circle" id="copyBtn" title="Copy Portfolio Link"><i data-lucide="copy"></i></a>
+        </div>
+    </div>
 
-        function initSettings() {
-            const colorPalette = document.getElementById('color-palette');
-            colors.forEach(c => {
-                const div = document.createElement('div');
-                div.className = "color-circle shadow-sm";
-                div.style.backgroundColor = c;
-                div.onclick = () => { document.querySelectorAll('.poetry-lines').forEach(p => p.style.color = c); };
-                colorPalette.appendChild(div);
-            });
+    <p style="margin-top: 40px; font-size: 0.7rem; opacity: 0.5; text-transform: uppercase; letter-spacing: 3px;">Mehar, Sindh, Pakistan • © 2025</p>
+</footer>
 
-            const themePalette = document.getElementById('theme-palette');
-            themes.forEach(t => {
-                const div = document.createElement('div');
-                div.className = "h-10 rounded-lg cursor-pointer border border-gray-200 shadow-sm hover:scale-105 transition";
-                div.style.background = t;
-                div.onclick = () => { document.body.style.background = t; };
-                themePalette.appendChild(div);
-            });
+<script>
+    lucide.createIcons();
 
-            const fontSelect = document.getElementById('font-select');
-            const fonts = ['Noto Nastaliq Urdu', 'Amiri', 'Lateef', 'Jomhuria', 'Reem Kufi', 'Aref Ruqaa', 'Harmattan', 'Serif', 'Sans-Serif', 'Cursive'];
-            for(let i=1; i<=50; i++) {
-                const opt = document.createElement('option');
-                const f = fonts[i % fonts.length];
-                opt.value = f;
-                opt.innerText = `فونٹ ${i} (${f})`;
-                fontSelect.appendChild(opt);
+    // Clock Logic
+    function updateClock() {
+        const now = new Date();
+        const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+        document.getElementById('clock-display').textContent = now.toLocaleString('en-US', options);
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Dynamic Word Rotation
+    const heroWords = ["Modernity", "the Soul", "Solitude", "Expression", "Silence", "Creation"];
+    let wordIdx = 0;
+    const wordEl = document.getElementById('dynamic-word');
+
+    function rotateWords() {
+        wordEl.style.opacity = '0';
+        setTimeout(() => {
+            wordIdx = (wordIdx + 1) % heroWords.length;
+            wordEl.textContent = heroWords[wordIdx];
+            wordEl.style.opacity = '1';
+        }, 500);
+    }
+    setInterval(rotateWords, 4000);
+
+    // Color Rotation
+    const colors = ['#b18e1d', '#7c3aed', '#db2777', '#2563eb', '#059669', '#ea580c'];
+    let colorIndex = 0;
+    function rotateColors() {
+        colorIndex = (colorIndex + 1) % colors.length;
+        document.documentElement.style.setProperty('--accent', colors[colorIndex]);
+    }
+    setInterval(rotateColors, 5000);
+
+    // Image Galleries (Verified High-Res Unsplash links)
+    const galleries = {
+        google: [
+            "https://images.unsplash.com/photo-1497015289639-546bb1ba0bc6?q=80&w=800",
+            "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800"
+        ],
+        rooh: [
+            "https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=800",
+            "https://images.unsplash.com/photo-1474696501487-7667bc48417b?q=80&w=800"
+        ],
+        alpha: [
+            "https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?q=80&w=800",
+            "https://images.unsplash.com/photo-1501901664533-51633cf9ba89?q=80&w=800"
+        ],
+        beta: [
+            "https://images.unsplash.com/photo-1530268576629-199142f1f544?q=80&w=800",
+            "https://images.unsplash.com/photo-1544526226-d4568090ffb8?q=80&w=800"
+        ],
+        gamma: [
+            "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=800",
+            "https://images.unsplash.com/photo-1506466010722-395aa2bef877?q=80&w=800"
+        ],
+        delta: [
+            "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=800",
+            "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800"
+        ],
+        epsilon: [
+            "https://images.unsplash.com/photo-1509248961158-e54f6934749c?q=80&w=800",
+            "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=80&w=800"
+        ],
+        archive: [
+            "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800",
+            "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=800"
+        ],
+        book1: [
+            "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?q=80&w=800",
+            "https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=800"
+        ],
+        stranger: [
+            "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?q=80&w=800",
+            "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=800"
+        ],
+        urdupoint: [
+            "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=800",
+            "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?q=80&w=800"
+        ],
+        allpoetry: [
+            "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800",
+            "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=800"
+        ],
+        linkedin: [
+            "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=800",
+            "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800"
+        ]
+    };
+
+    let galleryIndices = {};
+    Object.keys(galleries).forEach(k => galleryIndices[k] = 0);
+
+    function rotateImages() {
+        Object.keys(galleries).forEach(key => {
+            const card = document.querySelector(`[data-project="${key}"]`);
+            if (card) {
+                const img = card.querySelector('img');
+                galleryIndices[key] = (galleryIndices[key] + 1) % galleries[key].length;
+                img.style.opacity = '0';
+                setTimeout(() => { 
+                    img.src = galleries[key][galleryIndices[key]]; 
+                    img.style.opacity = '1'; 
+                }, 1000);
             }
+        });
+    }
+    setInterval(rotateImages, 7000);
+
+    // Custom Cursor Logic
+    const cursor = document.getElementById('cursor');
+    const follower = document.getElementById('cursor-follower');
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+        follower.style.transform = `translate3d(${e.clientX - 20}px, ${e.clientY - 20}px, 0)`;
+    });
+
+    document.querySelectorAll('a, button, input').forEach(el => {
+        el.addEventListener('mouseenter', () => { 
+            follower.style.transform += ' scale(1.8)'; 
+            follower.style.borderColor = 'var(--accent)'; 
+        });
+        el.addEventListener('mouseleave', () => { 
+            follower.style.transform = follower.style.transform.replace(' scale(1.8)', ''); 
+            follower.style.borderColor = 'var(--text)'; 
+        });
+    });
+
+    // Sharing Logic
+    const portfolioUrl = window.location.href;
+    const portfolioTitle = "Explore Hassan Jatoi's Literary Portfolio - The Poetry of Modernity";
+
+    function sharePortfolio(platform) {
+        let url = "";
+        switch(platform) {
+            case 'whatsapp':
+                url = `https://api.whatsapp.com/send?text=${encodeURIComponent(portfolioTitle + " " + portfolioUrl)}`;
+                break;
+            case 'facebook':
+                url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(portfolioUrl)}`;
+                break;
+            case 'twitter':
+                url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(portfolioTitle)}&url=${encodeURIComponent(portfolioUrl)}`;
+                break;
+            case 'linkedin':
+                url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(portfolioUrl)}`;
+                break;
         }
+        if(url) window.open(url, '_blank', 'width=600,height=400');
+    }
 
-        function renderPoetry() {
-            const container = document.getElementById('poetry-container');
-            poetryData.forEach(p => {
-                const card = document.createElement('article');
-                card.className = "poetry-card";
-                card.innerHTML = `
-                    <div class="poetry-content">
-                        <h3 class="poetry-title urdu-text">${p.title}</h3>
-                        <div class="poetry-lines urdu-text">${p.text}</div>
-                        <div class="mt-10 flex justify-center gap-8 border-t border-gray-100 pt-6">
-                            <button class="text-gray-300 hover:text-red-600 transition text-2xl"><i class="fas fa-heart"></i></button>
-                            <button class="text-gray-300 hover:text-green-500 transition text-2xl" onclick="window.open('https://wa.me/?text=${encodeURIComponent(p.text.replace(/<br>/g, ' '))}')"><i class="fab fa-whatsapp"></i></button>
-                            <button class="text-gray-300 hover:text-blue-500 transition text-2xl"><i class="fas fa-share-alt"></i></button>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
+    function copyPortfolioLink() {
+        const tempInput = document.createElement("input");
+        tempInput.value = portfolioUrl;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+        
+        const copyBtn = document.getElementById('copyBtn');
+        const originalInner = copyBtn.innerHTML;
+        copyBtn.innerHTML = '<i data-lucide="check" style="color: #059669"></i>';
+        lucide.createIcons();
+        setTimeout(() => {
+            copyBtn.innerHTML = originalInner;
+            lucide.createIcons();
+        }, 2000);
+    }
 
-        function applyFont(f) { document.querySelectorAll('.poetry-lines').forEach(p => p.style.fontFamily = f); }
-        function changeSize(s) { document.querySelectorAll('.poetry-lines').forEach(p => p.style.fontSize = s + 'rem'); }
+    function init() {
+        Object.keys(galleries).forEach(key => {
+            const card = document.querySelector(`[data-project="${key}"]`);
+            if (card) card.querySelector('img').src = galleries[key][0];
+        });
+    }
+    window.onload = init;
+</script>
 
-        function updateClock() {
-            const now = new Date();
-            document.getElementById('live-clock').innerText = now.toLocaleTimeString('en-GB');
-            document.getElementById('urdu-date').innerText = now.toLocaleDateString('ur-PK', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-        }
-
-        window.onload = () => {
-            renderPoetry();
-            initSettings();
-            updateClock();
-            setInterval(updateClock, 1000);
-        };
-    </script>
 </body>
 </html>
