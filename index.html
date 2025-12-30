@@ -1,1 +1,472 @@
-fda
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hassan Jatoi | Digital Visionary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Premium Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Calistoga&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg: #030305;
+            --primary: #6366f1;
+            --secondary: #ec4899;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .font-luxury { font-family: 'Calistoga', serif; }
+
+        /* Cinematic Background */
+        #canvas-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        /* Custom Cursor */
+        #cursor {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+        }
+
+        #cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.15s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+        }
+
+        /* Rainbow Lighting Line */
+        .rainbow-line {
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff, #ff0000);
+            background-size: 300% auto;
+            animation: rainbowMove 3s linear infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+        }
+
+        .nav-rainbow {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-rainbow {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        @keyframes rainbowMove {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 300% 50%; }
+        }
+
+        /* Hero Image Glow */
+        .profile-glow {
+            box-shadow: 0 0 60px 10px rgba(99, 102, 241, 0.2);
+            animation: pulse-glow 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 60px 10px rgba(99, 102, 241, 0.2); }
+            50% { box-shadow: 0 0 100px 20px rgba(236, 72, 153, 0.2); }
+        }
+
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Premium Glass Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 3rem;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-15px) scale(1.02);
+        }
+
+        /* Image Slideshow Styles */
+        .card-image-container {
+            width: 100%;
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .slideshow-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slideshow-img.active {
+            opacity: 1;
+        }
+
+        /* Search Input Styling */
+        .search-input {
+            width: 100%;
+            padding: 1.4rem 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            color: white;
+            outline: none;
+            transition: all 0.4s ease;
+            text-align: center;
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .search-input:focus {
+            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.07);
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.05);
+        }
+
+        .social-icon {
+            font-size: 1.4rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .social-icon:hover {
+            background: #ffffff;
+            color: #000000;
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            #cursor, #cursor-follower { display: none; }
+            .font-luxury { font-size: 2.5rem !important; }
+            .hero-title { font-size: 4rem !important; }
+            .card-image-container { height: 180px; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-indigo-500/30">
+    <canvas id="canvas-bg"></canvas>
+    
+    <div id="cursor"></div>
+    <div id="cursor-follower"></div>
+
+    <!-- Minimal Header -->
+    <nav class="fixed top-0 w-full px-8 py-6 flex flex-col md:flex-row justify-between items-center z-50 bg-black/40 backdrop-blur-2xl border-b border-white/5">
+        <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center font-bold text-black text-2xl shadow-xl">H</div>
+            <span class="font-luxury text-2xl tracking-tighter">Hassan Jatoi</span>
+        </div>
+        
+        <div class="mt-4 md:mt-0 flex items-center gap-6">
+            <div id="clock" class="text-[10px] font-bold tracking-[0.3em] bg-white/5 px-6 py-2 rounded-full border border-white/10 opacity-70">00:00:00</div>
+        </div>
+
+        <div class="rainbow-line nav-rainbow"></div>
+    </nav>
+
+    <main class="relative z-10 px-6 max-w-7xl mx-auto">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex flex-col justify-center items-center text-center pt-32 pb-12">
+            <div class="relative mb-14 mt-8 reveal-up">
+                <div class="profile-glow absolute inset-0 rounded-full blur-[80px]"></div>
+                <div class="w-48 h-48 md:w-64 md:h-64 p-1.5 bg-gradient-to-tr from-white/30 via-transparent to-white/30 rounded-full overflow-hidden relative z-10">
+                    <img src="https://i.ibb.co/JR2045kd/profile.jpg" alt="Hassan Jatoi" class="w-full h-full object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-1000 scale-105 hover:scale-110">
+                </div>
+                <div class="absolute -bottom-2 -right-2 bg-white text-black text-[11px] font-black px-5 py-2.5 rounded-full shadow-2xl z-20">HI THERE! 👋</div>
+            </div>
+
+            <div class="max-w-4xl">
+                <div class="reveal-up mb-12">
+                    <form action="https://www.google.com/search" method="get" target="_blank" class="relative group max-w-lg mx-auto">
+                        <input type="text" name="q" placeholder="Explore the universe..." class="search-input">
+                        <i class="fa-solid fa-sparkles absolute right-8 top-1/2 -translate-y-1/2 text-white/30 group-hover:text-white transition-colors"></i>
+                    </form>
+                </div>
+
+                <h1 class="hero-title font-luxury text-6xl md:text-9xl mb-8 leading-[0.85] tracking-tighter reveal-up">
+                    Once Upon <br>
+                    <span class="opacity-30 italic font-light">A Time</span>
+                </h1>
+                
+                <p class="text-white/50 text-xl md:text-2xl font-light mb-14 max-w-2xl mx-auto leading-relaxed reveal-up">
+                    I weave <span class="text-white font-medium">beautiful emotions</span> into the digital fabric of the web.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-6 justify-center reveal-up">
+                    <a href="mailto:jatoihassan009@gmail.com" class="px-12 py-5 bg-white text-black rounded-full font-bold text-sm tracking-[0.2em] hover:bg-zinc-200 transition-all shadow-[0_0_40px_rgba(255,255,255,0.15)]">GET IN TOUCH</a>
+                    <a href="#work" class="px-12 py-5 bg-white/5 border border-white/10 rounded-full font-bold text-sm tracking-[0.2em] hover:bg-white/10 transition-all backdrop-blur-md">MY JOURNEY</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Refined Work Grid -->
+        <section id="work" class="py-32">
+            <div class="flex flex-col items-center mb-24 reveal-up">
+                <span class="text-[10px] font-bold tracking-[0.5em] text-white/30 uppercase mb-4">Portfolio</span>
+                <h2 class="font-luxury text-4xl md:text-6xl">Featured Works</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Google Poetry -->
+                <a href="https://share.google/pmLPDkOHYUzyTx9Lx" target="_blank" class="glass-card p-8 md:p-14 reveal-up project-slideshow" data-images='["https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1474932430478-3a7fb9083108?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=600"]'>
+                    <div class="card-image-container">
+                        <!-- Images will be injected by JS -->
+                    </div>
+                    <div class="w-16 h-16 bg-indigo-500/10 rounded-2xl flex items-center justify-center mb-6 text-2xl">
+                        <i class="fa-solid fa-feather-pointed text-indigo-400"></i>
+                    </div>
+                    <h3 class="font-luxury text-4xl mb-4 tracking-tight">Google Poetry</h3>
+                    <p class="text-white/40 text-lg mb-8 max-w-xs mx-auto">A modern anthology where verses find their digital soul.</p>
+                    <div class="inline-flex items-center gap-3 text-[11px] font-bold tracking-[0.3em] uppercase opacity-60">
+                        Explore <i class="fa-solid fa-arrow-right-long"></i>
+                    </div>
+                </a>
+
+                <!-- Separation & Love -->
+                <a href="https://hassanaliuk11-oss.github.io/my-colourful-words/" target="_blank" class="glass-card p-8 md:p-14 reveal-up project-slideshow" style="transition-delay: 0.1s;" data-images='["https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1516589174422-b755a4206665?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&q=80&w=600"]'>
+                    <div class="card-image-container">
+                        <!-- Images will be injected by JS -->
+                    </div>
+                    <div class="w-16 h-16 bg-pink-500/10 rounded-2xl flex items-center justify-center mb-6 text-2xl">
+                        <i class="fa-solid fa-heart-pulse text-pink-400"></i>
+                    </div>
+                    <h3 class="font-luxury text-4xl mb-4 tracking-tight">Separation & Love</h3>
+                    <p class="text-white/40 text-lg mb-8 max-w-xs mx-auto">A vibrant journey through the colors of human connection.</p>
+                    <div class="inline-flex items-center gap-3 text-[11px] font-bold tracking-[0.3em] uppercase opacity-60">
+                        Read Story <i class="fa-solid fa-arrow-right-long"></i>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Deep Footer -->
+    <footer id="contact" class="py-40 px-6 border-t border-white/5 bg-gradient-to-b from-transparent via-white/[0.02] to-white/[0.05] relative overflow-hidden">
+        <div class="rainbow-line footer-rainbow"></div>
+        <div class="max-w-4xl mx-auto relative z-10">
+            <h2 class="font-luxury text-5xl md:text-7xl mb-16 reveal-up">Let's create something <br><span class="opacity-40 italic">magical</span> together.</h2>
+            
+            <div class="flex flex-col items-center gap-12 reveal-up">
+                <a href="mailto:jatoihassan009@gmail.com" class="text-3xl md:text-5xl font-light hover:text-indigo-400 transition-all border-b border-white/10 pb-6 mb-8 block">
+                    jatoihassan009@gmail.com
+                </a>
+                
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="https://wa.me/923083500829" target="_blank" class="social-icon"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://linkedin.com/in/hassanjatoi786" target="_blank" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://instagram.com/hassanjatoi" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://facebook.com/hassanjatoi" target="_blank" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/hassanjatoi" target="_blank" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://github.com/hassanaliuk11-oss" target="_blank" class="social-icon"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+
+            <div class="mt-40 opacity-20 text-[10px] font-bold tracking-[1em] uppercase">
+                © 2025 HASSAN JATOI • DIGITAL STUDIO
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Particle Background System
+        const canvas = document.getElementById('canvas-bg');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < 100; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+        initParticles();
+        animateParticles();
+
+        // Slideshow Logic
+        function setupSlideshows() {
+            const projects = document.querySelectorAll('.project-slideshow');
+            
+            projects.forEach(project => {
+                const images = JSON.parse(project.dataset.images);
+                const container = project.querySelector('.card-image-container');
+                
+                // Create image elements
+                images.forEach((src, index) => {
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.className = `slideshow-img ${index === 0 ? 'active' : ''}`;
+                    container.appendChild(img);
+                });
+
+                // Interval to change images
+                let currentIdx = 0;
+                setInterval(() => {
+                    const imgs = container.querySelectorAll('.slideshow-img');
+                    if (imgs.length > 0) {
+                        imgs[currentIdx].classList.remove('active');
+                        currentIdx = (currentIdx + 1) % imgs.length;
+                        imgs[currentIdx].classList.add('active');
+                    }
+                }, 3000);
+            });
+        }
+
+        // Smooth Cursor
+        const cursor = document.getElementById('cursor');
+        const follower = document.getElementById('cursor-follower');
+
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+            cursor.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+            follower.style.transform = `translate3d(${x - 20}px, ${y - 20}px, 0)`;
+        });
+
+        // Interactive hover for elements
+        document.querySelectorAll('a, button, .glass-card').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                follower.style.transform += ' scale(2)';
+                follower.style.borderColor = 'rgba(255, 255, 255, 0.8)';
+                follower.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+            });
+            el.addEventListener('mouseleave', () => {
+                follower.style.transform = follower.style.transform.replace(' scale(2)', '');
+                follower.style.borderColor = 'rgba(255, 255, 255, 0.4)';
+                follower.style.backgroundColor = 'transparent';
+            });
+        });
+
+        // Clock Update
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('clock').innerText = now.toLocaleTimeString();
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Intersection Observer for Reveals
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+
+        // Initialize slideshows
+        setupSlideshows();
+    </script>
+</body>
+</html>
