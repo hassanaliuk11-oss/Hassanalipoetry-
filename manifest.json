@@ -1,0 +1,16 @@
+{
+  "name": "Hassan Jatoi Official",
+  "short_name": "Hassan Jatoi",
+  "description": "The Official Poetry Archive of Hassan Jatoi",
+  "start_url": "/Hassanalipoetry-/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "https://i.ibb.co/XZpNgSJ4/IMG-20251026-WA0025-modified.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
