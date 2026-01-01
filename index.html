@@ -169,15 +169,19 @@
         updateLiveElements();
 
         // DATA
-        const links = [
-            {t: "Silent Hope's", u: "https://hassanaliuk11-oss.github.io/silent-people/"},
-            {t: "Death of Sprits", u: "https://hassanaliuk11-oss.github.io/the-death-of-soul/"},
-            {t: "The Lonely Path", u: "https://hassanaliuk11-oss.github.io/The-Lonely-Path/"},
-            {t: "Urdu Point", u: "https://hassanaliuk11-oss.github.io/hassanjatoiurdu-/"},
-            {t: "Once Upon A Heart", u: "https://hassanaliuk11-oss.github.io/my-colourful-words/"},
-            {t: "Secret Diary", u: "https://hassanaliuk11-oss.github.io/Heart-Touching/"}
-        ];
+const links = [
+  { t: "Silent Hope – Deep Poetry Collection by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/silent-people/" },
+  { t: "Death of Spirits – Dark & Soul Poetry by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/the-death-of-soul/" },
+  { t: "The Lonely Path – Sad & Deep Writing by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/The-Lonely-Path/" },
+  { t: "Urdu Point – Urdu Poetry & Writings by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/hassanjatoiurdu-/" },
+  { t: "Once Upon a Heart – Emotional Words by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/my-colourful-words/" },
+  { t: "Secret Diary – Heart Touching Poetry by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/Heart-Touching/" },
 
+  { t: "Blue Horizon – Sea Side Poetry by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/sea-side-and-grief/" },
+  { t: "Grief of 2025 – Deep Emotional Poetry by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/The-grief-of-2025/" },
+  { t: "Broken Soul – Sad & Deep Poetry Collection by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/poetry-book1/" },
+  { t: "Strangers City – Lost Souls & Silence by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/The-city-of-strangers-/" }
+];
         document.getElementById('grid-system').innerHTML = links.map(item => `
             <div class="lib-card group" data-tilt>
                 <h3 class="font-royal text-xl colourful-text uppercase font-black mb-6">${item.t}</h3>
