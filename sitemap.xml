@@ -3,7 +3,37 @@
   <url>
     <loc>https://hassanaliuk11-oss.github.io/Hassanalipoetry-/</loc>
     <lastmod>2026-01-01</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <priority>1.00</priority>
+  </url>
+
+  <url>
+    <loc>https://hassanaliuk11-oss.github.io/silent-people/</loc>
+    <lastmod>2026-01-01</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://hassanaliuk11-oss.github.io/the-death-of-soul/</loc>
+    <lastmod>2026-01-01</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://hassanaliuk11-oss.github.io/The-Lonely-Path/</loc>
+    <lastmod>2026-01-01</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://hassanaliuk11-oss.github.io/hassanjatoiurdu-/</loc>
+    <lastmod>2026-01-01</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://hassanaliuk11-oss.github.io/my-colourful-words/</loc>
+    <lastmod>2026-01-01</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://hassanaliuk11-oss.github.io/Heart-Touching/</loc>
+    <lastmod>2026-01-01</lastmod>
+    <priority>0.80</priority>
   </url>
 </urlset>
