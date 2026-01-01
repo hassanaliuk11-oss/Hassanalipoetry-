@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="google-site-verification" content="XbEnYeOj8hshqMfvBNIRnhJ166MTlRPcq6nS0K9g4xQ" />
+    <meta name="google-site-verification" content="Fdt9xuWhQe3RTRksR_cUA0orFywRQ7Geoz3661Q3EZ4" />
 
-    <title>Hassan Jatoi | Digital Visionary</title>
+    <title>Hassan Jatoi | Digital Visionary & Poet</title>
     
     <meta name="description" content="Official portfolio of Hassan Jatoi - Digital Visionary and Poet. Explore my featured works and poetic journey.">
     
@@ -39,9 +39,7 @@
         .slideshow-img.active { opacity: 1; }
         .search-input { width: 100%; padding: 1.4rem 2rem; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 100px; color: white; outline: none; transition: all 0.4s ease; text-align: center; font-size: 1.1rem; letter-spacing: 0.05em; }
         .search-input:focus { border-color: rgba(255, 255, 255, 0.5); background: rgba(255, 255, 255, 0.07); box-shadow: 0 0 40px rgba(255, 255, 255, 0.05); }
-        .social-icon { font-size: 1.4rem; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255, 255, 255, 0.03); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .social-icon:hover { background: #ffffff; color: #000000; transform: translateY(-8px) scale(1.1); box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1); }
-        @media (max-width: 768px) { #cursor, #cursor-follower { display: none; } .font-luxury { font-size: 2.5rem !important; } .hero-title { font-size: 4rem !important; } .card-image-container { height: 180px; } }
+        @media (max-width: 768px) { #cursor, #cursor-follower { display: none; } .font-luxury { font-size: 2.5rem !important; } .hero-title { font-size: 4rem !important; } }
     </style>
 </head>
 <body class="antialiased selection:bg-indigo-500/30">
@@ -83,10 +81,18 @@
                 </div>
             </div>
         </section>
+        
+        <section id="work" class="py-20">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="glass-card p-8 reveal-up">
+                    <h3 class="font-luxury text-3xl mb-4">Poetic Soul</h3>
+                    <p class="text-white/60">Digital vision blended with rhythmic words.</p>
+                </div>
+            </div>
+        </section>
     </main>
 
     <script>
-        // Background particles
         const canvas = document.getElementById('canvas-bg');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -100,8 +106,6 @@
         function animate() { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animate); }
         window.addEventListener('resize', resize);
         resize(); init(); animate();
-
-        // Cursor & Reveals
         setInterval(() => { document.getElementById('clock').innerText = new Date().toLocaleTimeString(); }, 1000);
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
