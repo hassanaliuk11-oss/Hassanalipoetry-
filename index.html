@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="google-site-verification" content="YAHAN_APNA_CODE_DALEIN" />
+    <meta name="google-site-verification" content="XbEnYeOj8hshqMfvBNIRnhJ166MTlRPcq6nS0K9g4xQ" />
+
     <title>Hassan Jatoi | Digital Visionary</title>
     
     <meta name="description" content="Official portfolio of Hassan Jatoi - Digital Visionary and Poet. Explore my featured works and poetic journey.">
-    <meta name="author" content="Hassan Jatoi">
-
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -83,26 +83,7 @@
                 </div>
             </div>
         </section>
-
-        <section id="work" class="py-32">
-             <div class="flex flex-col items-center mb-24 reveal-up">
-                <h2 class="font-luxury text-4xl md:text-6xl">Featured Works</h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <a href="https://share.google/pmLPDkOHYUzyTx9Lx" target="_blank" class="glass-card p-8 md:p-14 reveal-up project-slideshow" data-images='["https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600", "https://images.unsplash.com/photo-1474932430478-3a7fb9083108?w=600"]'>
-                    <div class="card-image-container"></div>
-                    <h3 class="font-luxury text-4xl mb-4">Google Poetry</h3>
-                    <p class="text-white/40">Read More...</p>
-                </a>
-                </div>
-        </section>
     </main>
-
-    <footer class="py-40 px-6 border-t border-white/5 relative">
-        <div class="rainbow-line footer-rainbow"></div>
-        <h2 class="font-luxury text-5xl md:text-7xl mb-16">Let's create magic.</h2>
-        <p>© 2025 HASSAN JATOI</p>
-    </footer>
 
     <script>
         // Background particles
@@ -120,29 +101,7 @@
         window.addEventListener('resize', resize);
         resize(); init(); animate();
 
-        // Slideshow
-        function setupSlideshows() {
-            document.querySelectorAll('.project-slideshow').forEach(project => {
-                const images = JSON.parse(project.dataset.images);
-                const container = project.querySelector('.card-image-container');
-                images.forEach((src, idx) => {
-                    const img = document.createElement('img');
-                    img.src = src;
-                    img.className = `slideshow-img ${idx === 0 ? 'active' : ''}`;
-                    container.appendChild(img);
-                });
-                let current = 0;
-                setInterval(() => {
-                    const imgs = container.querySelectorAll('.slideshow-img');
-                    imgs[current].classList.remove('active');
-                    current = (current + 1) % imgs.length;
-                    imgs[current].classList.add('active');
-                }, 3000);
-            });
-        }
-        setupSlideshows();
-
-        // Clock & Reveals
+        // Cursor & Reveals
         setInterval(() => { document.getElementById('clock').innerText = new Date().toLocaleTimeString(); }, 1000);
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
