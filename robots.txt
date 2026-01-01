@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap link Google ko batane ke liye
+Sitemap: https://hassanaliuk11-oss.github.io/Hassanalipoetry-/sitemap.xml
