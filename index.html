@@ -210,11 +210,11 @@ const links = [
   { t: "Strangers City – Lost Souls & Silence by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/The-city-of-strangers-/" }
 ];
         document.getElementById('grid-system').innerHTML = links.map(item => `
-            <div class="lib-card group" data-tilt>
-                <h3 class="font-royal text-xl colourful-text uppercase font-black mb-6">${item.t}</h3>
-                <a href="${item.u}" target="_blank" class="text-[10px] font-bold border-b border-pink-500 pb-1 uppercase tracking-[2px]">Open Archive</a>
-            </div>
-        `).join('');
+    <div class="lib-card group" data-tilt>
+        <h3 class="font-royal poetry-title colourful-text uppercase font-black mb-6">${item.t}</h3>
+        <a href="${item.u}" target="_blank" class="text-[10px] font-bold border-b border-pink-500 pb-1 uppercase tracking-[2px]">Open Archive</a>
+    </div>
+`).join('');
 
         function copyLink(btn){
             navigator.clipboard.writeText("https://hassanaliuk11-oss.github.io/Hassanalipoetry-/");
