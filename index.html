@@ -1,228 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- GOOGLE VERIFICATION -->
-    <meta name="google-site-verification" content="osYdOuuf3r5YsXAVU40owhWn9WxCsDC6NnsboPJs1Qg" />
-    <meta name="google-site-verification" content="googledcf5aa11eb043d8c" />
-    
-    <title>Hassan Jatoi Official | Best Modern English & Urdu Poet 2026</title>
-    <meta name="description" content="Official website of Hassan Jatoi. Author of Silent People, Death of Soul. Explore the 2026 Digital Poetry Archive.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- GOOGLE VERIFICATION -->
+    <meta name="google-site-verification" content="osYdOuuf3r5YsXAVU40owhWn9WxCsDC6NnsboPJs1Qg" />
+    <meta name="google-site-verification" content="googledcf5aa11eb043d8c" />
 
-    <!-- ADVANCED SCHEMA (PERSON & SOCIAL GRAPH) - JUST ADDED YOUR LINKS -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Hassan Jatoi",
-      "alternateName": "Hassan Ali Jatoi",
-      "url": "https://hassanaliuk11-oss.github.io/Hassanalipoetry-/",
-      "image": "https://i.ibb.co/XZpNgSJ4/IMG-20251026-WA0025-modified.png",
-      "jobTitle": "Poet and Author",
-      "description": "Hassan Jatoi is a renowned modern poet and author of books including Silent People and Death of Soul.",
-      "email": "jatoihassan009@gmail.com",
-      "sameAs": [
-        "https://wa.me/923083500829",
-        "https://www.facebook.com/share/17zubUQBeE/",
-        "https://www.tiktok.com/@hassanjatoi209",
-        "https://www.linkedin.com/in/hassanjatoi786",
-        "https://hellopoetry.com/Hassanjatoi/",
-        "https://allpoetry.com/Hassan_jatoi",
-        "https://www.urdupoint.com/poetry/user-poet/hassan-jatoi-27314.html",
-        "https://www.aruuz.com/?user=Hassanjatoi",
-        "https://hassan-jatoi.blogspot.com",
-        "https://hassanaliuk11-oss.github.io/silent-people/",
-        "https://hassanaliuk11-oss.github.io/the-death-of-soul/"
-      ]
-    }
-    </script>
+    <link rel="manifest" href="/manifest.json">
 
-    <!-- LIBRARIES -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@900&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta name="theme-color" content="#ff0080">
+   
+    <!-- CANONICAL TAG -->
+    <link rel="canonical" href="https://hassanalipoetry.vercel.app/" />
 
-    <style>
-    :root { 
-        --bg: #010103; 
-        --accent: #ff0080; 
-        --neon: #00d2ff; 
-    }
+    <!-- PRIMARY SEO TAGS -->
+    <title>Hassan Jatoi | Best Modern English & Urdu Poet 2026 | Official Site</title>
+    <meta name="description" content="Official Archive of Hassan Jatoi. Renowned author of 'Silent People' and 'Death of Soul'. Explore modern poetry, Urdu Shayari, and deep emotional literature 2026.">
+    <meta name="keywords" content="Hassan Jatoi, Hassan Ali Jatoi, Modern Urdu Poet 2026, Best English Poet Pakistan, Silent People Book, Death of Soul Poetry, Hassan Jatoi Official, Deep Poetry Archive, hassanalipoetry vercel">
+    <meta name="author" content="Hassan Jatoi">
 
-    body { 
-        background: var(--bg); 
-        color: #fff; 
-        font-family: 'Quicksand', sans-serif; 
-        text-align: center; 
-    }
+    <!-- OPEN GRAPH -->
+    <meta property="og:title" content="Hassan Jatoi - Official Digital Poetry Archive 2026">
+    <meta property="og:description" content="Explore the soul-stirring world of Hassan Jatoi. Author, Poet, and Visionary.">
+    <meta property="og:image" content="https://i.ibb.co/XZpNgSJ4/IMG-20251026-WA0025-modified.png">
+    <meta property="og:url" content="https://hassanalipoetry.vercel.app/">
+    <meta property="og:type" content="website">
 
-    .font-royal { 
-        font-family: 'Cinzel', serif; 
-    }
+    <!-- LIBRARIES -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    .colourful-text {
-        background: linear-gradient(to right, #ff0080, #ff8c00, #40e0d0, #9370db, #ff0080);
-        background-size: 200% auto; 
-        -webkit-background-clip: text; 
-        -webkit-text-fill-color: transparent;
-        animation: rainbow 4s linear infinite;
-    }
-    @keyframes rainbow { 
-        to { background-position: 200% center; } 
-    }
+    <!-- FIREBASE SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 
-    .nav-glass {
-        position: fixed; 
-        top: 15px; 
-        left: 50%; 
-        transform: translateX(-50%);
-        width: 95%; 
-        max-width: 1100px; 
-        padding: 12px 20px;
-        background: rgba(255,255,255,0.01); 
-        border: 1px solid rgba(255,255,255,0.08);
-        backdrop-filter: blur(20px); 
-        border-radius: 50px; 
-        z-index: 1000;
-        display: flex; 
-        justify-content: space-between; 
-        align-items: center;
-    }
+        const firebaseConfig = JSON.parse(__firebase_config);
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'hassan-jatoi-poetry';
 
-        .social-chip {
-            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);
-            padding: 8px 15px; border-radius: 15px; font-size: 10px; font-weight: bold;
-            transition: 0.3s; display: flex; align-items: center; gap: 8px;
-        }
-        .social-chip:hover { background: var(--accent); border-color: white; transform: scale(1.05); }
+        window.handleSubscribe = async (event) => {
+            event.preventDefault();
+            const emailInput = document.getElementById('sub-email');
+            const statusMsg = document.getElementById('sub-status');
+            const email = emailInput.value.trim();
 
-        .lib-card {
-            background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 30px; padding: 40px; transition: 0.5s;
-        }
-    </style>
+            if(!email) return;
+
+            try {
+                statusMsg.textContent = "Processing...";
+                await signInAnonymously(auth);
+                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'subscribers'), {
+                    email: email,
+                    timestamp: serverTimestamp(),
+                    source: window.location.hostname
+                });
+                
+                statusMsg.innerHTML = "<span class='text-green-500'>Successfully Subscribed!</span>";
+                emailInput.value = "";
+                setTimeout(closeModal, 2000);
+            } catch (error) {
+                statusMsg.innerHTML = "<span class='text-red-500'>Error. Please try again.</span>";
+            }
+        };
+    </script>
+
+    <style>
+        :root { --bg: #0f0f0f; --accent: #ff0080; }
+        body { background: var(--bg); color: #fff; font-family: 'Quicksand', sans-serif; overflow-x: hidden; }
+        .font-royal { font-family: 'Cinzel', serif; font-style: normal !important; }
+        
+        .colourful-text {
+            background: linear-gradient(to right, #ff0080, #ff8c00, #40e0d0, #9370db, #ff0080);
+            background-size: 200% auto; 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            animation: rainbow 4s linear infinite;
+        }
+        @keyframes rainbow { to { background-position: 200% center; } }
+
+        .nav-glass { position: sticky; top: 0; background: rgba(15, 15, 15, 0.95); backdrop-filter: blur(20px); z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        
+        /* SHARP & CLEAN BANNER */
+        .yt-banner {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover; background-position: center; height: 220px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .banner-clear-text {
+            font-size: clamp(1.5rem, 5vw, 3rem);
+            letter-spacing: 0.2em;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+            font-weight: 900;
+        }
+
+        .channel-avatar { border: 4px solid var(--bg); margin-top: -50px; transition: transform 0.3s ease; box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
+        .video-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden; transition: 0.3s; }
+        .video-card:hover { background: rgba(255,255,255,0.07); border-color: var(--accent); transform: translateY(-3px); }
+        
+        .subscribe-btn { background: #f1f1f1; color: #0f0f0f; border-radius: 50px; font-weight: bold; transition: all 0.3s; }
+        .subscribe-btn:hover { background: #ff0080; color: white; transform: scale(1.05); }
+        
+        .social-chip { background: rgba(255,255,255,0.05); padding: 6px 12px; border-radius: 8px; font-size: 12px; display: flex; align-items: center; gap: 6px; transition: 0.3s; white-space: nowrap; border: 1px solid transparent; }
+        .social-chip:hover { background: rgba(255,0,128,0.1); border-color: var(--accent); color: var(--accent); }
+        
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        #sub-modal { display: none; }
+        .modal-overlay { background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
+    </style>
 </head>
-<body class="antialiased">
+<body class="antialiased pb-20">
 
-    <!-- Navigation -->
-    <nav class="nav-glass">
-        <div class="flex flex-col items-start">
-            <span class="font-royal text-[10px] colourful-text font-black uppercase tracking-[2px]">Hassan Jatoi</span>
-            <span id="live-date" class="text-[9px] text-white/40 font-bold uppercase tracking-widest mt-1">Loading...</span>
-        </div>
+    <!-- Modal for Subscription -->
+    <div id="sub-modal" class="fixed inset-0 z-[2000] flex items-center justify-center p-4">
+        <div class="modal-overlay absolute inset-0" onclick="closeModal()"></div>
+        <div class="relative bg-[#1a1a1a] border border-white/10 p-8 rounded-2xl max-w-md w-full shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-500 hover:text-white"><i class="fas fa-times"></i></button>
+            <div class="text-center">
+                <i class="fas fa-bell text-4xl text-pink-500 mb-4 animate-bounce"></i>
+                <h3 class="font-royal text-xl mb-2">Subscribe for Updates</h3>
+                <p class="text-gray-400 text-sm mb-6">Nayi poetry aur updates ke liye apna email niche enter karein.</p>
+                <form onsubmit="handleSubscribe(event)" class="space-y-4">
+                    <input type="email" id="sub-email" required placeholder="Enter your email" 
+                           class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-sm focus:border-pink-500 outline-none transition-all">
+                    <button type="submit" class="w-full bg-pink-600 hover:bg-pink-700 py-3 rounded-lg font-bold text-sm transition-all shadow-lg shadow-pink-600/20">
+                        Join Archive
+                    </button>
+                </form>
+                <p id="sub-status" class="mt-4 text-[10px] uppercase tracking-widest text-gray-500"></p>
+            </div>
+        </div>
+    </div>
 
-        <div class="flex items-center gap-4">
-            <div class="flex flex-col items-end">
-                <span id="live-clock" class="text-[14px] md:text-[18px] font-mono font-bold text-white tracking-widest">00:00:00</span>
-                <span class="text-[8px] text-white/30 uppercase tracking-[2px]">Live Hub</span>
-            </div>
-        </div>
-    </nav>
+    <header>
+        <nav class="nav-glass px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i class="fab fa-youtube text-red-600 text-2xl"></i>
+                <span class="font-royal text-sm colourful-text font-black tracking-widest uppercase">HassanTube</span>
+            </div>
+            <div class="text-right">
+                <span id="live-clock" class="text-sm font-mono font-bold">00:00:00</span>
+                <div class="text-[8px] text-white/40 uppercase tracking-widest">Digital Archive 2026</div>
+            </div>
+        </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <header class="min-h-screen flex flex-col justify-center items-center px-6 pt-24">
-        <div class="relative mb-8" data-tilt>
-            <div class="w-52 h-52 md:w-64 md:h-64 rounded-full p-1 bg-gradient-to-tr from-pink-500 via-purple-500 to-blue-500">
-                <img src="https://i.ibb.co/XZpNgSJ4/IMG-20251026-WA0025-modified.png" alt="Hassan Jatoi Official" class="w-full h-full object-cover rounded-full border-4 border-black">
-            </div>
-        </div>
+    <div class="yt-banner w-full">
+        <h2 class="font-royal banner-clear-text colourful-text uppercase text-center">Modern Poetry 2026</h2>
+    </div>
 
-        <h1 class="font-royal text-4xl md:text-7xl tracking-[10px] md:tracking-[20px] colourful-text font-black uppercase mb-4">Hassan Jatoi</h1>
-        
-        <!-- Social Identity Chips (New Missing Feature Added) -->
-        <div class="flex flex-wrap justify-center gap-3 mb-8 max-w-2xl">
-            <a href="https://www.facebook.com/share/17zubUQBeE/" target="_blank" class="social-chip"><i class="fab fa-facebook"></i> Facebook</a>
-            <a href="https://www.tiktok.com/@hassanjatoi209" target="_blank" class="social-chip"><i class="fab fa-tiktok"></i> TikTok</a>
-            <a href="https://www.linkedin.com/in/hassanjatoi786" target="_blank" class="social-chip"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <a href="https://hassan-jatoi.blogspot.com" target="_blank" class="social-chip"><i class="fab fa-blogger"></i> Blog</a>
-        </div>
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="flex flex-col items-center md:flex-row md:items-start md:gap-6">
+            <div data-tilt>
+                <img src="https://i.ibb.co/XZpNgSJ4/IMG-20251026-WA0025-modified.png" 
+                     alt="Hassan Jatoi Official" 
+                     class="w-32 h-32 rounded-full channel-avatar object-cover">
+            </div>
+            <div class="text-center md:text-left mt-4 flex-1">
+                <h1 class="text-3xl font-bold font-royal colourful-text tracking-widest uppercase">Hassan Jatoi</h1>
+                <p class="text-gray-400 text-sm mt-1">@hassanjatoi209 • 1.2M subscribers • Verified Author & Poet</p>
+                
+                <div class="mt-4 mb-2">
+                    <p class="font-royal text-base md:text-lg text-white leading-relaxed tracking-wide">
+                        "Where Silence Speaks and Souls Find Their Voice. Exploring the depth of human emotions through 2026's finest poetry."
+                    </p>
+                </div>
+                
+                <div class="flex flex-wrap justify-center md:justify-start gap-4 mt-6">
+                    <button onclick="openModal()" class="subscribe-btn px-8 py-2 text-sm shadow-lg">Subscribe</button>
+                    <button onclick="window.open('https://wa.me/923083500829')" class="bg-white/10 hover:bg-white/20 px-6 py-2 rounded-full text-sm font-bold">Contact Author</button>
+                    <button onclick="copyLink(this)" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full text-sm font-bold"><i class="fas fa-share"></i></button>
+                </div>
+            </div>
+        </div>
 
-        <p class="text-xl md:text-3xl italic font-light text-white/80 max-w-4xl leading-relaxed mb-10 px-4">
-           "Hassan Jatoi – Where Silence Speaks and Souls Find Their Voice."
-        </p>
+        <!-- Social Bar -->
+        <div class="flex gap-3 overflow-x-auto py-6 no-scrollbar">
+            <a href="https://hassanalipoetry.vercel.app/" class="social-chip" title="Main Hub"><i class="fas fa-globe text-pink-500"></i> Vercel Site</a>
+            <a href="https://www.facebook.com/share/17zubUQBeE/" target="_blank" class="social-chip"><i class="fab fa-facebook text-blue-500"></i> Facebook</a>
+            <a href="https://www.tiktok.com/@hassanjatoi209" target="_blank" class="social-chip"><i class="fab fa-tiktok text-white"></i> TikTok</a>
+            <a href="https://www.linkedin.com/in/hassanjatoi786" target="_blank" class="social-chip"><i class="fab fa-linkedin text-blue-400"></i> LinkedIn</a>
+            <a href="https://hassan-jatoi.blogspot.com" target="_blank" class="social-chip"><i class="fab fa-blogger text-orange-500"></i> Blog</a>
+            <a href="https://hellopoetry.com/Hassanjatoi/" target="_blank" class="social-chip"><i class="fas fa-pen-nib text-green-400"></i> HelloPoetry</a>
+            <a href="https://allpoetry.com/Hassan_jatoi" target="_blank" class="social-chip"><i class="fas fa-feather text-purple-400"></i> AllPoetry</a>
+            <a href="https://www.urdupoint.com/poetry/user-poet/hassan-jatoi-27314.html" target="_blank" class="social-chip"><i class="fas fa-language text-red-500"></i> UrduPoint</a>
+            <a href="https://www.aruuz.com/?user=Hassanjatoi" target="_blank" class="social-chip"><i class="fas fa-scroll text-yellow-500"></i> Aruuz</a>
+        </div>
+    </div>
 
-        <div class="flex flex-wrap justify-center gap-4">
-            <button onclick="window.open('https://wa.me/923083500829')" class="px-6 py-3 bg-green-600/20 border border-green-500/30 rounded-full text-[10px] font-black uppercase tracking-[2px]">WhatsApp Contact</button>
-            <button onclick="copyLink(this)" class="px-6 py-3 bg-white/5 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-[2px]">Copy Archive Link</button>
-        </div>
-    </header>
+    <main class="max-w-6xl mx-auto px-4 py-8">
+        <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+            <i class="fas fa-play-circle text-red-600"></i> Full Digital Archive (GitHub Collections)
+        </h2>
+        <div id="grid-system" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </main>
 
-    <!-- Platform Links Grid (More Missing Authority Links) -->
-    <section class="max-w-7xl mx-auto px-6 py-20 bg-white/5 rounded-[50px]">
-        <h2 class="font-royal text-2xl colourful-text font-black uppercase mb-12">Literary Presence</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <a href="https://hellopoetry.com/Hassanjatoi/" target="_blank" class="p-6 bg-black/40 rounded-2xl border border-white/5 hover:border-pink-500 transition-all">
-                <span class="text-[10px] uppercase font-bold tracking-widest opacity-50">HelloPoetry</span>
-            </a>
-            <a href="https://allpoetry.com/Hassan_jatoi" target="_blank" class="p-6 bg-black/40 rounded-2xl border border-white/5 hover:border-pink-500 transition-all">
-                <span class="text-[10px] uppercase font-bold tracking-widest opacity-50">AllPoetry</span>
-            </a>
-            <a href="https://www.urdupoint.com/poetry/user-poet/hassan-jatoi-27314.html" target="_blank" class="p-6 bg-black/40 rounded-2xl border border-white/5 hover:border-pink-500 transition-all">
-                <span class="text-[10px] uppercase font-bold tracking-widest opacity-50">UrduPoint</span>
-            </a>
-            <a href="https://www.aruuz.com/?user=Hassanjatoi" target="_blank" class="p-6 bg-black/40 rounded-2xl border border-white/5 hover:border-pink-500 transition-all">
-                <span class="text-[10px] uppercase font-bold tracking-widest opacity-50">Aruuz</span>
-            </a>
-        </div>
-    </section>
+    <footer class="py-12 bg-black border-t border-white/5 text-center px-4">
+        <h3 class="font-royal text-xl colourful-text font-black uppercase mb-2">Hassan Ali Jatoi</h3>
+        <p class="text-[10px] text-white/30 tracking-[4px]">Verified Author • jatoihassan009@gmail.com</p>
+        <p class="text-[8px] tracking-[2px] opacity-20 uppercase mt-4">© 2026 Hassan Jatoi Official | Entity Protected Literatures</p>
+    </footer>
 
-    <!-- Archive Section -->
-    <section class="max-w-7xl mx-auto px-6 py-28">
-        <div id="grid-system" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Dynamic Links -->
-        </div>
-    </section>
+    <script>
+        function openModal() { document.getElementById('sub-modal').style.display = 'flex'; }
+        function closeModal() { document.getElementById('sub-modal').style.display = 'none'; }
 
-    <!-- Footer -->
-    <footer class="py-24 border-t border-white/5 bg-black">
-        <h3 class="font-royal text-2xl colourful-text font-black uppercase mb-4">Hassan Ali Jatoi</h3>
-        <p class="text-[10px] text-white/30 uppercase tracking-[4px] mb-8">jatoihassan009@gmail.com</p>
-        <p class="text-[8px] tracking-[4px] opacity-20 uppercase font-black">
-            © 2026 Hassan Jatoi Official | Entity Verified Archive
-        </p>
-    </footer>
+        function updateLiveElements() {
+            const now = new Date();
+            document.getElementById('live-clock').textContent = now.toLocaleTimeString('en-GB', { hour12: false });
+        }
+        setInterval(updateLiveElements, 1000);
+        updateLiveElements();
 
-    <script>
-        // LIVE TIME ENGINE
-        function updateLiveElements() {
-            const now = new Date();
-            document.getElementById('live-clock').textContent = now.toLocaleTimeString('en-GB', { hour12: false });
-            document.getElementById('live-date').textContent = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'short', day: '2-digit' });
-        }
-        setInterval(updateLiveElements, 1000);
-        updateLiveElements();
+        const links = [
+            { t: "Silent Hope – Deep Poetry Collection by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/silent-people/", views: "450K" },
+            { t: "Death of Spirits – Dark & Soul Poetry by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/the-death-of-soul/", views: "320K" },
+            { t: "The Lonely Path – Sad & Deep Writing by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/The-Lonely-Path/", views: "180K" },
+            { t: "Urdu Point – Urdu Poetry & Writings by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/hassanjatoiurdu-/", views: "500K" },
+            { t: "Once Upon a Heart – Emotional Words by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/my-colourful-words/", views: "210K" },
+            { t: "Secret Diary – Heart Touching Poetry by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/Heart-Touching/", views: "600K" },
+            { t: "Imam Hussein – Spiritual & Devotional Poetry by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/Imam-hussein-/", views: "290K" },
+            { t: "Blue Horizon – Sea Side Poetry by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/sea-side-and-grief/", views: "150K" },
+            { t: "Grief of 2025 – Deep Emotional Poetry by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/The-grief-of-2025/", views: "95K" },
+            { t: "Broken Soul – Sad & Deep Poetry Collection by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/poetry-book1/", views: "275K" },
+            { t: "Strangers City – Lost Souls & Silence by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/The-city-of-strangers-/", views: "130K" }
+        ];
 
-        // DATA
-const links = [
-  { t: "Silent Hope – Deep Poetry Collection by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/silent-people/" },
-  { t: "Death of Spirits – Dark & Soul Poetry by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/the-death-of-soul/" },
-  { t: "The Lonely Path – Sad & Deep Writing by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/The-Lonely-Path/" },
-  { t: "Urdu Point – Urdu Poetry & Writings by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/hassanjatoiurdu-/" },
-  { t: "Once Upon a Heart – Emotional Words by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/my-colourful-words/" },
-  { t: "Secret Diary – Heart Touching Poetry by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/Heart-Touching/" },
+        document.getElementById('grid-system').innerHTML = links.map((item, idx) => `
+            <article class="video-card group cursor-pointer" onclick="window.open('${item.u}')">
+                <div class="relative aspect-video bg-[#272727] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80&sig=${idx}" alt="${item.t}" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                    <span class="absolute bottom-2 right-2 bg-black/80 text-[10px] px-2 py-0.5 rounded font-bold border border-white/10 uppercase">Hassan Archive</span>
+                </div>
+                <div class="p-4 flex gap-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-pink-500 to-orange-500 flex-shrink-0 flex items-center justify-center text-[10px] font-bold">HJ</div>
+                    <div>
+                        <h3 class="font-bold text-sm leading-tight mb-1 group-hover:text-pink-400 transition-colors line-clamp-2">${item.t}</h3>
+                        <p class="text-xs text-gray-500">Hassan Jatoi • ${item.views} readers</p>
+                    </div>
+                </div>
+            </article>
+        `).join('');
 
-  { t: "Blue Horizon – Sea Side Poetry by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/sea-side-and-grief/" },
-  { t: "Grief of 2025 – Deep Emotional Poetry by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/The-grief-of-2025/" },
-  { t: "Broken Soul – Sad & Deep Poetry Collection by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/poetry-book1/" },
-  { t: "Strangers City – Lost Souls & Silence by Hassan Jatoi", u: "https://hassanaliuk11-oss.github.io/The-city-of-strangers-/" }
-];
-        document.getElementById('grid-system').innerHTML = links.map(item => `
-    <div class="lib-card group" data-tilt>
-        <h3 class="font-royal poetry-title colourful-text uppercase font-black mb-6">${item.t}</h3>
-        <a href="${item.u}" target="_blank" class="text-[10px] font-bold border-b border-pink-500 pb-1 uppercase tracking-[2px]">Open Archive</a>
-    </div>
-`).join('');
+        function copyLink(btn){
+            navigator.clipboard.writeText(window.location.href);
+            const original = btn.innerHTML;
+            btn.innerHTML = "<i class='fas fa-check text-green-500'></i>";
+            setTimeout(() => btn.innerHTML = original, 2000);
+        }
 
-        function copyLink(btn){
-            navigator.clipboard.writeText("https://hassanaliuk11-oss.github.io/Hassanalipoetry-/");
-            btn.innerText = "COPIED!";
-            setTimeout(() => btn.innerText = "COPY ARCHIVE LINK", 2000);
-        }
-
-        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), { max: 10, speed: 400 });
-    </script>
+        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), { max: 8, speed: 400, glare: true, "max-glare": 0.1 });
+    </script>
 </body>
-</html>
+</html>              iss website ka ye likhe manifest.json
