@@ -6,23 +6,21 @@
     <meta name="theme-color" id="meta-theme-color" content="#0f172a">
     
     <!-- SEO & METADATA -->
-    <link rel="apple-touch-icon" href="https://i.ibb.co/XZpNgSJ4/IMG-20251026-WA0025-modified.png">
-    <title>Hassan Jatoi | AI-Powered Dynamic Poetry Archive 2026</title>
-    <meta name="description" content="Official AI-Driven Archive of Hassan Jatoi. Author of 'Silent People'.">
+    <title>Hassan Jatoi | Poet • Author • Writer Archive 2026</title>
+    <meta name="description" content="Official Archive of Hassan Jatoi. Poet, Author of 'Silent People', and Writer.">
+    <link rel="apple-touch-icon" href="https://i.ibb.co/1f4Gqzz4/image.png">
 
     <!-- ASSETS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@900&family=Plus+Jakarta+Sans:wght@800&family=Syncopate:wght@700&family=Space+Grotesk:wght@700&family=Playfair+Display:wght@900&family=Inter:wght@900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --primary-hue: 220;
-            --accent-color: #b8860b;
-            --bg-color: #ffffff;
-            --text-main: #0f172a;
+            --bg-color: #000000;
+            --text-main: #ffffff;
             --transition-speed: 2s;
+            --accent-glow: rgba(255, 255, 255, 0.1);
         }
 
         body { 
@@ -34,7 +32,24 @@
             text-align: center;
         }
 
-        /* AUTO-COLOR CHANGING TEXT */
+        .theme-dark { --bg-color: #000000; --text-main: #ffffff; --accent-glow: rgba(255, 255, 255, 0.1); }
+        .theme-royal { --bg-color: #1a1a2e; --text-main: #e94560; --accent-glow: rgba(233, 69, 96, 0.2); }
+        .theme-gold { --bg-color: #0f172a; --text-main: #daa520; --accent-glow: rgba(218, 165, 32, 0.2); }
+        .theme-clean { --bg-color: #ffffff; --text-main: #000000; --accent-glow: rgba(0, 0, 0, 0.1); }
+
+        .google-nav {
+            display: flex;
+            justify-content: flex-end;
+            padding: 15px 25px;
+            gap: 20px;
+            align-items: center;
+            font-size: 13px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
         .magic-text {
             background: linear-gradient(to right, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
             background-size: 400% auto;
@@ -44,166 +59,233 @@
         }
         @keyframes rainbow { to { background-position: 400% center; } }
 
-        .hero-title {
-            font-size: clamp(2.5rem, 12vw, 8rem);
-            line-height: 0.9;
-            letter-spacing: -0.04em;
-            font-weight: 900;
-            text-transform: uppercase;
-            transition: all var(--transition-speed) ease;
+        .brand-logo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--text-main);
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: 0.5s;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            width: 90%;
+            max-width: 584px;
+            height: 48px;
+            border: 1px solid rgba(128,128,128,0.2);
+            border-radius: 24px;
+            padding: 0 15px;
+            background: white;
+            margin: 20px 0;
+            color: #000;
         }
 
         .dynamic-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(128, 128, 128, 0.05);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(0,0,0,0.1);
+            border: 1px solid rgba(128, 128, 128, 0.1);
             border-radius: 30px;
             padding: 20px;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: 0.5s;
+            text-align: left;
+            overflow: hidden;
+        }
+
+        .image-fader {
+            position: relative;
+            height: 256px;
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .image-fader img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
+            object-fit: cover;
+            transition: opacity 1.5s ease-in-out;
+            opacity: 0;
+        }
+
+        .image-fader img.active {
+            opacity: 1;
         }
 
         .social-chip {
-            background: white;
-            border: 1px solid rgba(0,0,0,0.05);
-            padding: 10px 15px;
+            background: rgba(128, 128, 128, 0.1);
+            padding: 10px 18px;
             border-radius: 50px;
+            font-size: 11px;
+            font-weight: 800;
+            text-decoration: none !important;
+            color: inherit !important;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            margin: 5px;
-            font-size: 10px;
-            font-weight: 800;
-            text-transform: uppercase;
-            transition: 0.3s;
-            color: #000 !important;
         }
+        .social-chip:hover { background: var(--text-main); color: var(--bg-color) !important; }
 
-        /* THEME CLASSES */
-        .theme-dark { --bg-color: #000000; --text-main: #ffffff; }
-        .theme-royal { --bg-color: #1a1a2e; --text-main: #e94560; }
-        .theme-gold { --bg-color: #0f172a; --text-main: #daa520; }
-        .theme-clean { --bg-color: #ffffff; --text-main: #000000; }
-
-        .btn-dynamic {
-            padding: 15px 40px;
-            border-radius: 50px;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 10px;
+        .btn-main {
+            padding: 10px 20px;
+            border-radius: 4px;
+            background: #f8f9fa;
+            color: #3c4043;
+            font-size: 14px;
             cursor: pointer;
-            border: none;
-            transition: 0.5s;
-            display: inline-block;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            font-weight: bold;
         }
 
-        #sub-modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.9);
-            z-index: 9999;
-            align-items: center;
-            justify-content: center;
+        /* STYLISH FOOTER CSS */
+        .premium-footer {
+            position: relative;
+            padding: 80px 20px;
+            margin-top: 50px;
+            background: linear-gradient(to top, var(--accent-glow), transparent);
+            border-top: 1px solid rgba(128,128,128,0.1);
+        }
+
+        .footer-logo-text {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 15px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: inline-block;
+            opacity: 0.8;
+        }
+
+        .footer-divider {
+            width: 150px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--text-main), transparent);
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .footer-divider::after {
+            content: '✦';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--bg-color);
+            padding: 0 10px;
+            font-size: 12px;
+        }
+
+        .footer-location {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 10px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-weight: 700;
+            opacity: 0.6;
+        }
+
+        .footer-year-tag {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 5px 15px;
+            border: 1px solid rgba(128,128,128,0.3);
+            border-radius: 20px;
+            font-size: 9px;
+            letter-spacing: 2px;
+            font-weight: 900;
+        }
+
+        .glow-dot {
+            height: 6px;
+            width: 6px;
+            background: var(--text-main);
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 10px;
+            box-shadow: 0 0 10px var(--text-main);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
         }
     </style>
 </head>
-<body class="flex flex-col items-center">
+<body class="theme-dark">
 
-    <!-- NAVIGATION -->
-    <nav class="w-full p-6 flex justify-between items-center fixed top-0 z-50 bg-opacity-80 backdrop-blur-md">
-        <div class="flex items-center gap-2 mx-auto sm:mx-0">
-            <div class="h-8 w-8 bg-current rounded-full flex items-center justify-center opacity-80">
-                <i class="fas fa-feather-alt text-sm text-white"></i>
-            </div>
-            <span class="font-black tracking-tighter uppercase text-sm">Hassan Jatoi</span>
-        </div>
-        <div class="hidden sm:block font-mono text-xs font-bold" id="live-clock">00:00:00</div>
+    <nav class="google-nav">
+        <a href="https://mail.google.com" target="_blank">Gmail</a>
+        <a href="https://images.google.com" target="_blank">Images</a>
+        <div id="live-clock" class="font-mono font-bold ml-4 opacity-70">00:00:00</div>
+        <img src="https://i.ibb.co/1f4Gqzz4/image.png" class="w-10 h-10 rounded-full border-2 border-current ml-4 object-cover">
     </nav>
 
-    <!-- MAIN CONTENT -->
-    <header class="min-h-screen flex flex-col items-center justify-center px-6 pt-20">
-        <div class="max-w-4xl">
-            <div class="mb-6 animate-bounce">
-                <span class="px-4 py-1 rounded-full border border-current text-[8px] font-black uppercase tracking-widest opacity-60">Global Author Hub</span>
-            </div>
-            
-            <h1 id="main-title" class="hero-title mb-8">
-                Modern <br> <span class="magic-text">English Poet</span>
-            </h1>
+    <header class="pt-24 flex flex-col items-center">
+        <img src="https://i.ibb.co/1f4Gqzz4/image.png" class="brand-logo">
+        <h1 class="text-4xl sm:text-5xl font-black uppercase tracking-tighter mb-4">
+            Hassan Jatoi <br> <span class="magic-text">Poet • Author • Writer</span>
+        </h1>
 
-            <div class="flex justify-center mb-10">
-                <div class="relative group">
-                    <img id="avatar" src="https://i.ibb.co/XZpNgSJ4/IMG-20251026-WA0025-modified.png" 
-                         class="w-48 h-48 sm:w-64 sm:h-64 rounded-full object-cover shadow-2xl ring-4 ring-offset-4 ring-offset-transparent ring-current transition-all duration-1000">
-                    <div class="absolute -inset-2 rounded-full bg-gradient-to-tr from-yellow-500 to-red-500 opacity-20 blur-xl group-hover:opacity-50 transition-all"></div>
-                </div>
-            </div>
-
-            <p class="text-lg opacity-70 mb-10 font-medium max-w-2xl mx-auto leading-relaxed">
-                Hassan Jatoi: A contemporary English poet weaving digital threads into lyrical masterpieces. Every visit to this archive is a unique visual experience.
-            </p>
-
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="https://wa.me/923083500829" class="btn-dynamic bg-current text-white" id="action-btn">Direct Message</a>
-                <a href="mailto:contact@hassanjatoi.com" class="btn-dynamic border-2 border-current bg-transparent">Email Poet</a>
-            </div>
+        <div class="search-box">
+            <span class="text-gray-400 pl-2">🔍</span>
+            <input type="text" id="aiInput" class="flex-1 bg-transparent border-none outline-none px-3 text-base" placeholder="Hassan Jatoi ke archive mein search karein...">
+            <span class="pr-2 opacity-50">🎤</span>
         </div>
 
-        <!-- SOCIAL LINKS (CENTRED) -->
-        <div class="mt-20 max-w-5xl w-full">
-            <p class="text-[8px] font-black uppercase tracking-[5px] mb-8 opacity-40">Digital Ecosystem</p>
-            <div id="social-grid" class="flex flex-wrap justify-center gap-3">
-                <!-- Links injected by JS -->
-            </div>
+        <div class="flex gap-4">
+            <button onclick="executeSearch()" class="btn-main">Search Archive</button>
+            <button onclick="lucky()" class="btn-main">Lucky Shot</button>
         </div>
     </header>
 
-    <!-- POETRY GRID -->
-    <section class="w-full max-w-7xl px-6 py-32">
+    <main class="max-w-7xl mx-auto px-6 py-20">
         <div class="mb-20">
-            <h2 id="section-title" class="text-4xl sm:text-6xl font-black uppercase tracking-tighter mb-4">The Archive</h2>
-            <div class="h-1 w-20 bg-current mx-auto rounded-full"></div>
-            <p class="mt-4 text-[10px] uppercase tracking-widest opacity-50">12+ Collections Integrated</p>
+            <p class="text-[10px] font-black uppercase tracking-[5px] mb-8 opacity-40">Digital Ecosystem</p>
+            <div id="social-grid" class="flex flex-wrap justify-center gap-3"></div>
         </div>
-        <div id="poetry-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Cards injected by JS -->
-        </div>
-    </section>
 
-    <footer class="py-20 opacity-40">
-        <p class="text-[9px] font-black tracking-[8px] uppercase">Hassan Jatoi • Automata 2026</p>
+        <div class="mb-10 text-center">
+            <h2 class="text-3xl font-black uppercase tracking-widest mb-2">The Complete Archive</h2>
+            <div class="h-1 w-20 bg-current mx-auto rounded-full mb-10"></div>
+        </div>
+
+        <div id="poetry-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+    </main>
+
+    <!-- NEW STYLISH FOOTER -->
+    <footer class="premium-footer">
+        <div class="footer-logo-text">Hassan Jatoi</div>
+        <div class="footer-divider"></div>
+        <div class="footer-location">
+            <span class="glow-dot"></span>
+            Pakistan <span class="mx-2">•</span> 2026 Archive
+            <span class="glow-dot"></span>
+        </div>
+        <div class="footer-year-tag uppercase">Official Literary Portfolio</div>
     </footer>
 
     <script type="module">
-        // APP LOGIC
-        const fonts = ['Plus Jakarta Sans', 'Cinzel', 'Space Grotesk', 'Playfair Display', 'Inter', 'Syncopate'];
-        const themes = ['theme-dark', 'theme-royal', 'theme-gold', 'theme-clean'];
-        
-        let themeIndex = 0;
-        let fontIndex = 0;
+        // AAPKI ALBUM SE IMAGES
+        const myAlbumImages = [
+            "https://i.ibb.co/bZmv1pN/image.png",
+            "https://i.ibb.co/998Hy14X/image.png",
+            "https://i.ibb.co/qF0yNz6K/image.png",
+            "https://i.ibb.co/Z16nJc4C/image.png",
+            "https://i.ibb.co/8nhG4wjY/image.png",
+            "https://i.ibb.co/TBzb0DKw/image.png",
+            "https://i.ibb.co/jP65jbw8/image.png",
+            "https://i.ibb.co/5gsw0pw3/image.png",
+            "https://i.ibb.co/5xWY1Byv/image.png"
+        ];
 
-        function evolveDesign() {
-            // Change Theme
-            document.body.className = `flex flex-col items-center ${themes[themeIndex]}`;
-            themeIndex = (themeIndex + 1) % themes.length;
-
-            // Change Font
-            document.body.style.fontFamily = fonts[fontIndex];
-            fontIndex = (fontIndex + 1) % fonts.length;
-
-            // Update UI Colors
-            const currentMain = getComputedStyle(document.body).getPropertyValue('--text-main');
-            const btn = document.getElementById('action-btn');
-            if(btn) btn.style.color = getComputedStyle(document.body).getPropertyValue('--bg-color');
-        }
-
-        // AUTO EVOLVE EVERY 10 SECONDS FOR DYNAMIC LOOK
-        setInterval(evolveDesign, 10000); 
-
-        // RENDER ALL SOCIAL LINKS
         const socials = [
             { n: "Portfolio", l: "https://hassanalipoetry.vercel.app/", i: "fa-globe" },
             { n: "Facebook", l: "https://www.facebook.com/share/17zubUQBeE/", i: "fa-facebook" },
@@ -219,43 +301,68 @@
             { n: "GitHub", l: "https://github.com/hassanaliuk11-oss", i: "fa-github" }
         ];
 
-        // ALL 12 POETRY LINKS
         const works = [
-            { t: "Silent People", d: "Masterpiece Collection", u: "https://hassanaliuk11-oss.github.io/silent-people/", img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23" },
-            { t: "Death of Spirits", d: "Soul & Dark Poetry", u: "https://hassanaliuk11-oss.github.io/the-death-of-soul/", img: "https://images.unsplash.com/photo-1559563458-527698bf5295" },
-            { t: "Lonely Path", d: "Contemporary Solitude", u: "https://hassanaliuk11-oss.github.io/The-Lonely-Path/", img: "https://images.unsplash.com/photo-1496062031456-07b8f162a322" },
-            { t: "Heart Touching", d: "Emotional Expressions", u: "https://hassanaliuk11-oss.github.io/Heart-Touching/", img: "https://images.unsplash.com/photo-1519306042163-5489f66858e3" },
-            { t: "Broken Soul", d: "Book I Archive", u: "https://hassanaliuk11-oss.github.io/poetry-book1/", img: "https://images.unsplash.com/photo-1533158326339-7f3cf2404354" },
-            { t: "The Visionary", d: "Core Portfolio", u: "https://hassanaliuk11-oss.github.io/Hassanalipoetry-/", img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa" },
-            { t: "English Archive", d: "Selected Verses", u: "https://hassanaliuk11-oss.github.io/hassanjatoiurdu-/", img: "https://images.unsplash.com/photo-1526047932273-341f2a7631f9" },
-            { t: "Imam Hussein (AS)", d: "Spiritual Devotion", u: "https://hassanaliuk11-oss.github.io/Imam-hussein-/", img: "https://images.unsplash.com/photo-1507692049790-de58290a4334" },
-            { t: "Blue Horizon", d: "Sea & Grief", u: "https://hassanaliuk11-oss.github.io/sea-side-and-grief/", img: "https://images.unsplash.com/photo-1490730141103-6cac27aaab94" },
-            { t: "Grief of 2025", d: "Modern Reflections", u: "https://hassanaliuk11-oss.github.io/The-grief-of-2025/", img: "https://images.unsplash.com/photo-1476136236990-838240be4859" },
-            { t: "Strangers City", d: "Urban Silence", u: "https://hassanaliuk11-oss.github.io/The-city-of-strangers-/", img: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df" },
-            { t: "Lyrical Words", d: "Colourful Diary", u: "https://hassanaliuk11-oss.github.io/my-colourful-words/", img: "https://images.unsplash.com/photo-1516414447565-b14be0adf13e" }
+            { t: "Silent People", u: "https://hassanaliuk11-oss.github.io/silent-people/" },
+            { t: "Death of Spirits", u: "https://hassanaliuk11-oss.github.io/the-death-of-soul/" },
+            { t: "Lonely Path", u: "https://hassanaliuk11-oss.github.io/The-Lonely-Path/" },
+            { t: "Heart Touching", u: "https://hassanaliuk11-oss.github.io/Heart-Touching/" },
+            { t: "Broken Soul", u: "https://hassanaliuk11-oss.github.io/poetry-book1/" },
+            { t: "The Visionary", u: "https://hassanaliuk11-oss.github.io/Hassanalipoetry-/" },
+            { t: "English Archive", u: "https://hassanaliuk11-oss.github.io/hassanjatoiurdu-/" },
+            { t: "Imam Hussein (AS)", u: "https://hassanaliuk11-oss.github.io/Imam-hussein-/" },
+            { t: "Blue Horizon", u: "https://hassanaliuk11-oss.github.io/sea-side-and-grief/" },
+            { t: "Grief of 2025", u: "https://hassanaliuk11-oss.github.io/The-grief-of-2025/" },
+            { t: "Strangers City", u: "https://hassanaliuk11-oss.github.io/The-city-of-strangers-/" },
+            { t: "Lyrical Words", u: "https://hassanaliuk11-oss.github.io/my-colourful-words/" }
         ];
 
+        const themes = ['theme-dark', 'theme-royal', 'theme-gold', 'theme-clean'];
+        const fonts = ['Plus Jakarta Sans', 'Cinzel', 'Space Grotesk', 'Playfair Display'];
+        let tIdx = 0;
+
+        // THEME CHANGER
+        setInterval(() => {
+            document.body.className = themes[tIdx];
+            document.body.style.fontFamily = fonts[tIdx % fonts.length];
+            tIdx = (tIdx + 1) % themes.length;
+        }, 10000);
+
+        // INJECT SOCIALS
         document.getElementById('social-grid').innerHTML = socials.map(s => `
             <a href="${s.l}" target="_blank" class="social-chip"><i class="fab ${s.i}"></i> ${s.n}</a>
         `).join('');
 
-        document.getElementById('poetry-grid').innerHTML = works.map(w => `
-            <div class="dynamic-card group cursor-pointer" onclick="window.open('${w.u}')">
-                <div class="h-64 overflow-hidden rounded-[20px] mb-6">
-                    <img src="${w.img}?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000">
+        // INJECT CARDS
+        const grid = document.getElementById('poetry-grid');
+        grid.innerHTML = works.map((w, idx) => {
+            const shuffled = [...myAlbumImages].sort(() => 0.5 - Math.random());
+            const cardImages = shuffled.slice(0, 4); 
+            return `
+                <div class="dynamic-card group cursor-pointer" onclick="window.open('${w.u}')">
+                    <div class="image-fader" id="fader-${idx}">
+                        ${cardImages.map((img, i) => `<img src="${img}" class="${i === 0 ? 'active' : ''}">`).join('')}
+                    </div>
+                    <h3 class="text-2xl font-black uppercase tracking-tighter">${w.t}</h3>
+                    <p class="text-[10px] font-bold opacity-40 uppercase mt-2 tracking-widest">Explore Archive</p>
                 </div>
-                <h3 class="text-2xl font-black uppercase tracking-tighter">${w.t}</h3>
-                <p class="text-[10px] font-bold opacity-40 uppercase tracking-widest mt-2">${w.d}</p>
-            </div>
-        `).join('');
+            `;
+        }).join('');
 
-        // CLOCK
+        // ROTATE IMAGES
         setInterval(() => {
-            document.getElementById('live-clock').textContent = new Date().toLocaleTimeString();
-        }, 1000);
+            document.querySelectorAll('.image-fader').forEach(fader => {
+                const imgs = fader.querySelectorAll('img');
+                const active = fader.querySelector('img.active');
+                let next = active.nextElementSibling || imgs[0];
+                active.classList.remove('active');
+                next.classList.add('active');
+            });
+        }, 5000);
 
-        // INIT
-        evolveDesign();
+        // CLOCK & SEARCH
+        setInterval(() => { document.getElementById('live-clock').textContent = new Date().toLocaleTimeString(); }, 1000);
+        window.executeSearch = () => { const q = document.getElementById('aiInput').value; if(q) window.location.href = `https://www.google.com/search?q=Hassan+Jatoi+${q}`; };
+        window.lucky = () => window.location.href = "https://hassanalipoetry.vercel.app/";
     </script>
 </body>
 </html>
