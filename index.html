@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hassan Jatoi | Poet • Author • Writer</title>
+    <meta name="description" content="Official profile of Hassan Jatoi - A creative poet, author, and writer sharing soulful poetry and creative visions.">
+    <link rel="apple-touch-icon" href="https://i.ibb.co/1f4Gqzz4/image.png">
 
 <!-- GOOGLE VERIFICATION -->
 <meta name="google-site-verification" content="osYdOuuf3r5YsXAVU40owhWn9WxCsDC6NnsboPJs1Qg" />
 <meta name="google-site-verification" content="googledcf5aa11eb043d8c" />
-
 <!-- CANONICAL & SEO -->
 <link rel="canonical" href="https://hassanalipoetry.vercel.app/" />
 <title>Hassan Jatoi | Best Modern English & Urdu Poet 2026 | Official Site</title>
@@ -50,45 +52,281 @@
 }
 </script>
 
-<!-- ASSETS (UNCHANGED) -->
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@900&family=Plus+Jakarta+Sans:wght@800&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+    <!-- ASSETS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@900&family=Plus+Jakarta+Sans:wght@800&family=Syncopate:wght@700&family=Space+Grotesk:wght@700&family=Playfair+Display:wght@900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<style>
-:root{--bg:#0f172a;--txt:#fff;--glow:rgba(56,189,248,.2);--pri:#38bdf8}
-.theme-dark{--bg:#000;--txt:#fff;--glow:rgba(255,255,255,.1);--pri:#fff}
-body{background:var(--bg);color:var(--txt);font-family:Inter,sans-serif;transition:1.5s}
-.glass-card{background:rgba(255,255,255,.03);backdrop-filter:blur(10px);border-radius:20px}
-.hero-banner{height:450px;background:url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1600') center/cover}
-</style>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --text-main: #ffffff;
+            --accent-glow: rgba(56, 189, 248, 0.2);
+            --primary: #38bdf8;
+        }
+
+        .theme-dark { --bg-color: #000000; --text-main: #ffffff; --accent-glow: rgba(255, 255, 255, 0.1); --primary: #ffffff; }
+        .theme-royal { --bg-color: #1a1a2e; --text-main: #e94560; --accent-glow: rgba(233, 69, 96, 0.2); --primary: #e94560; }
+        .theme-gold { --bg-color: #0f172a; --text-main: #daa520; --accent-glow: rgba(218, 165, 32, 0.2); --primary: #daa520; }
+        .theme-clean { --bg-color: #ffffff; --text-main: #000000; --accent-glow: rgba(0, 0, 0, 0.1); --primary: #000000; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            transition: all 1.5s ease;
+            overflow-x: hidden;
+        }
+
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        .font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.07);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        /* BIGGER PROFILE IMAGE */
+        .profile-image-container {
+            position: relative;
+            width: 280px; /* Increased from 220px */
+            height: 280px; /* Increased from 220px */
+            margin: -140px auto 30px; /* Adjusted margin for bigger size */
+            z-index: 10;
+        }
+
+        .profile-image-container img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid var(--bg-color);
+            box-shadow: 0 0 60px var(--accent-glow);
+            background: #1e293b;
+        }
+
+        .work-thumbnail {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .glass-card:hover .work-thumbnail {
+            transform: scale(1.1);
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        /* ROSE COVER PAGE */
+        .hero-banner {
+            height: 450px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=1600');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--bg-color));
+        }
+
+        .floating-rose {
+            position: absolute;
+            right: 15px;
+            bottom: 15px;
+            font-size: 1.2rem;
+            opacity: 0.8;
+            transition: transform 0.3s ease;
+            z-index: 10;
+        }
+
+        .glass-card:hover .floating-rose {
+            transform: rotate(20deg) scale(1.3);
+        }
+    </style>
 </head>
-
 <body class="theme-dark">
-<div class="hero-banner"></div>
 
-<main class="max-w-6xl mx-auto px-6 pb-20 text-center">
-<img src="https://i.ibb.co/S4ygvhJ3/image.png" class="w-64 h-64 rounded-full mx-auto -mt-32 border-8">
-<h1 class="text-6xl mt-6" style="color:var(--pri)">Hassan Jatoi</h1>
-<p class="uppercase tracking-widest mt-2">Poet • Author • Writer</p>
+    <!-- Rose Cover -->
+    <div class="hero-banner"></div>
 
-<div class="glass-card p-8 mt-8 max-w-2xl mx-auto italic">
-"Alfaaz ki dunya ka musafir, jazbaaton ka tarjumaan." 🌹
-</div>
-</main>
+    <main class="max-w-6xl mx-auto px-6 pb-20">
+        <!-- Profile Header -->
+        <div class="profile-container text-center">
+            <div class="profile-image-container">
+                <img src="https://i.ibb.co/S4ygvhJ3/image.png" alt="Hassan Jatoi Profile">
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-cinzel mb-4 tracking-tighter" style="color: var(--primary)">Hassan Jatoi</h1>
+            <p class="text-xl md:text-2xl font-jakarta opacity-80 mb-8 uppercase tracking-widest">Poet • Author • Writer</p>
+            
+            <div class="max-w-2xl mx-auto glass-card p-8 mb-16 italic text-lg leading-relaxed relative overflow-hidden">
+                <span class="absolute top-2 right-4 text-2xl">🌹</span>
+                "Alfaaz ki dunya ka musafir, jazbaaton ka tarjumaan. Rooh se nikli har baat shayari hai." 🌹
+            </div>
+        </div>
 
-<footer class="text-center py-8 opacity-50">
-© 2026 Hassan Jatoi
-</footer>
+        <!-- Social Links Section -->
+        <section class="mb-24">
+            <h2 class="section-title text-2xl">Digital Presence</h2>
+            <div id="social-grid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <!-- Dynamic Content via JS -->
+            </div>
+        </section>
 
-<!-- FIREBASE (SAFE – DOES NOT BREAK SITE) -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
-const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-const app = initializeApp(firebaseConfig);
-signInAnonymously(getAuth(app)).catch(()=>{});
-</script>
+        <!-- Literary Works Section -->
+        <section class="mb-24">
+            <h2 class="section-title text-2xl">Literary Works</h2>
+            <div id="works-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Dynamic Content: Image -> Link pair -->
+            </div>
+        </section>
 
+        <!-- Photo Gallery Section -->
+        <section class="mb-24">
+            <h2 class="section-title text-2xl">Visual Archive</h2>
+            <div id="album-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Grid for gallery images -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center py-10 border-t border-white/5 opacity-50 text-sm">
+        <p>© 2026 Hassan Jatoi. Built with Art and Code. 🌹</p>
+    </footer>
+
+    <script type="module">
+        const myAlbumImages = [
+            "https://i.ibb.co/bZmv1pN/image.png",
+            "https://i.ibb.co/998Hy14X/image.png",
+            "https://i.ibb.co/qF0yNz6K/image.png",
+            "https://i.ibb.co/Z16nJc4C/image.png",
+            "https://i.ibb.co/8nhG4wjY/image.png",
+            "https://i.ibb.co/TBzb0DKw/image.png",
+            "https://i.ibb.co/jP65jbw8/image.png",
+            "https://i.ibb.co/5gsw0pw3/image.png",
+            "https://i.ibb.co/5xWY1Byv/image.png"
+        ];
+
+        const socials = [
+            { n: "Portfolio", l: "https://hassanalipoetry.vercel.app/", i: "fa-globe" },
+            { n: "Facebook", l: "https://www.facebook.com/share/17zubUQBeE/", i: "fa-facebook" },
+            { n: "TikTok", l: "https://www.tiktok.com/@hassanjatoi209", i: "fa-tiktok" },
+            { n: "Substack", l: "https://officiallyhassaj.substack.com/", i: "fa-envelope-open-text" },
+            { n: "HelloPoetry", l: "https://hellopoetry.com/Hassanjatoi/", i: "fa-pen-nib" },
+            { n: "AllPoetry", l: "https://allpoetry.com/Hassan_jatoi", i: "fa-feather" },
+            { n: "LinkedIn", l: "https://www.linkedin.com/in/hassanjatoi786", i: "fa-linkedin" },
+            { n: "Blog", l: "https://hassan-jatoi.blogspot.com", i: "fa-blogger" },
+            { n: "Aruuz", l: "https://www.aruuz.com/?user=Hassanjatoi", i: "fa-scroll" },
+            { n: "UrduPoint", l: "https://www.urdupoint.com/poetry/user-poet/hassan-jatoi-27314.html", i: "fa-pen" },
+            { n: "HamariWeb", l: "https://mypage.hamariweb.com/userdetail.aspx?id=Y7xcIn2e89o=", i: "fa-address-card" },
+            { n: "GitHub", l: "https://github.com/hassanaliuk11-oss", i: "fa-github" }
+        ];
+
+        const works = [
+            { t: "Silent People", u: "https://hassanaliuk11-oss.github.io/silent-people/" },
+            { t: "Death of Spirits", u: "https://hassanaliuk11-oss.github.io/the-death-of-soul/" },
+            { t: "Lonely Path", u: "https://hassanaliuk11-oss.github.io/The-Lonely-Path/" },
+            { t: "Heart Touching", u: "https://hassanaliuk11-oss.github.io/Heart-Touching/" },
+            { t: "Broken Soul", u: "https://hassanaliuk11-oss.github.io/poetry-book1/" },
+            { t: "The Visionary", u: "https://hassanaliuk11-oss.github.io/Hassanalipoetry-/" },
+            { t: "English Archive", u: "https://hassanaliuk11-oss.github.io/hassanjatoiurdu-/" },
+            { t: "Imam Hussein (AS)", u: "https://hassanaliuk11-oss.github.io/Imam-hussein-/" },
+            { t: "Blue Horizon", u: "https://hassanaliuk11-oss.github.io/sea-side-and-grief/" },
+            { t: "Grief of 2025", u: "https://hassanaliuk11-oss.github.io/The-grief-of-2025/" },
+            { t: "Strangers City", u: "https://hassanaliuk11-oss.github.io/The-city-of-strangers-/" },
+            { t: "Lyrical Words", u: "https://hassanaliuk11-oss.github.io/my-colourful-words/" }
+        ];
+
+        const socialGrid = document.getElementById('social-grid');
+        socials.forEach(s => {
+            const el = document.createElement('a');
+            el.href = s.l;
+            el.target = "_blank";
+            el.className = "glass-card p-4 flex flex-col items-center justify-center gap-2 group";
+            el.innerHTML = `
+                <i class="fa-solid ${s.i} text-2xl group-hover:scale-110 transition-transform"></i>
+                <span class="text-xs font-bold uppercase tracking-tighter">${s.n}</span>
+            `;
+            socialGrid.appendChild(el);
+        });
+
+        const worksGrid = document.getElementById('works-grid');
+        works.forEach((w, index) => {
+            const imgUrl = myAlbumImages[index % myAlbumImages.length]; 
+            const el = document.createElement('a');
+            el.href = w.u;
+            el.target = "_blank";
+            el.className = "glass-card group flex flex-col h-full";
+            el.innerHTML = `
+                <div class="overflow-hidden">
+                    <img src="${imgUrl}" class="work-thumbnail" alt="${w.t}" loading="lazy">
+                </div>
+                <div class="p-6 relative flex-grow flex flex-col border-l-4" style="border-left-color: var(--primary)">
+                    <span class="floating-rose">🌹</span>
+                    <h4 class="font-cinzel text-lg pr-8 mb-2">${w.t}</h4>
+                    <p class="text-xs opacity-60 mb-4">Digital Poetry Collection</p>
+                    <span class="text-xs font-bold uppercase tracking-widest mt-auto group-hover:translate-x-2 transition-transform inline-flex items-center gap-2">
+                        Read Now <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+                </div>
+            `;
+            worksGrid.appendChild(el);
+        });
+
+        const albumGrid = document.getElementById('album-grid');
+        myAlbumImages.forEach(img => {
+            const el = document.createElement('div');
+            el.className = "overflow-hidden rounded-xl glass-card";
+            el.innerHTML = `<img src="${img}" class="w-full h-48 object-cover opacity-80 hover:opacity-100 transition-opacity" alt="Gallery Image" loading="lazy">`;
+            albumGrid.appendChild(el);
+        });
+
+        const themeList = ['theme-dark', 'theme-royal', 'theme-gold', 'theme-clean'];
+        let tIndex = 0;
+        setInterval(() => {
+            document.body.classList.remove(themeList[tIndex]);
+            tIndex = (tIndex + 1) % themeList.length;
+            document.body.classList.add(themeList[tIndex]);
+        }, 8000);
+
+    </script>
 </body>
 </html>
