@@ -1,3 +1,36 @@
+# =======================
+# Hassan Jatoi Official Site
+# https://hassanalipoetry.vercel.app/
+# SEO & Crawler Optimized
+# =======================
+
+# Allow all crawlers
+User-agent: *
+Disallow: /private/
+Disallow: /admin/
+Allow: /
+
+# Sitemap location
+Sitemap: https://hassanalipoetry.vercel.app/sitemap.xml
+
+# =======================
+# Specific Bots Rules (optional)
+# =======================
+
+# Block some bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# =======================
+# End of File
+# =======================
+
 User-agent: *
 Allow: /
 
