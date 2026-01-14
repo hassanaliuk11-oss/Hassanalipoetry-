@@ -1,0 +1,57 @@
+{
+  "site": {
+    "name": "Hassan Jatoi Official Poetry Archive",
+    "url": "https://hassanalipoetry.vercel.app/",
+    "description": "Explore the soul-stirring poetry and writings of Hassan Jatoi. Modern English & Urdu poetry 2026.",
+    "theme_color": "#ff0080",
+    "background_color": "#0f0f0f"
+  },
+  "author": {
+    "name": "Hassan Jatoi",
+    "image": "https://i.ibb.co/XZpNgSJ4/IMG-20251026-WA0025-modified.png",
+    "job_title": ["Poet", "Author", "Writer"],
+    "same_as": [
+      "https://www.facebook.com/share/17zubUQBeE/",
+      "https://www.tiktok.com/@hassanjatoi209",
+      "https://github.com/hassanaliuk11-oss",
+      "https://hellopoetry.com/Hassanjatoi/"
+    ]
+  },
+  "pages": [
+    {
+      "title": "Home",
+      "url": "https://hassanalipoetry.vercel.app/",
+      "last_modified": "2026-01-14",
+      "changefreq": "daily",
+      "priority": 1.0
+    },
+    {
+      "title": "Silent People – Deep Poetry Collection",
+      "url": "https://hassanaliuk11-oss.github.io/silent-people/",
+      "last_modified": "2026-01-14",
+      "changefreq": "weekly",
+      "priority": 0.9
+    },
+    {
+      "title": "Death of Spirits – Dark & Soul Poetry",
+      "url": "https://hassanaliuk11-oss.github.io/the-death-of-soul/",
+      "last_modified": "2026-01-14",
+      "changefreq": "weekly",
+      "priority": 0.9
+    },
+    {
+      "title": "The Lonely Path – Sad & Deep Writing",
+      "url": "https://hassanaliuk11-oss.github.io/The-Lonely-Path/",
+      "last_modified": "2026-01-14",
+      "changefreq": "weekly",
+      "priority": 0.8
+    },
+    {
+      "title": "Heart Touching Poetry",
+      "url": "https://hassanaliuk11-oss.github.io/Heart-Touching/",
+      "last_modified": "2026-01-14",
+      "changefreq": "weekly",
+      "priority": 0.9
+    }
+  ]
+}
