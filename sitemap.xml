@@ -1,9 +1,10 @@
-email: email,
-                    timestamp: serverTimestamp(),
-                    source: window.location.hostname
-                });
-                statusMsg.innerHTML = "<span class='text-green-500'>Successfully Subscribed!</span>";
-                emailInput.value = "";
-                setTimeout(closeModal, 2000);
-            }                 </div>
-                                
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Main Portfolio Page -->
+    <url>
+        <loc>https://hassanalipoetry.vercel.app/</loc>
+        <lastmod>2026-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+</urlset>
