@@ -7,59 +7,12 @@
 <!-- GOOGLE SEARCH CONSOLE VERIFICATION TAG -->
 <meta name="google-site-verification" content="FQjQBV_-sJM7DmaoUMM2OkqJJ_tf0Tzl1Koh_phGOYs" />
 
-<!-- ADVANCED SEO FOR TOP GOOGLE RANKING (2026 UPDATED) -->
-<title>Hassan Jatoi | Official Portfolio 2026 | Poet, Author & Writer</title>
+<!-- ADVANCED SEO -->
+<title>Hassan Jatoi | Official Portfolio 2026 | Poet & Author</title>
 <link rel="canonical" href="https://hassanalipoetry.vercel.app/" />
 <meta name="title" content="Hassan Jatoi | Official Portfolio 2026 | Poet, Author & Writer">
-<meta name="description" content="Official digital archive of Hassan Jatoi (Hassan Ali Jatoi). Author of 'Silent People' and 'Death of Spirits'. Explore the visionary world of a modern Urdu and English poet. Verified on Google Search.">
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="description" content="Official digital archive of Hassan Jatoi. Author of 'Silent People' and 'Death of Spirits'.">
 <meta name="author" content="Hassan Jatoi">
-
-<!-- SEARCH ENGINE KEYWORDS -->
-<meta name="keywords" content="Hassan Jatoi, Hassan Ali Jatoi, Hassan Jatoi Poetry, hassanalipoetry, Silent People Hassan Jatoi, Urdu Poet 2026, Pakistani Author, Hassan Jatoi YouTube, Hassan Jatoi Official, Death of Soul Hassan Jatoi, Literary Works, Digital Poetry Archive">
-
-<!-- OPEN GRAPH / FACEBOOK -->
-<meta property="og:type" content="profile">
-<meta property="og:url" content="https://hassanalipoetry.vercel.app/">
-<meta property="og:title" content="Hassan Jatoi | Official Digital Poetry Archive">
-<meta property="og:description" content="Explore the creative visions of Hassan Jatoi. Author of Silent People.">
-<meta property="og:image" content="https://i.ibb.co/S4ygvhJ3/image.png">
-
-<!-- GOOGLE KNOWLEDGE GRAPH INTEGRATION -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org/",
-  "@type": "Person",
-  "name": "Hassan Jatoi",
-  "alternateName": ["Hassan Ali Jatoi", "hassanalipoetry"],
-  "url": "https://hassanalipoetry.vercel.app/",
-  "image": "https://i.ibb.co/S4ygvhJ3/image.png",
-  "jobTitle": "Author and Poet",
-  "description": "Hassan Jatoi is a verified poet and author known for 'Silent People' and 'The Death of Soul'.",
-  "sameAs": [
-    "https://www.google.com/search?q=hassan+jatoi+poetry",
-    "https://share.google/Lhfqntq93WW6E8Dr3",
-    "https://www.facebook.com/share/17zubUQBeE/",
-    "https://www.tiktok.com/@hassanjatoi209",
-    "https://www.youtube.com/channel/UCFo0XuIVdrDYhhMt2o6LDJA",
-    "https://github.com/hassanaliuk11-oss",
-    "https://www.linkedin.com/in/hassanjatoi786",
-    "https://hellopoetry.com/Hassanjatoi/",
-    "https://officiallyhassaj.substack.com/",
-    "https://hassan-jatoi.blogspot.com",
-    "https://www.aruuz.com/?user=Hassanjatoi",
-    "https://www.urdupoint.com/poetry/user-poet/hassan-jatoi-27314.html",
-    "https://mypage.hamariweb.com/userdetail.aspx?id=Y7xcIn2e89o=",
-    "https://allpoetry.com/Hassan_jatoi",
-    "https://chat.google.com/app/home",
-    "https://wa.me/923083500829"
-  ],
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://hassanalipoetry.vercel.app/"
-  }
-}
-</script>
 
 <!-- ASSETS -->
 <script src="https://cdn.tailwindcss.com"></script>
@@ -71,10 +24,9 @@
   --bg-color: #020617;
   --text-main: #f8fafc;
   --primary: #38bdf8;
-  --accent: #f472b6;
-  --whatsapp: #25D366;
-  --youtube: #FF0000;
-  --gchat: #ffffff;
+  --gold-primary: #d4af37;
+  --gold-light: #f9e29c;
+  --gold-dark: #a67c00;
 }
 body {
   background-color: var(--bg-color);
@@ -96,11 +48,10 @@ body {
   height: 380px;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-  transition: background-image 1.5s ease-in-out;
   position: relative;
+  transition: background-image 1s ease-in-out;
 }
 
 .cover-photo::after {
@@ -117,7 +68,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+}
+
+.profile-pic-wrapper {
+    position: relative;
 }
 
 .profile-pic-wrapper img {
@@ -126,8 +80,24 @@ body {
   border-radius: 50%;
   border: 7px solid var(--bg-color);
   object-fit: cover;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
   background: #1e293b;
+}
+
+.verified-badge {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: #0ea5e9;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid var(--bg-color);
+    font-size: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 .moti-laker {
@@ -145,13 +115,48 @@ body {
   100% { background-position: 100% 50%; }
 }
 
+.btn-gold {
+    background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+    background-size: 200% auto;
+    color: #1a1a1a !important;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    box-shadow: 0 4px 15px rgba(184, 134, 11, 0.4);
+    transition: 0.5s;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-gold:hover {
+    background-position: right center;
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(184, 134, 11, 0.6);
+}
+
+.btn-gold::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: 0.5s;
+}
+
+.btn-gold:hover::before {
+    left: 100%;
+}
+
 .section-title {
   font-family: 'Cinzel', serif;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 900;
-  margin: 5rem 0 3rem;
+  margin: 4rem 0 2rem;
   text-align: center;
-  background: linear-gradient(to right, #fff, var(--primary));
+  background: linear-gradient(to right, #fff, var(--gold-primary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -159,51 +164,27 @@ body {
 .glass-card {
   background: rgba(255,255,255,0.02);
   border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 24px;
-  padding: 2rem;
-  backdrop-filter: blur(12px);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-radius: 20px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-decoration: none;
   color: inherit;
-  position: relative;
 }
 
 .glass-card:hover {
-  transform: translateY(-12px) scale(1.02);
-  background: rgba(255,255,255,0.06);
-  border-color: var(--primary);
-  box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7);
+  transform: translateY(-8px);
+  border-color: var(--gold-primary);
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 10px 30px rgba(184, 134, 11, 0.1);
 }
 
-.share-btn-overlay {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: rgba(56, 189, 248, 0.1);
-  color: var(--primary);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  z-index: 40;
-}
-
-.share-btn-overlay:hover {
-  background: var(--primary);
-  color: black;
-  transform: scale(1.1);
-}
-
-/* Hidden elements */
-#ai-btn-hidden {
-  display: none;
+.card-gold-icon {
+    color: var(--gold-primary);
+    filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.5));
 }
 
 #gemini-modal {
@@ -211,7 +192,7 @@ body {
   position: fixed;
   inset: 0;
   z-index: 100;
-  background: rgba(0,0,0,0.95);
+  background: rgba(0,0,0,0.9);
   backdrop-filter: blur(15px);
   align-items: center;
   justify-content: center;
@@ -220,72 +201,48 @@ body {
 
 .modal-content {
   background: #0f172a;
-  border: 1px solid rgba(56, 189, 248, 0.3);
-  border-radius: 32px;
+  border: 1px solid var(--gold-primary);
+  border-radius: 24px;
   width: 100%;
-  max-width: 650px;
-  padding: 40px;
+  max-width: 600px;
+  padding: 30px;
 }
 
 .gemini-input {
   width: 100%;
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 16px;
-  padding: 1.2rem;
+  border-radius: 12px;
+  padding: 1rem;
   color: white;
-  margin-top: 20px;
-  height: 140px;
+  margin-top: 15px;
+  height: 100px;
+  resize: none;
 }
 
 .clear-footer {
-  background: #0a0f1d;
-  border-top: 2px solid rgba(56, 189, 248, 0.2);
   padding: 60px 20px;
   text-align: center;
+  border-top: 1px solid rgba(212, 175, 55, 0.3);
+  background: linear-gradient(to bottom, transparent, rgba(2, 6, 23, 1));
 }
 
-.footer-name {
+.footer-main-text {
   font-family: 'Cinzel', serif;
-  color: var(--primary);
-  font-size: 2.2rem;
   font-weight: 900;
+  font-size: 1.75rem;
   letter-spacing: 2px;
-  margin-bottom: 10px;
+  color: #d4af37;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
 }
 
-.footer-quote {
+.footer-sub-text {
   color: #cbd5e1;
-  font-size: 1.1rem;
-  font-style: italic;
-  max-width: 700px;
-  margin: 0 auto 30px;
-  line-height: 1.6;
-}
-
-.footer-copyright {
-  color: #94a3b8;
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  border-top: 1px solid rgba(255,255,255,0.05);
-  padding-top: 20px;
-}
-
-#share-msg {
-  position: fixed;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--primary);
-  color: black;
-  padding: 12px 24px;
-  border-radius: 50px;
   font-weight: 800;
-  z-index: 1000;
-  display: none;
-  box-shadow: 0 10px 30px rgba(56, 189, 248, 0.4);
+  font-size: 0.85rem;
+  margin-top: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 </style>
 </head>
@@ -295,98 +252,91 @@ body {
   <div id="dynamic-cover" class="cover-photo"></div>
   <div class="profile-info-container">
     <div class="profile-pic-wrapper">
-      <img src="https://i.ibb.co/S4ygvhJ3/image.png" alt="Hassan Jatoi - Verified Poet Profile">
+      <img src="https://i.ibb.co/S4ygvhJ3/image.png" alt="Hassan Jatoi">
+      <div class="verified-badge" title="Verified Author">
+          <i class="fa-solid fa-check"></i>
+      </div>
     </div>
-    <div class="profile-details">
-      <h1 class="font-cinzel text-5xl md:text-6xl font-black mt-6">Hassan Jatoi</h1>
-      <p class="text-slate-400 font-bold tracking-[0.4em] text-xs md:text-sm mt-2">POET • AUTHOR • WRITER • VISIONARY</p>
-      <div id="live-clock" class="text-primary text-sm font-mono mt-4 opacity-80"></div>
+    <div class="profile-details text-center">
+      <h1 class="font-cinzel text-4xl md:text-6xl font-black mt-6">Hassan Jatoi</h1>
+      <p class="text-slate-400 font-bold tracking-[0.3em] text-xs mt-2 uppercase">Verified Poet & Author</p>
+      
       <div class="moti-laker"></div>
       
       <div class="flex flex-wrap justify-center gap-4 mt-4 px-4">
-        <!-- AI Assistant Hidden -->
-        <button id="ai-btn-hidden" onclick="toggleGeminiModal()"></button>
-        
-        <!-- Google Chat (Primary) -->
-        <a href="https://chat.google.com/app/home" target="_blank" class="bg-white text-black font-black px-8 py-3 rounded-full hover:scale-105 transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+        <a href="https://wa.me/923083500829" target="_blank" class="btn-gold px-8 py-3 rounded-full flex items-center gap-2">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+        </a>
+        <a href="https://www.youtube.com/@poetrybyhassanjatoi" target="_blank" class="btn-gold px-8 py-3 rounded-full flex items-center gap-2">
+            <i class="fa-brands fa-youtube"></i> YouTube
+        </a>
+        <a href="https://chat.google.com/app/home" target="_blank" class="btn-gold px-8 py-3 rounded-full flex items-center gap-2">
             <i class="fa-solid fa-comments"></i> Google Chat
-        </a>
-        
-        <a href="https://wa.me/923083500829" target="_blank" class="bg-[#25D366] text-white font-black px-8 py-3 rounded-full hover:scale-105 transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(37,211,102,0.3)]">
-            <i class="fa-brands fa-whatsapp"></i> WhatsApp Chat
-        </a>
-        
-        <a href="https://www.youtube.com/channel/UCFo0XuIVdrDYhhMt2o6LDJA" target="_blank" class="bg-[#FF0000] text-white font-black px-8 py-3 rounded-full hover:scale-105 transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(255,0,0,0.3)]">
-            <i class="fa-brands fa-youtube"></i> Subscribe YouTube
         </a>
       </div>
     </div>
   </div>
 </header>
 
-<main class="max-w-7xl mx-auto px-6 pb-24">
-  
-  <section id="social">
-    <h2 class="section-title">Verified Presence</h2>
-    <div id="social-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6"></div>
+<main class="max-w-6xl mx-auto px-6 pb-20">
+  <section>
+    <h2 class="section-title cursor-pointer" onclick="toggleGeminiModal()">
+        <i class="fa-solid fa-star card-gold-icon mr-2"></i> Verified Social Presence
+    </h2>
+    <div id="social-grid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4"></div>
   </section>
 
-  <section id="books">
-    <h2 class="section-title">Read My Poetry</h2>
-    <div id="works-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div>
+  <section>
+    <h2 class="section-title">
+        <i class="fa-solid fa-book-open card-gold-icon mr-2"></i> Official Poetry Books
+    </h2>
+    <div id="works-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
   </section>
-
 </main>
 
 <div id="gemini-modal">
   <div class="modal-content">
-    <div class="flex justify-between items-center mb-6">
-      <h3 class="font-cinzel text-2xl font-bold text-primary">✨ Hassan Jatoi Expert AI</h3>
-      <button onclick="toggleGeminiModal()" class="text-slate-500 hover:text-white text-2xl">✕</button>
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="font-cinzel text-xl font-bold text-gold-primary" style="color: #d4af37">AI Expert</h3>
+      <button onclick="toggleGeminiModal()" class="text-slate-500 hover:text-white">✕</button>
     </div>
-    <p class="text-slate-400 text-sm italic">Hassan Jatoi ke baare mein kuch bhi poochein.</p>
-    <textarea id="gemini-query" class="gemini-input" placeholder="Hassan Jatoi kaun hain?"></textarea>
-    <button id="gemini-submit" onclick="askGemini()" class="w-full bg-primary text-black font-black py-4 rounded-2xl mt-6 hover:brightness-110 transition-all">CONSULT AI EXPERT</button>
-    <div id="gemini-loading" class="hidden mt-6 text-center text-primary animate-pulse font-bold tracking-widest">ANALYZING...</div>
-    <div id="gemini-result" class="mt-4 p-4 bg-slate-800/50 rounded-xl text-left hidden text-sm leading-relaxed"></div>
+    <textarea id="gemini-query" class="gemini-input" placeholder="Ask about Hassan Jatoi's work..."></textarea>
+    <button onclick="askGemini()" class="btn-gold w-full py-3 rounded-xl mt-4">SEARCH GOOGLE</button>
+    <div id="gemini-loading" class="hidden mt-4 text-center text-gold-primary animate-pulse" style="color: #d4af37">Collecting Information...</div>
+    <div id="gemini-result" class="mt-4 p-4 bg-slate-800/50 rounded-xl text-sm hidden border border-gold-primary/20"></div>
   </div>
 </div>
 
-<div id="share-msg">Link copied to clipboard!</div>
-
 <footer class="clear-footer">
-  <div class="max-w-4xl mx-auto px-6">
-    <h3 class="footer-name">HASSAN JATOI</h3>
-    <p class="footer-quote">"Literature is the mirror in which words speak. My words are my identity and my soul's reflection to the world."</p>
-    <div class="footer-copyright">
-      © 2026 OFFICIAL ARCHIVE • HASSAN ALI JATOI (HASSANALIPOETRY)
-    </div>
-  </div>
+    <p class="footer-main-text">HASSAN JATOI</p>
+    <p class="footer-sub-text">© 2026 OFFICIAL VERIFIED ARCHIVE • HASSANALIPOETRY</p>
 </footer>
 
 <script>
   const apiKey = ""; 
 
   const socials = [
-    { n: "Google Chat", l: "https://chat.google.com/app/home", i: "fa-comments", c: "#ffffff" },
-    { n: "YouTube Official", l: "https://www.youtube.com/channel/UCFo0XuIVdrDYhhMt2o6LDJA", i: "fa-youtube", c: "#FF0000" },
-    { n: "WhatsApp Chat", l: "https://wa.me/923083500829", i: "fa-whatsapp", c: "#25D366" },
-    { n: "Google Search", l: "https://www.google.com/search?q=hassan+jatoi+poetry", i: "fa-google", c: "#38bdf8" },
-    { n: "Google Verify", l: "https://share.google/Lhfqntq93WW6E8Dr3", i: "fa-shield-halved", c: "#38bdf8" },
-    { n: "Facebook", l: "https://www.facebook.com/share/17zubUQBeE/", i: "fa-facebook-f", c: "#38bdf8" },
-    { n: "TikTok", l: "https://www.tiktok.com/@hassanjatoi209", i: "fa-tiktok", c: "#38bdf8" },
-    { n: "GitHub", l: "https://github.com/hassanaliuk11-oss", i: "fa-github", c: "#38bdf8" },
-    { n: "Substack", l: "https://officiallyhassaj.substack.com/", i: "fa-paper-plane", c: "#38bdf8" },
-    { n: "HelloPoetry", l: "https://hellopoetry.com/Hassanjatoi/", i: "fa-pen-nib", c: "#38bdf8" },
-    { n: "UrduPoint", l: "https://www.urdupoint.com/poetry/user-poet/hassan-jatoi-27314.html", i: "fa-feather", c: "#38bdf8" },
-    { n: "LinkedIn", l: "https://www.linkedin.com/in/hassanjatoi786", i: "fa-linkedin-in", c: "#38bdf8" }
+    { n: "Google Search", l: "https://www.google.com/search?q=hassan+jatoi+poetry", i: "fa-google" },
+    { n: "Verification", l: "https://share.google/Lhfqntq93WW6E8Dr3", i: "fa-shield-check" },
+    { n: "X (Twitter)", l: "https://x.com/Ghostwrite90722", i: "fa-x-twitter" },
+    { n: "Facebook", l: "https://www.facebook.com/share/17zubUQBeE/", i: "fa-facebook-f" },
+    { n: "TikTok", l: "https://www.tiktok.com/@hassanjatoi209", i: "fa-tiktok" },
+    { n: "YouTube", l: "https://www.youtube.com/@poetrybyhassanjatoi", i: "fa-youtube" },
+    { n: "WhatsApp", l: "https://wa.me/923083500829", i: "fa-whatsapp" },
+    { n: "LinkedIn", l: "https://www.linkedin.com/in/hassanjatoi786", i: "fa-linkedin-in" },
+    { n: "GitHub", l: "https://github.com/hassanaliuk11-oss", i: "fa-github" },
+    { n: "HelloPoetry", l: "https://hellopoetry.com/Hassanjatoi/", i: "fa-pen-nib" },
+    { n: "UrduPoint", l: "https://www.urdupoint.com/poetry/user-poet/hassan-jatoi-27314.html", i: "fa-feather" },
+    { n: "Aruuz", l: "https://www.aruuz.com/?user=Hassanjatoi", i: "fa-pen-fancy" }
   ];
 
   const sGrid = document.getElementById('social-grid');
   socials.forEach(s => {
     const card = document.createElement('a');
-    card.href = s.l; card.target = "_blank"; card.rel = "noopener"; card.className = "glass-card";
-    card.innerHTML = `<i class="${s.i.includes('youtube') || s.i.includes('whatsapp') || s.i.includes('facebook') || s.i.includes('tiktok') || s.i.includes('github') || s.i.includes('linkedin') ? 'fa-brands ' + s.i : 'fa-solid ' + s.i} text-3xl mb-3" style="color: ${s.c}"></i><span class="text-[9px] font-black uppercase tracking-widest text-center">${s.n}</span>`;
+    card.href = s.l; card.target = "_blank"; card.className = "glass-card";
+    const isBrand = ['google', 'facebook', 'tiktok', 'youtube', 'whatsapp', 'linkedin', 'github', 'x-twitter'].some(b => s.i.includes(b));
+    const iconClass = (isBrand ? 'fa-brands ' : 'fa-solid ') + s.i;
+    card.innerHTML = `<i class="${iconClass} text-2xl mb-2 card-gold-icon"></i><span class="text-[10px] font-bold uppercase">${s.n}</span>`;
     sGrid.appendChild(card);
   });
 
@@ -398,68 +348,61 @@ body {
     { t: "Broken Soul", u: "https://hassanaliuk11-oss.github.io/poetry-book1/" },
     { t: "The Visionary", u: "https://hassanaliuk11-oss.github.io/Hassanalipoetry-/" },
     { t: "English Archive", u: "https://hassanaliuk11-oss.github.io/hassanjatoiurdu-/" },
-    { t: "Imam Hussein (AS)", u: "https://hassanaliuk11-oss.github.io/Imam-hussein-/" },
-    { t: "Blue Horizon", u: "https://hassanaliuk11-oss.github.io/sea-side-and-grief/" },
-    { t: "Grief of 2025", u: "https://hassanaliuk11-oss.github.io/The-grief-of-2025/" },
-    { t: "Strangers City", u: "https://hassanaliuk11-oss.github.io/The-city-of-strangers-/" },
-    { t: "Lyrical Words", u: "https://hassanaliuk11-oss.github.io/my-colourful-words/" }
+    { t: "Blue Horizon", u: "https://hassanaliuk11-oss.github.io/sea-side-and-grief/" }
   ];
 
   const wGrid = document.getElementById('works-grid');
   works.forEach(w => {
-    const card = document.createElement('div');
-    card.className = "glass-card py-10 text-center cursor-default";
-    
-    const content = document.createElement('a');
-    content.href = w.u; content.target = "_blank"; content.className = "block w-full";
-    content.innerHTML = `<h4 class="font-cinzel text-lg font-bold mb-2">${w.t}</h4><p class="text-[9px] opacity-40 uppercase tracking-widest">Official Book</p>`;
-    
-    const shareBtn = document.createElement('div');
-    shareBtn.className = "share-btn-overlay";
-    shareBtn.innerHTML = `<i class="fa-solid fa-share-nodes"></i>`;
-    shareBtn.title = "Share this book link";
-    shareBtn.onclick = (e) => {
-        e.stopPropagation();
-        handleShare(w.t, w.u);
-    };
-
-    card.appendChild(shareBtn);
-    card.appendChild(content);
+    const card = document.createElement('a');
+    card.href = w.u; card.target = "_blank"; card.className = "glass-card text-center";
+    card.innerHTML = `<h4 class="font-cinzel text-md font-bold text-slate-100">${w.t}</h4><p class="text-[9px] text-gold-primary opacity-60 uppercase mt-1">Official Book</p>`;
     wGrid.appendChild(card);
   });
 
-  function handleShare(title, url) {
-    if (navigator.share) {
-      navigator.share({
-        title: `Hassan Jatoi - ${title}`,
-        text: `Read "${title}" by Hassan Jatoi.`,
-        url: url,
-      }).catch(() => copyToClipboard(url));
-    } else {
-      copyToClipboard(url);
+  async function askGemini() {
+    const query = document.getElementById('gemini-query').value;
+    const resultBox = document.getElementById('gemini-result');
+    const loading = document.getElementById('gemini-loading');
+    if (!query) return;
+
+    resultBox.style.display = 'none';
+    loading.classList.remove('hidden');
+
+    const systemPrompt = `You are the Official AI Expert for Hassan Jatoi. Use GOOGLE SEARCH to verify all details about his books like 'Silent People' and 'Death of Spirits', his social media, and his presence as a verified poet. Respond in a poetic, professional manner.`;
+
+    try {
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: query }] }],
+          systemInstruction: { parts: [{ text: systemPrompt }] },
+          tools: [{ "google_search": {} }]
+        })
+      });
+      const data = await res.json();
+      loading.classList.add('hidden');
+      resultBox.innerHTML = data.candidates?.[0]?.content?.parts?.[0]?.text?.replace(/\n/g, '<br>') || "Search results unavailable.";
+      resultBox.style.display = 'block';
+    } catch (e) {
+      loading.classList.add('hidden');
+      resultBox.textContent = "Neural connection failed. Please try again.";
+      resultBox.style.display = 'block';
     }
   }
 
-  function copyToClipboard(text) {
-    const el = document.createElement('textarea');
-    el.value = text;
-    document.body.appendChild(el);
-    el.select();
-    document.execCommand('copy');
-    document.body.removeChild(el);
-    
-    const msg = document.getElementById('share-msg');
-    msg.style.display = 'block';
-    setTimeout(() => { msg.style.display = 'none'; }, 2000);
+  function toggleGeminiModal() {
+    const m = document.getElementById('gemini-modal');
+    m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
   }
 
   const album = [
-    "https://i.ibb.co/gZBLPfsj/image.png", "https://i.ibb.co/v4np474r/image.png", "https://i.ibb.co/QFzfbKx4/image.png", 
-    "https://i.ibb.co/60rLbPTW/image.png", "https://i.ibb.co/23Thbqtc/image.png", "https://i.ibb.co/1tQFC9xh/image.png",
-    "https://i.ibb.co/tMCZHnNV/image.png", "https://i.ibb.co/YBz4yHWm/image.png", "https://i.ibb.co/8nhG4wjY/image.png",
-    "https://i.ibb.co/qF0yNz6K/image.png", "https://i.ibb.co/998Hy14X/image.png", "https://i.ibb.co/jP65jbw8/image.png"
+    "https://i.ibb.co/gZBLPfsj/image.png", 
+    "https://i.ibb.co/v4np474r/image.png", 
+    "https://i.ibb.co/QFzfbKx4/image.png",
+    "https://i.ibb.co/60rLbPTW/image.png",
+    "https://i.ibb.co/23Thbqtc/image.png"
   ];
-
   let currentImgIndex = 0;
   function rotateCover() {
     const cover = document.getElementById('dynamic-cover');
@@ -469,58 +412,7 @@ body {
     }
   }
 
-  async function askGemini(retryCount = 0) {
-    const query = document.getElementById('gemini-query').value;
-    const resultBox = document.getElementById('gemini-result');
-    const loading = document.getElementById('gemini-loading');
-    if (!query) return;
-
-    resultBox.style.display = 'none';
-    loading.classList.remove('hidden');
-
-    const systemPrompt = "You are Hassan Jatoi's official AI assistant. Use his official data to answer. All work belongs to Hassan Ali Jatoi. Respond poetically in Roman Hindi/Urdu. Mention 'Silent People' and 'Death of Spirits'. If someone asks for contact, mention his WhatsApp: +923083500829.";
-
-    try {
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: query }] }],
-          systemInstruction: { parts: [{ text: systemPrompt }] }
-        })
-      });
-      const data = await response.json();
-      loading.classList.add('hidden');
-      resultBox.innerHTML = data.candidates[0].content.parts[0].text;
-      resultBox.style.display = 'block';
-    } catch (e) {
-      if (retryCount < 5) {
-        setTimeout(() => askGemini(retryCount + 1), Math.pow(2, retryCount) * 1000);
-      } else {
-        loading.classList.add('hidden');
-        resultBox.textContent = "Server busy hai, please baad mein try karein.";
-        resultBox.style.display = 'block';
-      }
-    }
-  }
-
-  function toggleGeminiModal() {
-    const m = document.getElementById('gemini-modal');
-    m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
-  }
-
-  function startClock() {
-    const c = document.getElementById('live-clock');
-    const up = () => { c.textContent = new Date().toLocaleString('en-US', { dateStyle: 'full', timeStyle: 'medium' }); };
-    setInterval(up, 1000); up();
-  }
-
-  window.onload = function() {
-    startClock();
-    rotateCover();
-    setInterval(rotateCover, 4000);
-  };
+  window.onload = () => { rotateCover(); setInterval(rotateCover, 4000); };
 </script>
-
 </body>
 </html>
