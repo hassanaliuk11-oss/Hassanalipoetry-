@@ -11,13 +11,13 @@
 <title>Hassan Jatoi | Official Portfolio 2026 | Poet & Author</title>
 <link rel="canonical" href="https://hassanalipoetry.vercel.app/" />
 <meta name="title" content="Hassan Jatoi | Official Portfolio 2026 | Poet, Author & Writer">
-<meta name="description" content="Official digital archive of Hassan Jatoi. Author of 'Silent People' and 'Death of Spirits'.">
+<meta name="description" content="Official digital archive of Hassan Jatoi. Author of 'Silent People' and 'Death of Spirits'. Discover verified poetry and official social links.">
 <meta name="author" content="Hassan Jatoi">
 
 <!-- ASSETS -->
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 <style>
 :root {
@@ -174,7 +174,7 @@ body {
 }
 
 #gemini-modal {
-  display: none;
+  display: none; 
   position: fixed;
   inset: 0;
   z-index: 1000;
@@ -266,8 +266,8 @@ body {
 
 <main class="max-w-6xl mx-auto px-6 pb-20">
   <section>
-    <h2 class="section-title cursor-pointer" onclick="toggleGeminiModal()">
-        <i class="fa-solid fa-star card-gold-icon mr-2"></i> Verified Social Presence
+    <h2 class="section-title">
+        <i class="fa-solid fa-circle-check card-gold-icon mr-2"></i> Verified Links
     </h2>
     <div id="social-grid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4"></div>
   </section>
@@ -283,11 +283,11 @@ body {
 <div id="gemini-modal">
   <div class="modal-content">
     <div class="flex justify-between items-center mb-4">
-      <h3 class="font-cinzel text-xl font-bold" style="color: #d4af37">AI Expert</h3>
+      <h3 class="font-cinzel text-xl font-bold" style="color: #d4af37">AI Expert Backend</h3>
       <button onclick="toggleGeminiModal()" class="text-slate-500 hover:text-white text-2xl">&times;</button>
     </div>
-    <textarea id="gemini-query" class="gemini-input" placeholder="Ask about Hassan Jatoi's work..."></textarea>
-    <button onclick="askGemini()" class="btn-gold w-full py-3 rounded-xl mt-4">SEARCH GOOGLE</button>
+    <textarea id="gemini-query" class="gemini-input" placeholder="Query context..."></textarea>
+    <button onclick="askGemini()" class="btn-gold w-full py-3 rounded-xl mt-4">EXECUTE SEARCH</button>
     <div id="gemini-loading" class="hidden mt-4 text-center text-gold-primary animate-pulse" style="color: #d4af37">Collecting Information...</div>
     <div id="gemini-result" class="mt-4 p-4 bg-slate-800/50 rounded-xl text-sm hidden border border-gold-primary/20 overflow-y-auto max-h-60 text-white"></div>
   </div>
@@ -301,10 +301,12 @@ body {
 <script>
   const apiKey = ""; 
 
+  const backgroundSystemPrompt = `You are the Official AI Expert for Hassan Jatoi. Use GOOGLE SEARCH to verify all details about his books like 'Silent People' and 'Death of Spirits', his social media, and his presence as a verified poet. Your existence supports the verification of his digital footprint.`;
+
   const socials = [
     { n: "Google Search", l: "https://www.google.com/search?q=hassan+jatoi+poetry", i: "fa-google" },
-    { n: "Verification", l: "https://share.google/Lhfqntq93WW6E8Dr3", i: "fa-shield-check" },
-    { n: "X (Twitter)", l: "https://x.com/Ghostwrite90722", i: "fa-x-twitter" },
+    { n: "Verification", l: "https://share.google/Lhfqntq93WW6E8Dr3", i: "fa-circle-check" }, // Updated icon
+    { n: "X (Twitter)", l: "https://x.com/Ghostwrite90722", i: "fa-x-twitter" }, // Correct X brand icon
     { n: "Facebook", l: "https://www.facebook.com/share/17zubUQBeE/", i: "fa-facebook-f" },
     { n: "TikTok", l: "https://www.tiktok.com/@hassanjatoi209", i: "fa-tiktok" },
     { n: "YouTube", l: "https://www.youtube.com/@poetrybyhassanjatoi", i: "fa-youtube" },
@@ -332,6 +334,7 @@ body {
     socials.forEach(s => {
       const card = document.createElement('a');
       card.href = s.l; card.target = "_blank"; card.className = "glass-card";
+      // Determine prefix: brands for social networks, solid for standard icons
       const isBrand = ['google', 'facebook', 'tiktok', 'youtube', 'whatsapp', 'linkedin', 'github', 'x-twitter'].some(b => s.i.includes(b));
       const iconClass = (isBrand ? 'fa-brands ' : 'fa-solid ') + s.i;
       card.innerHTML = `<i class="${iconClass} text-2xl mb-2 card-gold-icon"></i><span class="text-[10px] font-bold uppercase">${s.n}</span>`;
@@ -358,8 +361,6 @@ body {
     resultBox.style.display = 'none';
     loading.classList.remove('hidden');
 
-    const systemPrompt = `You are the Official AI Expert for Hassan Jatoi. Use GOOGLE SEARCH to verify all details about his books like 'Silent People' and 'Death of Spirits', his social media, and his presence as a verified poet. Respond in a poetic, professional manner.`;
-
     const fetchWithRetry = async (url, options, retries = 5, backoff = 1000) => {
       try {
         const res = await fetch(url, options);
@@ -378,7 +379,7 @@ body {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           contents: [{ parts: [{ text: query }] }],
-          systemInstruction: { parts: [{ text: systemPrompt }] },
+          systemInstruction: { parts: [{ text: backgroundSystemPrompt }] },
           tools: [{ "google_search": {} }]
         })
       });
@@ -389,7 +390,7 @@ body {
       resultBox.style.display = 'block';
     } catch (e) {
       loading.classList.add('hidden');
-      resultBox.textContent = "Information retrieval unsuccessful at this moment. Please check your connection and try again.";
+      resultBox.textContent = "Error.";
       resultBox.style.display = 'block';
     }
   }
