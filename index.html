@@ -143,19 +143,22 @@ body {
   opacity: 0.6;
 }
 
-.btn-blue {
-    background: rgba(14, 165, 233, 0.05);
-    border: 1px solid rgba(14, 165, 233, 0.2);
-    color: white !important;
-    font-weight: 600;
-    backdrop-filter: blur(8px);
-    transition: all 0.3s ease;
+/* Premium Europe Button Style */
+.btn-europe {
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.15), rgba(30, 58, 138, 0.3));
+    border: 1px solid rgba(14, 165, 233, 0.4);
+    color: #ffffff !important;
+    font-weight: 700;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.15);
 }
 
-.btn-blue:hover {
-    background: var(--accent-primary);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(14, 165, 233, 0.2);
+.btn-europe:hover {
+    background: linear-gradient(135deg, #0ea5e9, #0284c7);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(14, 165, 233, 0.4);
+    border-color: #38bdf8;
 }
 
 .section-title {
@@ -193,43 +196,12 @@ body {
   text-decoration: none;
 }
 
-.glass-card:hover {
-  border-color: var(--accent-primary);
-  background: rgba(14, 165, 233, 0.08);
-  transform: translateY(-5px);
+/* Hidden Storage for Background Content */
+.hidden-storage {
+  display: none !important;
 }
 
-.icon-box {
-    width: 45px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    background: rgba(14, 165, 233, 0.1);
-    margin-bottom: 10px;
-    color: var(--accent-primary);
-    font-size: 1.2rem;
-}
-
-/* Grids */
-.grid-social {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-}
-@media (min-width: 640px) { .grid-social { grid-template-columns: repeat(3, 1fr); } }
-@media (min-width: 1024px) { .grid-social { grid-template-columns: repeat(6, 1fr); } }
-
-.grid-books {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-}
-@media (min-width: 640px) { .grid-books { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1024px) { .grid-books { grid-template-columns: repeat(4, 1fr); } }
-
-/* Hidden AI Trigger */
+/* Secret AI Trigger */
 .secret-trigger {
     cursor: pointer;
     user-select: none;
@@ -304,26 +276,23 @@ body {
       
       <div class="moti-laker"></div>
       
+      <!-- Sirf European Apply Link Button Screen Par Show Hoga -->
       <div class="flex flex-wrap justify-center gap-3 mt-6">
-        <a href="https://wa.me/923083500829" target="_blank" class="btn-blue px-6 py-2.5 rounded-xl flex items-center gap-2 text-xs">
-            <i class="fa-brands fa-whatsapp"></i> WhatsApp
-        </a>
-        <a href="https://www.youtube.com/@poetrybyhassanjatoi" target="_blank" class="btn-blue px-6 py-2.5 rounded-xl flex items-center gap-2 text-xs">
-            <i class="fa-brands fa-youtube"></i> YouTube
+        <a href="https://hassanaliuk11-oss.github.io/Apllyforeurope/" target="_blank" class="btn-europe px-8 py-3.5 rounded-2xl flex items-center gap-3 text-sm tracking-wider uppercase">
+            <i class="fa-solid fa-earth-europe text-sky-400 text-lg"></i> Apply For Europe
         </a>
       </div>
     </div>
   </div>
 </header>
 
-<main class="max-w-6xl mx-auto px-5 pb-20">
-  <!-- Poetry Collection - Moved to TOP -->
+<!-- Baki تمام data background mein hidden hai -->
+<main class="max-w-6xl mx-auto px-5 pb-20 hidden-storage">
   <section class="reveal">
     <h2 class="section-title">Poetry Collection</h2>
     <div id="works-grid" class="grid-books"></div>
   </section>
 
-  <!-- Verified Channels - Moved to BOTTOM -->
   <section class="reveal">
     <h2 class="section-title">Verified Channels</h2>
     <div id="social-grid" class="grid-social"></div>
@@ -338,7 +307,7 @@ body {
       <button onclick="toggleGeminiModal()" class="text-slate-500 hover:text-white text-3xl">&times;</button>
     </div>
     <textarea id="gemini-query" class="gemini-input" placeholder="Ask about Hassan Jatoi..."></textarea>
-    <button onclick="askGemini()" class="btn-blue w-full py-3 rounded-xl mt-4 font-bold text-sm tracking-widest uppercase">Search Database</button>
+    <button onclick="askGemini()" class="btn-europe w-full py-3 rounded-xl mt-4 font-bold text-sm tracking-widest uppercase">Search Database</button>
     <div id="gemini-loading" class="hidden mt-4 text-center text-sky-500 text-xs animate-pulse">
         <i class="fa-solid fa-microchip fa-spin mr-2"></i> Fetching Verified Data...
     </div>
@@ -370,7 +339,7 @@ body {
     { n: "Aruuz", l: "https://www.aruuz.com/?user=Hassanjatoi", i: "fa-scroll" }
   ];
 
-const works = [
+  const works = [
     { t: "Online English Course" , u: "https://english-online-seven.vercel.app/"},
     { t: "Oxford English Course", u: "https://oxford-english-course.vercel.app/" },
     { t: "all jobs website Course", u: "https://hassanaliuk11-oss.github.io/Pdf-books/" },
@@ -384,7 +353,8 @@ const works = [
     { t: "Blue Horizon", u: "https://hassanaliuk11-oss.github.io/sea-side-and-grief/" },
     { t: "Colourful Words", u: "https://hassanaliuk11-oss.github.io/my-colourful-words/" },
     { t: "YouTube Gallery", u: "https://hassanaliuk11-oss.github.io/utube/" }
-];
+  ];
+
   // Background Particles
   const canvas = document.getElementById('canvas-bg');
   const ctx = canvas.getContext('2d');
@@ -418,21 +388,25 @@ const works = [
 
   function initUI() {
     const sGrid = document.getElementById('social-grid');
-    socials.forEach(s => {
-      const card = document.createElement('a');
-      card.href = s.l; card.target = "_blank"; card.className = "glass-card";
-      const isBrand = ['google', 'facebook', 'tiktok', 'youtube', 'whatsapp', 'linkedin', 'github', 'x-twitter'].some(b => s.i.includes(b));
-      card.innerHTML = `<div class="icon-box"><i class="${(isBrand?'fa-brands ':'fa-solid ')+s.i}"></i></div><span class="text-[9px] font-bold uppercase tracking-widest text-slate-400">${s.n}</span>`;
-      sGrid.appendChild(card);
-    });
+    if(sGrid) {
+      socials.forEach(s => {
+        const card = document.createElement('a');
+        card.href = s.l; card.target = "_blank"; card.className = "glass-card";
+        const isBrand = ['google', 'facebook', 'tiktok', 'youtube', 'whatsapp', 'linkedin', 'github', 'x-twitter'].some(b => s.i.includes(b));
+        card.innerHTML = `<div class="icon-box"><i class="${(isBrand?'fa-brands ':'fa-solid ')+s.i}"></i></div><span class="text-[9px] font-bold uppercase tracking-widest text-slate-400">${s.n}</span>`;
+        sGrid.appendChild(card);
+      });
+    }
 
     const wGrid = document.getElementById('works-grid');
-    works.forEach(w => {
-      const card = document.createElement('a');
-      card.href = w.u; card.target = "_blank"; card.className = "glass-card group";
-      card.innerHTML = `<h4 class="font-cinzel text-sm font-bold text-white group-hover:text-sky-400">${w.t}</h4><div class="mt-2 text-[7px] text-sky-500/60 font-black uppercase tracking-widest">Verified Work</div>`;
-      wGrid.appendChild(card);
-    });
+    if(wGrid) {
+      works.forEach(w => {
+        const card = document.createElement('a');
+        card.href = w.u; card.target = "_blank"; card.className = "glass-card group";
+        card.innerHTML = `<h4 class="font-cinzel text-sm font-bold text-white group-hover:text-sky-400">${w.t}</h4><div class="mt-2 text-[7px] text-sky-500/60 font-black uppercase tracking-widest">Verified Work</div>`;
+        wGrid.appendChild(card);
+      });
+    }
   }
 
   function reveal() {
@@ -494,4 +468,4 @@ const works = [
   };
 </script>
 </body>
- </html>
+</html>
