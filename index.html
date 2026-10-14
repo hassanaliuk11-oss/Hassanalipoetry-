@@ -16,7 +16,7 @@
 
 <!-- ASSETS & LIBRARIES -->
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;800&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 <style>
@@ -27,6 +27,7 @@
   --accent-glow: rgba(56, 189, 248, 0.5);
   --glass-bg: rgba(15, 23, 42, 0.85);
   --card-border: rgba(56, 189, 248, 0.25);
+  --font-family: "Inter", "Segoe UI", sans-serif;
 }
 
 * {
@@ -37,10 +38,51 @@
 body {
   background-color: var(--bg-color);
   color: var(--text-main);
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-family);
+  font-size: 16px;
   margin: 0;
   overflow-x: hidden;
-  line-height: 1.6;
+  line-height: 1.7;
+}
+
+body :not(i):not(svg) {
+  font-family: var(--font-family) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.3;
+  font-weight: 600 !important;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 7vw, 4.5rem) !important;
+  line-height: 1.08;
+  font-weight: 800 !important;
+  letter-spacing: -0.045em;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem) !important;
+  line-height: 1.2;
+  font-weight: 700 !important;
+  letter-spacing: -0.03em;
+}
+
+h3, h4, h5, h6 {
+  font-size: clamp(1.125rem, 2vw, 1.375rem) !important;
+  line-height: 1.35;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em;
+}
+
+p {
+  line-height: 1.75;
+  font-weight: 400;
+}
+
+body a, body button {
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 /* Background Canvas */
@@ -147,7 +189,7 @@ body {
   border-radius: 50px;
   text-decoration: none;
   color: #fff;
-  font-weight: 800;
+  font-weight: 600;
   font-size: 13px;
   letter-spacing: .03em;
   border: 1px solid rgba(255,255,255,0.25);
@@ -203,7 +245,11 @@ body {
 }
 
 .colorful-name {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-family) !important;
+  font-size: clamp(2.5rem, 7vw, 4.5rem) !important;
+  line-height: 1.08;
+  font-weight: 800 !important;
+  letter-spacing: -0.045em;
   background: linear-gradient(135deg, #ffffff 10%, #38bdf8 50%, #ec4899 90%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -211,6 +257,8 @@ body {
 }
 
 .colorful-subtitle {
+  letter-spacing: 0.12em !important;
+  line-height: 1.6;
   background: linear-gradient(90deg, #7dd3fc, #f472b6, #fbbf24);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -228,9 +276,10 @@ body {
 
 /* Section Headings */
 .section-title {
-  font-family: 'Cinzel', serif;
-  font-size: 1.8rem;
-  letter-spacing: 3px;
+  font-family: var(--font-family) !important;
+  font-size: clamp(1.6rem, 4vw, 2.5rem) !important;
+  line-height: 1.2;
+  letter-spacing: 0.025em;
   margin: 4rem 0 2rem;
   text-align: center;
   text-transform: uppercase;
@@ -242,7 +291,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.4));
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .section-title::before, .section-title::after {
@@ -313,14 +362,14 @@ body {
   z-index: 2;
   font-size: 12px;
   font-weight: 900;
-  letter-spacing: 2px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   text-shadow: 0 2px 8px rgba(0,0,0,0.8);
 }
 .website-copy { padding: 18px; }
-.website-copy h3 { font-size: 16px; font-weight: 800; margin: 0 0 6px; }
+.website-copy h3 { font-size: 18px !important; line-height: 1.35; font-weight: 600; margin: 0 0 6px; }
 .website-copy p { font-size: 12px; color: #cbd5e1; margin: 0; }
-.open-label { display: inline-block; margin-top: 12px; color: #38bdf8; font-size: 11px; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase; }
+.open-label { display: inline-block; margin-top: 12px; color: #38bdf8; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
 
 /* Poetry Books Grid */
 .grid-books {
@@ -437,14 +486,14 @@ body {
 }
 .eu-stars { font-size: 26px; letter-spacing: 8px; color: #facc15; text-shadow: 0 0 15px rgba(250,204,21,0.5); }
 .eu-footer-title {
-  font-size: clamp(18px, 3vw, 26px);
-  font-weight: 900;
-  letter-spacing: 2px;
+  font-size: clamp(1.25rem, 3vw, 1.625rem) !important;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   background: linear-gradient(90deg, #facc15, #38bdf8, #ec4899, #60a5fa);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 12px 0;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-family) !important;
   filter: drop-shadow(0 2px 10px rgba(56, 189, 248, 0.3));
 }
 .eu-footer p { font-size: 13px; color: #cbd5e1; margin: 8px auto; max-width: 780px; }
@@ -530,6 +579,19 @@ body {
   align-self: flex-start;
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
+.msg-bot .chat-answer { white-space: pre-wrap; overflow-wrap: anywhere; }
+.chat-sources {
+  display: grid;
+  gap: 5px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(56, 189, 248, 0.2);
+  font-size: 11px;
+}
+.chat-sources a { color: #7dd3fc; text-decoration: underline; overflow-wrap: anywhere; }
+.chat-error { color: #fecaca; }
+.chat-loading { color: #cbd5e1; }
+.chat-send-button:disabled { cursor: wait; opacity: 0.6; }
 
 .msg-user {
   background: linear-gradient(135deg, #0284c7, #2563eb);
@@ -558,7 +620,7 @@ body {
   padding: 10px 16px;
   border-radius: 50px;
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 600;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -574,10 +636,146 @@ body {
 }
 
 @media(max-width:600px){
-  .top-centered-bar { flex-direction: column; width: 100%; }
-  .hire-card-top { width: 100%; max-width: 320px; }
-  .website-art { height: 130px; }
-  .ai-chat-window { bottom: 85px; right: 15px; left: 15px; width: auto; }
+  .top-action-bar {
+    position: relative;
+    padding: 10px 12px;
+  }
+  .top-centered-bar {
+    width: 100%;
+    gap: 8px;
+  }
+  .hire-card-top {
+    flex: 1 1 calc(50% - 8px);
+    width: auto;
+    max-width: none;
+    min-height: 44px;
+    padding: 9px 10px;
+    font-size: 12px;
+    text-align: center;
+  }
+  .hire-cv { flex-basis: 100%; }
+  .cover-photo {
+    height: clamp(220px, 58vw, 340px);
+    min-height: 0;
+    border-bottom-left-radius: 26px;
+    border-bottom-right-radius: 26px;
+  }
+  .cover-photo::before, .cover-photo::after {
+    border-bottom-left-radius: 26px;
+    border-bottom-right-radius: 26px;
+  }
+  .profile-pic-wrapper {
+    width: clamp(132px, 40vw, 170px);
+    margin-top: -76px;
+  }
+  .profile-details { padding: 0 10px; }
+  .colorful-subtitle {
+    max-width: 34rem;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 11px !important;
+    letter-spacing: 0.08em !important;
+  }
+  .section-title {
+    gap: 9px;
+    margin: 3rem 0 1.5rem;
+    font-size: clamp(1.4rem, 6vw, 2rem) !important;
+  }
+  .section-title::before, .section-title::after {
+    width: clamp(12px, 5vw, 30px);
+    flex: 0 0 auto;
+  }
+  .website-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .website-art { height: clamp(130px, 42vw, 190px); }
+  .grid-books {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: 16px;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .glass-card { padding: 1.5rem 1.25rem; }
+  .grid-social {
+    gap: 12px;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .social-card {
+    flex: 1 1 140px;
+    min-width: 0;
+    padding: 1rem;
+  }
+  .modal-box {
+    width: 100%;
+    max-height: min(85vh, 680px);
+    padding: 18px;
+    border-radius: 18px;
+  }
+  .eu-footer { padding: 38px 16px 28px; }
+  .eu-stars {
+    font-size: 18px;
+    letter-spacing: 0.25em;
+  }
+  .ai-chat-window {
+    right: 12px;
+    left: 12px;
+    bottom: 78px;
+    width: auto;
+    height: min(460px, calc(100vh - 275px));
+    border-radius: 20px;
+  }
+  .nav-floating-btn {
+    left: 12px;
+    bottom: 14px;
+    gap: 6px;
+  }
+  .nav-btn {
+    min-height: 44px;
+    padding: 9px 12px;
+    gap: 6px;
+  }
+  .ai-fab-btn {
+    right: 12px;
+    bottom: 12px;
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 360px) {
+  .eu-top-header { padding-right: 12px; padding-left: 12px; }
+  .eu-top-header .tracking-widest {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+  }
+  .section-title { gap: 6px; }
+  .nav-btn { padding-right: 10px; padding-left: 10px; }
+  .msg-bot, .msg-user {
+    max-width: 92%;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 600px) and (max-height: 560px) {
+  .ai-chat-window { height: calc(100vh - 280px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 </style>
 </head>
@@ -978,7 +1176,18 @@ body {
    rel="noopener noreferrer">
   <div class="website-art">
     <img class="website-thumb"
-         src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&
+         src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=75"
+         alt="Emilia Romagna Ergo Regional Scholarship"
+         loading="lazy"
+         decoding="async">
+    <span class="art-label">Emilia Romagna</span>
+  </div>
+  <div class="website-copy">
+    <h3>DSU Toscana Scholarship</h3>
+    <p>Explore regional student financial aid opportunities for eligible students in Tuscany, including Pisa, Florence and Siena.</p>
+    <span class="open-label">Official Website ↗</span>
+  </div>
+</a>
 <a class="website-card portal-item"
    data-title="fulbright foreign student program scholarship"
    href="https://foreign.fulbrightonline.org/"
@@ -1049,7 +1258,7 @@ body {
     <p>Explore Colleges, International Scholarships and Study Opportunities Abroad.</p>
     <span class="open-label">Explore Now ↗</span>
   </div>
-<a class="website-card portal-item"</a>
+<a class="website-card portal-item"
    data-title="global government jobs directory"
    href="https://jobdirectly.com/governmentjobs"
    target="_blank"
@@ -1195,6 +1404,28 @@ body {
 
 <main class="max-w-6xl mx-auto px-5 pb-20 mt-12">
 
+  <section id="visa-directory" class="reveal my-12">
+    <h2 class="section-title">International Jobs, Visa & Scholarship Directory</h2>
+    <p class="text-center text-slate-300 text-sm max-w-3xl mx-auto mb-4">Browse official government and institution portals. Visa rules depend on nationality and purpose; confirm requirements on the official site before applying.</p>
+    <p class="text-center text-xs text-sky-300 mb-6">Directory links reviewed: <time datetime="2026-10-14">14 October 2026</time>. This date indicates the directory update, not a guarantee that every external page is available.</p>
+    <div class="max-w-md mx-auto mb-5"><input id="portalDirectorySearch" type="search" placeholder="Search a country, agency or portal..." aria-label="Search official resources" class="w-full bg-slate-900/90 border border-sky-400/40 rounded-full px-5 py-3 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-pink-500"></div>
+    <div class="flex flex-wrap justify-center gap-2 mb-8" role="group" aria-label="Filter visa links by type">
+      <button class="filter-button" type="button" data-visa-filter="all" aria-pressed="true">All visa links</button>
+      <button class="filter-button" type="button" data-visa-filter="work" aria-pressed="false">Work</button>
+      <button class="filter-button" type="button" data-visa-filter="visit" aria-pressed="false">Visit</button>
+      <button class="filter-button" type="button" data-visa-filter="student" aria-pressed="false">Student</button>
+      <button class="filter-button" type="button" data-visa-filter="family" aria-pressed="false">Family</button>
+    </div>
+    <h2 class="section-title">Visa Applications & Embassy Directory</h2><div id="visa-country-grid" class="website-grid"></div>
+    <h2 class="section-title">International Government Job Portals</h2><div id="europe-job-grid" class="website-grid"></div>
+    <h2 class="section-title">Scholarships & University Admissions</h2><p class="text-center text-slate-300 text-sm max-w-3xl mx-auto">Deadlines change by programme and year. Each official portal is labelled “Check current deadline”; verify dates on the linked programme page.</p><div id="scholarship-grid" class="website-grid"></div>
+    <h2 class="section-title">CV, Documents & Qualification Recognition</h2><p class="text-center text-slate-300 text-sm max-w-3xl mx-auto">Recognition rules vary by profession and destination; qualifications are not automatically accepted everywhere.</p><div id="qualification-grid" class="website-grid"></div>
+    <h2 class="section-title">Visa Requirements & Immigration</h2><div id="visa-requirement-grid" class="website-grid"></div>
+    <h2 class="section-title">Scam Protection</h2><p class="text-center text-amber-200 text-sm max-w-3xl mx-auto">Do not trust guaranteed-visa claims or suspicious job offers. Confirm fees, recruiters and applications with official authorities.</p><div id="scam-protection-grid" class="website-grid"></div>
+    <h2 class="section-title">International Government & Humanitarian Careers</h2><div id="international-careers-grid" class="website-grid"></div>
+    <h2 class="section-title">Europe Travel Systems</h2><p class="text-center text-slate-300 text-sm max-w-3xl mx-auto">Check official EU pages for current EES and ETIAS status. ETIAS does not replace a visa where one is required.</p><div id="travel-system-grid" class="website-grid"></div>
+  </section>
+
   <!-- INTERACTIVE EU CV BUILDER WIDGET -->
   <section class="reveal my-12 bg-slate-900/80 border border-sky-400/30 rounded-3xl p-6 backdrop-filter backdrop-blur-xl shadow-[0_0_40px_rgba(56,189,248,0.15)]">
     <div class="text-center mb-6">
@@ -1272,8 +1503,8 @@ body {
 <div class="ai-chat-window" id="aiChatWindow">
   <div class="chat-header">
     <div class="flex items-center gap-2">
-      <div class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></div>
-      <span class="font-bold text-sm text-white font-cinzel">Hassan Jatoi AI Assistant</span>
+      <div class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true"></div>
+      <span class="font-bold text-sm text-white font-cinzel">Hassan Jatoi Live AI Assistant</span>
     </div>
     <button onclick="toggleAiChat()" class="text-slate-400 hover:text-white text-xl">&times;</button>
   </div>
@@ -1291,8 +1522,8 @@ body {
   </div>
 
   <div class="p-3 bg-slate-900 border-t border-slate-800 flex gap-2">
-    <input type="text" id="chatInput" placeholder="Type your query..." class="flex-1 bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-400" onkeypress="handleChatKeyPress(event)">
-    <button onclick="sendChatMessage()" class="bg-gradient-to-r from-sky-500 to-blue-600 text-white px-3 py-2 rounded-xl text-xs font-bold hover:opacity-90">
+    <input type="text" id="chatInput" maxlength="2000" aria-label="Ask the AI assistant a question" placeholder="Ask a question..." class="flex-1 bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-400" onkeypress="handleChatKeyPress(event)">
+    <button id="chatSendButton" type="button" aria-label="Send message" onclick="sendChatMessage()" class="chat-send-button bg-gradient-to-r from-sky-500 to-blue-600 text-white px-3 py-2 rounded-xl text-xs font-bold hover:opacity-90">
       <i class="fa-solid fa-paper-plane"></i>
     </button>
   </div>
@@ -1343,6 +1574,202 @@ body {
       preview: "Walking through solitary corridors of time, 'Lonely Path' offers deep verses on self-discovery, independence, and the beauty found in solitude."
     }
   ];
+
+  /* Live Filter Search */
+  const visaPortals = [
+    { country: "Germany", flag: "🇩🇪", links: [["Visa application", "https://digital.diplo.de/visa"], ["Work visa", "https://pakistan.diplo.de/pk-en/service/4-work-jobseeker-1676106"], ["Visit visa", "https://pakistan.diplo.de/pk-en/service/visa-shortterm/1673126"], ["Embassy in Pakistan", "https://pakistan.diplo.de/"], ["Visa centre", "https://visa.vfsglobal.com/pak/en/deu/"]] },
+    { country: "Poland", flag: "🇵🇱", links: [["Official appointment portal", "https://secure.e-konsulat.gov.pl/"], ["Visa information", "https://www.gov.pl/web/pakistan-en/visas---general-information"], ["Embassy in Pakistan", "https://www.gov.pl/web/pakistan-en"]] },
+    { country: "France", flag: "🇫🇷", links: [["Visa application", "https://france-visas.gouv.fr/en/"], ["France visa Pakistan", "https://www.france-visas.gouv.fr/en/web/france-visas/pakistan"], ["Embassy in Pakistan", "https://pk.ambafrance.org/"]] },
+    { country: "Italy", flag: "🇮🇹", links: [["Visa information", "https://vistoperitalia.esteri.it/"], ["Foreign affairs", "https://www.esteri.it/en/"], ["Embassy in Pakistan", "https://ambislamabad.esteri.it/"]] },
+    { country: "Greece", flag: "🇬🇷", links: [["Visa information", "https://www.mfa.gr/en/visas/"], ["Visa centre Pakistan", "https://pk-gr.gvcworld.eu/en"], ["Appointment", "https://pk-gr.gvcworld.eu/en/schedule-appointment"], ["Embassy information", "https://www.mfa.gr/missionsabroad/en/pakistan-en/"]] },
+    { country: "Spain", flag: "🇪🇸", links: [["Visa information", "https://www.exteriores.gob.es/en/"], ["Consular information Pakistan", "https://www.exteriores.gob.es/Consulados/islamabad/en/Paginas/index.aspx"], ["Visa centre", "https://pak.blsspainvisa.com/"]] },
+    { country: "Austria", flag: "🇦🇹", links: [["Visa information", "https://www.bmeia.gv.at/en/entry-and-residence/visa"], ["Embassy Pakistan", "https://www.bmeia.gv.at/en/austrian-embassy-islamabad"], ["Visa centre", "https://visa.vfsglobal.com/pak/en/aut/"]] },
+    { country: "Belgium", flag: "🇧🇪", links: [["Visa information", "https://diplomatie.belgium.be/en"], ["Embassy Pakistan", "https://pakistan.diplomatie.belgium.be/en"], ["Work permit visa", "https://pakistan.diplomatie.belgium.be/en/travel-belgium/visa-belgium-and-grand-duchy-luxembourg/visa-basis-work-permit"]] },
+    { country: "Netherlands", flag: "🇳🇱", links: [["Visa information", "https://www.netherlandsworldwide.nl/visa-the-netherlands"], ["Immigration authority", "https://ind.nl/en"], ["Embassy Pakistan", "https://www.netherlandsandyou.nl/"]] },
+    { country: "Portugal", flag: "🇵🇹", links: [["Visa information", "https://vistos.mne.gov.pt/en/"], ["Foreign affairs", "https://www.portugal.gov.pt/en/gc25/ministries/foreign-affairs"], ["Embassy Pakistan", "https://islamabad.embaixadaportugal.mne.gov.pt/"]] },
+    { country: "Switzerland", flag: "🇨🇭", links: [["Entry and visa information", "https://www.sem.admin.ch/sem/en/home/themen/einreise.html"], ["Embassy Pakistan", "https://www.eda.admin.ch/islamabad"], ["Visa information Pakistan", "https://www.eda.admin.ch/countries/pakistan/en/home/visa.html"]] },
+    { country: "Sweden", flag: "🇸🇪", links: [["Visa information", "https://www.swedenabroad.se/en/"], ["Work permits", "https://www.migrationsverket.se/English.html"], ["Embassy Pakistan", "https://www.swedenabroad.se/en/embassies/pakistan-islamabad/"]] },
+    { country: "Finland", flag: "🇫🇮", links: [["Immigration", "https://migri.fi/en/home"], ["Visa to visit Finland", "https://um.fi/visa-to-visit-finland"], ["Residence permits", "https://enterfinland.fi/eServices"], ["Embassy information", "https://finlandabroad.fi/web/pak/current-affairs"]] },
+    { country: "Denmark", flag: "🇩🇰", links: [["Visa information", "https://um.dk/en/travel-and-residence"], ["Work and residence", "https://www.nyidanmark.dk/en-GB"], ["Embassy Pakistan", "https://pakistan.um.dk/en"]] },
+    { country: "Norway", flag: "🇳🇴", links: [["Visa and immigration", "https://www.udi.no/en/"], ["Application portal", "https://my.udi.no/"], ["Embassy information", "https://www.norway.no/en/pakistan/"]] },
+    { country: "Ireland", flag: "🇮🇪", links: [["Visa information", "https://www.irishimmigration.ie/"], ["Visa application", "https://www.visas.inis.gov.ie/AVATS/OnlineHome.aspx"], ["Work permits", "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/"], ["Embassy information", "https://www.ireland.ie/en/pakistan/islamabad/"]] },
+    { country: "United Kingdom", flag: "🇬🇧", links: [["Visa and immigration", "https://www.gov.uk/browse/visas-immigration"], ["Apply for a visa", "https://www.gov.uk/apply-to-come-to-the-uk"], ["Skilled Worker visa", "https://www.gov.uk/skilled-worker-visa"], ["Student visa", "https://www.gov.uk/student-visa"], ["Visit visa", "https://www.gov.uk/standard-visitor"], ["British High Commission Pakistan", "https://www.gov.uk/world/organisations/british-high-commission-islamabad"]] },
+    { country: "Czechia", flag: "🇨🇿", links: [["Visa information", "https://mzv.gov.cz/jnp/en/information_for_aliens/index.html"], ["Embassy Pakistan", "https://mzv.gov.cz/islamabad/en/index.html"], ["Immigration information", "https://ipc.gov.cz/en/"]] },
+    { country: "Hungary", flag: "🇭🇺", links: [["Immigration authority", "https://oif.gov.hu/"], ["Visa information", "https://konzinfo.mfa.gov.hu/en"], ["Embassy Pakistan", "https://islamabad.mfa.gov.hu/eng"]] },
+    { country: "Croatia", flag: "🇭🇷", links: [["Work and residence", "https://mup.gov.hr/aliens-281621/stay-and-work/281622"], ["Visa requirements", "https://mvep.gov.hr/consular-information-147214/visa-requirements-overview/22830"], ["Foreign affairs", "https://mvep.gov.hr/"]] },
+    { country: "Romania", flag: "🇷🇴", links: [["Official e-Visa application", "https://eviza.mae.ro/"], ["Foreign affairs", "https://www.mae.ro/en"], ["Immigration authority", "https://igi.mai.gov.ro/en/"]] },
+    { country: "Latvia", flag: "🇱🇻", links: [["Immigration and residence", "https://www.pmlp.gov.lv/en"], ["Foreign affairs", "https://www.mfa.gov.lv/en"], ["Embassies and consulates", "https://www.mfa.gov.lv/en/embassies-consulates"]] },
+    { country: "Lithuania", flag: "🇱🇹", links: [["Migration information", "https://www.migracija.lt/"], ["Foreign affairs", "https://www.urm.lt/en"], ["Embassies and consulates", "https://www.urm.lt/en/about-us/embassies-and-consulates"]] },
+    { country: "Luxembourg", flag: "🇱🇺", links: [["Immigration information", "https://guichet.public.lu/en/citoyens/immigration.html"], ["Visa information", "https://mae.gouvernement.lu/en.html"], ["Embassy information", "https://mae.gouvernement.lu/en/annuaire.html"], ["Government portal", "https://guichet.public.lu/en.html"]] },
+    { country: "Malta", flag: "🇲🇹", links: [["Immigration and residence", "https://identita.gov.mt/"], ["Work permits", "https://jobsplus.gov.mt/"], ["Visa information", "https://identita.gov.mt/central-visa-unit/"]] },
+    { country: "Slovakia", flag: "🇸🇰", links: [["Visa information", "https://www.mzv.sk/web/en/consular_info/visa"], ["Foreign affairs", "https://www.mzv.sk/web/en"], ["Embassy Islamabad", "https://www.mzv.sk/web/islamabad-en"]] },
+    { country: "Slovenia", flag: "🇸🇮", links: [["Entry and residence", "https://www.gov.si/en/topics/entry-and-residence/"], ["Visa information", "https://www.gov.si/en/topics/entry-and-residence/visas/"], ["Embassy information", "https://www.gov.si/en/representations/"]] },
+    { country: "Bulgaria", flag: "🇧🇬", links: [["Visa information", "https://www.mfa.bg/en/services-travel/consular-services/travel-bulgaria/visa-bulgaria"], ["Foreign affairs", "https://www.mfa.bg/en"], ["Embassy directory", "https://www.mfa.bg/en/embassies"]] },
+    { country: "Cyprus", flag: "🇨🇾", links: [["Foreign affairs", "https://mfa.gov.cy/"], ["Visa information", "https://mfa.gov.cy/visa-information.html"], ["Civil Registry and Migration", "https://www.moi.gov.cy/moi/crmd/crmd.nsf/index_en/index_en"]] },
+    { country: "Estonia", flag: "🇪🇪", links: [["Police and Border Guard", "https://www.politsei.ee/en"], ["Foreign affairs", "https://vm.ee/en"], ["Visa information", "https://vm.ee/en/consular-visa-and-travel-information"]] },
+    { country: "Iceland", flag: "🇮🇸", links: [["Immigration", "https://island.is/en/o/directorate-of-immigration"], ["Visa information", "https://island.is/en/get-a-visa"], ["Foreign affairs", "https://www.government.is/ministries/ministry-for-foreign-affairs/"]] },
+    { country: "Liechtenstein", flag: "🇱🇮", links: [["Government portal", "https://www.llv.li/en"], ["Immigration information", "https://www.llv.li/en/national-administration/office-for-foreign-affairs"]] },
+    { country: "Serbia", flag: "🇷🇸", links: [["Foreign affairs", "https://www.mfa.gov.rs/en"], ["Visa information", "https://welcometoserbia.gov.rs/"], ["Electronic visa information", "https://evisa.welcometoserbia.gov.rs/"]] },
+    { country: "Albania", flag: "🇦🇱", links: [["Official visa portal", "https://e-visa.al/"], ["Foreign affairs", "https://punetejashtme.gov.al/en/"]] },
+    { country: "Montenegro", flag: "🇲🇪", links: [["Foreign affairs", "https://www.gov.me/en/mvp"], ["Visa information", "https://www.gov.me/en/mvp/visas"]] },
+    { country: "North Macedonia", flag: "🇲🇰", links: [["Foreign affairs", "https://mfa.gov.mk/en"], ["Visa information", "https://mfa.gov.mk/en/page/12/visa"]] },
+    { country: "Bosnia and Herzegovina", flag: "🇧🇦", links: [["Foreign affairs", "https://www.mvp.gov.ba/"], ["Visa information", "https://www.mvp.gov.ba/konzularne_informacije/vize/default.aspx"]] },
+    { country: "Kosovo", flag: "🇽🇰", links: [["Foreign affairs", "https://mfa-ks.net/en/"], ["Visa regime", "https://mfa-ks.net/en/visa-regime/"]] },
+    { country: "Moldova", flag: "🇲🇩", links: [["e-Visa portal", "https://evisa.gov.md/"], ["Foreign affairs", "https://mfa.gov.md/en"]] },
+    { country: "Ukraine", flag: "🇺🇦", links: [["Foreign affairs", "https://mfa.gov.ua/en"], ["e-Visa information", "https://evisa.mfa.gov.ua/"]] },
+    { country: "Turkey", flag: "🇹🇷", links: [["e-Visa portal", "https://www.evisa.gov.tr/"], ["Foreign affairs", "https://www.mfa.gov.tr/"], ["Visa information", "https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa"]] },
+    { country: "Andorra", flag: "🇦🇩", links: [["Government portal", "https://www.govern.ad/"], ["Immigration information", "https://www.exteriors.ad/"]] },
+    { country: "San Marino", flag: "🇸🇲", links: [["Government portal", "https://www.gov.sm/"]] },
+    { country: "Vatican City", flag: "🇻🇦", links: [["Official website", "https://www.vaticanstate.va/"]] },
+    { country: "Monaco", flag: "🇲🇨", links: [["Government portal", "https://en.gouv.mc/"], ["Residence information", "https://en.service-public-entreprises.gouv.mc/"]] },
+    { country: "Canada", flag: "🇨🇦", links: [["Immigration, Refugees and Citizenship Canada", "https://www.canada.ca/en/immigration-refugees-citizenship.html"]] },
+    { country: "Australia", flag: "🇦🇺", links: [["Australian Department of Home Affairs", "https://immi.homeaffairs.gov.au/"]] },
+    { country: "New Zealand", flag: "🇳🇿", links: [["Immigration New Zealand", "https://www.immigration.govt.nz/"]] },
+    { country: "United States", flag: "🇺🇸", links: [["US Department of State Visas", "https://travel.state.gov/content/travel/en/us-visas.html"]] },
+    { country: "Japan", flag: "🇯🇵", links: [["Immigration Services Agency of Japan", "https://www.moj.go.jp/isa/?hl=en"]] },
+    { country: "South Korea", flag: "🇰🇷", links: [["Korea Immigration Service", "https://www.immigration.go.kr/immigration_eng/index.do"]] },
+    { country: "Singapore", flag: "🇸🇬", links: [["Ministry of Manpower: Passes and Permits", "https://www.mom.gov.sg/passes-and-permits"]] }
+  ];
+
+  const europeanJobPortals = [
+    ["EURES European Jobs", "https://eures.europa.eu/"],
+    ["Make it in Germany Jobs", "https://www.make-it-in-germany.com/en/working-in-germany/job-listings"],
+    ["Canada Job Bank", "https://www.jobbank.gc.ca/"],
+    ["Workforce Australia", "https://www.workforceaustralia.gov.au/"],
+    ["Find a Job UK", "https://findajob.dwp.gov.uk/"],
+    ["USAJOBS", "https://www.usajobs.gov/"],
+    ["International Labour Organization", "https://www.ilo.org/"],
+    ["UN Careers", "https://careers.un.org/"],
+    ["EURAXESS Research Jobs", "https://euraxess.ec.europa.eu/jobs"]
+  ];
+
+  const additionalPortalGroups = {
+    "scholarship-grid": [
+      ["Study in Europe", "https://education.ec.europa.eu/study-in-europe"],
+      ["Erasmus+ Scholarships", "https://erasmus-plus.ec.europa.eu/"],
+      ["Erasmus Mundus Masters Catalogue", "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en"],
+      ["EURAXESS Research Opportunities", "https://euraxess.ec.europa.eu/"],
+      ["European Education Area", "https://education.ec.europa.eu/"],
+      ["DAAD Germany Scholarships", "https://www.daad.de/en/"],
+      ["Chevening Scholarships", "https://www.chevening.org/"],
+      ["USEFP Fulbright Programs", "https://www.usefp.org/"],
+      ["EducationUSA", "https://educationusa.state.gov/"],
+      ["Australia Awards", "https://www.dfat.gov.au/people-to-people/australia-awards"],
+      ["Study in Japan: MEXT", "https://www.studyinjapan.go.jp/en/"],
+      ["Study in Korea", "https://www.studyinkorea.go.kr/"],
+      ["Commonwealth Scholarships", "https://cscuk.fcdo.gov.uk/"]
+    ],
+    "qualification-grid": [
+      ["Europass: European CV and Skills Profile", "https://europass.europa.eu/en"],
+      ["ENIC-NARIC Qualification Recognition", "https://www.enic-naric.net/"],
+      ["EU Regulated Professions Database", "https://ec.europa.eu/growth/tools-databases/regprof/"],
+      ["Pakistan Higher Education Commission", "https://www.hec.gov.pk/"],
+      ["Pakistan Ministry of Foreign Affairs Attestation", "https://mofa.gov.pk/"],
+      ["UK ENIC Qualification Comparison", "https://www.enic.org.uk/"],
+      ["Australia Qualification Recognition", "https://internationaleducation.gov.au/services-and-resources/Pages/qualifications-recognition.aspx"]
+    ],
+    "visa-requirement-grid": [
+      ["EU Immigration Portal", "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal_en"],
+      ["Canada Immigration Fraud and Protection Guidance", "https://www.canada.ca/en/immigration-refugees-citizenship/services/protect-fraud.html"],
+      ["Australian Visa Scam Information", "https://immi.homeaffairs.gov.au/help-support/visa-scams"],
+      ["UK Report Immigration Crime", "https://www.gov.uk/report-immigration-crime"]
+    ],
+    "scam-protection-grid": [
+      ["EURES: Spot Fraudulent Job Offers", "https://eures.europa.eu/how-spot-fraudulent-job-offers-and-misinformation-2023-06-15_en"],
+      ["EU Delegation Pakistan: Travel and Study Guidance", "https://www.eeas.europa.eu/pakistan/travel-study_en"],
+      ["Canada: Protect Yourself from Immigration Fraud", "https://www.canada.ca/en/immigration-refugees-citizenship/services/protect-fraud.html"],
+      ["Australia: Visa Scams", "https://immi.homeaffairs.gov.au/help-support/visa-scams"],
+      ["UK: Report Immigration Crime", "https://www.gov.uk/report-immigration-crime"]
+    ],
+    "international-careers-grid": [
+      ["UNICEF Careers", "https://jobs.unicef.org/"],
+      ["World Health Organization Careers", "https://www.who.int/careers"],
+      ["World Bank Careers", "https://www.worldbank.org/en/about/careers"],
+      ["International Organization for Migration Careers", "https://www.iom.int/careers"]
+    ],
+    "travel-system-grid": [
+      ["Entry/Exit System (EES)", "https://travel-europe.europa.eu/ees"],
+      ["ETIAS Travel Authorisation", "https://travel-europe.europa.eu/etias"]
+    ]
+  };
+
+  function createPortalCard(title, links, className = "", options = {}) {
+    const card = document.createElement("article");
+    card.className = `website-card portal-directory-item ${className}`;
+    card.dataset.search = `${title} ${links.map(([label, url]) => `${label} ${url}`).join(" ")}`.toLowerCase();
+    card.dataset.directoryGroup = options.group || "resource";
+    const copy = document.createElement("div");
+    copy.className = "website-copy";
+    const heading = document.createElement("h3");
+    heading.textContent = title;
+    copy.appendChild(heading);
+    const list = document.createElement("div");
+    list.className = "portal-link-list";
+    links.forEach(([label, url]) => {
+      const link = document.createElement("a");
+      const labelText = label.toLowerCase();
+      const type = /work|employment|job|worker|permit/.test(labelText) ? "work" : /visit|short.?stay|touris/.test(labelText) ? "visit" : /student|study|education/.test(labelText) ? "student" : /family|reunion|dependent/.test(labelText) ? "family" : "general";
+      link.className = "portal-link";
+      link.dataset.visaType = type;
+      link.href = url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.setAttribute("aria-label", `${label} for ${title}, opens in a new tab`);
+      link.textContent = label;
+      const arrow = document.createElement("span");
+      arrow.setAttribute("aria-hidden", "true");
+      arrow.textContent = " ↗";
+      link.appendChild(arrow);
+      list.appendChild(link);
+    });
+    copy.appendChild(list);
+    if (options.deadline) {
+      const deadline = document.createElement("p");
+      deadline.className = "portal-meta";
+      deadline.textContent = "Deadline: check current cycle on official portal";
+      copy.appendChild(deadline);
+    }
+    const verified = document.createElement("p");
+    verified.className = "portal-meta";
+    verified.textContent = "Directory reviewed 14 Oct 2026; confirm details at source";
+    copy.appendChild(verified);
+    card.appendChild(copy);
+    return card;
+  }
+
+  function renderPortalDirectories() {
+    const countryGrid = document.getElementById("visa-country-grid");
+    const jobsGrid = document.getElementById("europe-job-grid");
+    if (!countryGrid || !jobsGrid) return;
+    visaPortals.forEach(({ country, flag, links }) => {
+      countryGrid.appendChild(createPortalCard(`${flag} ${country}`, links, "", { group: "visa" }));
+    });
+    europeanJobPortals.forEach(([name, url]) => {
+      jobsGrid.appendChild(createPortalCard(name, [["Open official portal", url]], "job-portal-card", { group: "jobs" }));
+    });
+    Object.entries(additionalPortalGroups).forEach(([gridId, resources]) => {
+      const grid = document.getElementById(gridId);
+      if (!grid) return;
+      resources.forEach(([name, url]) => {
+        grid.appendChild(createPortalCard(name, [["Open official portal", url]], "job-portal-card", { group: gridId, deadline: gridId === "scholarship-grid" }));
+      });
+    });
+  }
+
+  function filterPortalDirectories() {
+    const query = document.getElementById("portalDirectorySearch").value.trim().toLowerCase();
+    const activeFilter = document.querySelector("[data-visa-filter][aria-pressed='true']")?.dataset.visaFilter || "all";
+    document.querySelectorAll(".portal-directory-item").forEach((card) => {
+      const matchesSearch = card.dataset.search.includes(query);
+      let visibleLinks = 0;
+      card.querySelectorAll(".portal-link").forEach((link) => {
+        const matchesType = card.dataset.directoryGroup !== "visa" || activeFilter === "all" || link.dataset.visaType === activeFilter;
+        link.hidden = !matchesType || !matchesSearch;
+        if (!link.hidden) visibleLinks += 1;
+      });
+      card.hidden = !matchesSearch || (card.dataset.directoryGroup === "visa" && visibleLinks === 0);
+    });
+  }
 
   /* Live Filter Search */
   function filterContent() {
@@ -1409,6 +1836,9 @@ body {
   }
 
   /* Chatbot Logic */
+  let chatHistory = [];
+  let chatRequestPending = false;
+
   function toggleAiChat() {
     const win = document.getElementById('aiChatWindow');
     win.classList.toggle('active');
@@ -1420,47 +1850,128 @@ body {
   }
 
   function handleChatKeyPress(e) {
-    if(e.key === 'Enter') sendChatMessage();
+    if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) {
+      e.preventDefault();
+      sendChatMessage();
+    }
   }
 
-  function sendChatMessage() {
+  function appendAssistantMessage(answer, sources) {
+    const botDiv = document.createElement('div');
+    botDiv.className = 'msg-bot';
+
+    const answerDiv = document.createElement('div');
+    answerDiv.className = 'chat-answer';
+    answerDiv.textContent = answer;
+    botDiv.appendChild(answerDiv);
+
+    if (sources.length) {
+      const sourceList = document.createElement('div');
+      sourceList.className = 'chat-sources';
+
+      const label = document.createElement('strong');
+      label.textContent = 'Sources';
+      sourceList.appendChild(label);
+
+      for (const source of sources) {
+        if (!source || typeof source.url !== 'string') continue;
+
+        let url;
+        try {
+          url = new URL(source.url);
+        } catch {
+          continue;
+        }
+        if (url.protocol !== 'https:') continue;
+
+        const link = document.createElement('a');
+        link.href = url.href;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = typeof source.title === 'string' && source.title.trim()
+          ? source.title
+          : url.hostname;
+        sourceList.appendChild(link);
+      }
+
+      if (sourceList.childElementCount > 1) {
+        botDiv.appendChild(sourceList);
+      }
+    }
+
+    document.getElementById('chatMessages').appendChild(botDiv);
+    return botDiv;
+  }
+
+  async function sendChatMessage() {
     const input = document.getElementById('chatInput');
     const msg = input.value.trim();
-    if(!msg) return;
+    const sendButton = document.getElementById('chatSendButton');
+    if (!msg || chatRequestPending) return;
 
     const chatMessages = document.getElementById('chatMessages');
-    
-    // User message
     const userDiv = document.createElement('div');
     userDiv.className = 'msg-user';
     userDiv.textContent = msg;
     chatMessages.appendChild(userDiv);
 
+    const loadingDiv = document.createElement('div');
+    loadingDiv.className = 'msg-bot chat-loading';
+    loadingDiv.setAttribute('role', 'status');
+    loadingDiv.textContent = 'Searching current sources and preparing an answer...';
+    chatMessages.appendChild(loadingDiv);
+
+    chatRequestPending = true;
     input.value = '';
+    input.disabled = true;
+    sendButton.disabled = true;
+    sendButton.setAttribute('aria-label', 'Sending message');
     chatMessages.scrollTop = chatMessages.scrollHeight;
 
-    // AI Response logic
-    setTimeout(() => {
-      const botDiv = document.createElement('div');
-      botDiv.className = 'msg-bot';
-      botDiv.innerHTML = getAiResponse(msg);
-      chatMessages.appendChild(botDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }, 600);
-  }
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: msg, history: chatHistory.slice(-6) })
+      });
+      let data;
 
-  function getAiResponse(query) {
-    const q = query.toLowerCase();
-    if (q.includes('hassan') || q.includes('who is')) {
-      return "Hassan Jatoi is an acclaimed poet, author of 'Silent People' & 'Death of Spirits', CV/Resume expert, and Digital Architect specializing in Europass & IT consultancy.";
-    } else if (q.includes('cv') || q.includes('europass') || q.includes('resume') || q.includes('hire')) {
-      return "You can get a professionally crafted Europass CV or Cover Letter from Hassan Jatoi! <a href='https://professional-cv-document-center.vercel.app/' target='_blank' class='underline text-sky-400 font-bold'>Click here to Hire Me for Europass CV</a> or message directly on <a href='https://wa.me/923083500829' target='_blank' class='underline text-emerald-400 font-bold'>WhatsApp</a>.";
-    } else if (q.includes('visa') || q.includes('europe') || q.includes('job')) {
-      return "Check out our comprehensive <a href='https://hassanaliuk11-oss.github.io/europevisa/' target='_blank' class='underline text-sky-400 font-bold'>Europe Visa Guide</a> and <a href='https://hassanaliuk11-oss.github.io/Jobsineurope/' target='_blank' class='underline text-sky-400 font-bold'>European Jobs Portal</a> in the main grid above!";
-    } else if (q.includes('poetry') || q.includes('book') || q.includes('tears') || q.includes('lonely')) {
-      return "Hassan Jatoi's published poetry books include 'Tears In Eyes (Silent People)', 'Death of Spirits', and 'Lonely Path'. Scroll to the Poetry section above to read them directly!";
-    } else {
-      return "Thank you for reaching out! You can explore all official links on this portfolio, or contact Hassan Jatoi directly via <a href='https://wa.me/923083500829' target='_blank' class='underline text-emerald-400 font-bold'>WhatsApp (+92 308 3500829)</a>.";
+      try {
+        data = await response.json();
+      } catch {
+        throw new Error('The AI assistant returned an invalid response. Please try again later.');
+      }
+
+      if (!response.ok) {
+        throw new Error(typeof data.error === 'string' ? data.error : 'The AI assistant could not answer. Please try again.');
+      }
+      if (typeof data.answer !== 'string' || !data.answer.trim()) {
+        throw new Error('The AI assistant returned an empty answer. Please try again.');
+      }
+
+      chatHistory = chatHistory.concat(
+        { role: 'user', text: msg },
+        { role: 'model', text: data.answer }
+      ).slice(-6);
+
+      loadingDiv.remove();
+      appendAssistantMessage(data.answer, Array.isArray(data.sources) ? data.sources : []);
+    } catch (error) {
+      loadingDiv.remove();
+      const errorDiv = document.createElement('div');
+      errorDiv.className = 'msg-bot chat-error';
+      errorDiv.setAttribute('role', 'alert');
+      errorDiv.textContent = error instanceof TypeError
+        ? 'Could not connect to the live assistant. Please check your connection and try again.'
+        : error.message;
+      chatMessages.appendChild(errorDiv);
+    } finally {
+      chatRequestPending = false;
+      input.disabled = false;
+      sendButton.disabled = false;
+      sendButton.setAttribute('aria-label', 'Send message');
+      input.focus();
+      chatMessages.scrollTop = chatMessages.scrollHeight;
     }
   }
 
@@ -1518,6 +2029,17 @@ body {
   }
 
   function initUI() {
+    renderPortalDirectories();
+    document.getElementById("portalDirectorySearch")?.addEventListener("input", filterPortalDirectories);
+    document.querySelectorAll("[data-visa-filter]").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll("[data-visa-filter]").forEach((filterButton) => {
+          filterButton.setAttribute("aria-pressed", String(filterButton === button));
+        });
+        filterPortalDirectories();
+      });
+    });
+
     const sGrid = document.getElementById('social-grid');
     if(sGrid) {
       sGrid.innerHTML = '';
@@ -1557,6 +2079,7 @@ body {
 
   /* Dynamic Rotating Cover Images */
   const album = [
+    "https://res.cloudinary.com/bppt4zlw/image/upload/f_auto,q_auto/v1791874008/college_admittion.jpg",
     "https://i.ibb.co/gZBLPfsj/image.png", 
     "https://i.ibb.co/v4np474r/image.png", 
     "https://i.ibb.co/QFzfbKx4/image.png", 
