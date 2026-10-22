@@ -1,37 +1,68 @@
-# =======================
-# Hassan Jatoi Official Site
-# https://hassanalipoetry.vercel.app/
-# SEO & Crawler Optimized
-# =======================
-
-# Allow all crawlers
-User-agent: *
-Disallow: /private/
-Disallow: /admin/
-Allow: /
-
-# Sitemap location
-Sitemap: https://hassanalipoetry.vercel.app/sitemap.xml
-
-# =======================
-# Specific Bots Rules (optional)
-# =======================
-
-# Block some bots
-User-agent: AhrefsBot
-Disallow: /
-
-User-agent: SemrushBot
-Disallow: /
-
-User-agent: MJ12bot
-Disallow: /
-
-# =======================
-# End of File
-# =======================
-
+# Allow all search engines and AI agents
 User-agent: *
 Allow: /
+Allow: /llms.txt
+Disallow: /assets/
 
-Sitemap: https://hassanaliuk11-oss.github.io/Hassanalipoetry-/sitemap.xml
+# Explicitly allow AI crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: ImagesiftBot
+Allow: /
+
+User-agent: omgili
+Allow: /
+
+User-agent: omgilibot
+Allow: /
+
+Sitemap: https://hassan-jatoi-portfolio.bolt.app/sitemap.xml
